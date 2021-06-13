@@ -27,6 +27,10 @@ lsdev
 hwinfo --short
 lshw -short
 ```
+```bash
+# Compress and transfer a .tar.gz file securely over SSH when ther is no disk space on client
+tar xzcf - whatever/ | ssh user@host 'cat > whatever.tar.gz'
+```
 
 # Troubleshoot
 
