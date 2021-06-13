@@ -82,7 +82,7 @@ top
 # A better top
 htop
 ```
-[htop explained](htop_explained.jpeg)
+[htop explained](../images/htop_explained.jpeg)
 
 ```bash
 # Show installed packages via RPM
