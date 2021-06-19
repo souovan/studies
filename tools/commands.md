@@ -51,6 +51,21 @@ contrab -l #List rules
 less /etc/services
 ```
 
+```
+#Show archives ordered by older
+ls -ltr
+```
+
+```
+#List only files/directories
+ls -1
+```
+
+```
+#Show actual shell
+echo $0
+```
+
 # Troubleshoot
 
 ```
