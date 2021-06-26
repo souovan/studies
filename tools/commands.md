@@ -133,7 +133,7 @@ hostname -I
 # Hacks
 
 ```
-Save file on VIM without permission
+# Save file on VIM without permission
 :w !sudo tee %
 ```
 
