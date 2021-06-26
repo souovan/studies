@@ -136,3 +136,19 @@ hostname -I
 Save file on VIM without permission
 :w !sudo tee %
 ```
+
+# Windows relevant commands
+
+## Network troubleshoot
+
+```
+# Check the routing table
+netstat -r
+``` 
+
+```
+# Test connection with a Database
+tnsping <BD Name>
+```
+
+
