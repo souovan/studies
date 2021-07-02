@@ -151,4 +151,9 @@ netstat -r
 tnsping <BD Name>
 ```
 
+```
+# Test connection 
+# i.e telnet 10.0.0.10 3389 to check if RDP e enabled on remote host 
+telnet <host-ip> <port>
+```
 
