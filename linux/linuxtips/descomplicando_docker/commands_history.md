@@ -1,0 +1,87 @@
+  10  2021-07-16 08:10:28 docker version
+   13  2021-07-16 08:10:28 usermod -aG docker van
+   14  2021-07-16 08:10:28 exit
+   2  2021-07-16 08:11:19 docker container ps
+   43  2021-07-16 08:11:52 docker container run -it hello-world
+   44  2021-07-16 08:12:17 docker ls -a
+   45  2021-07-16 08:13:01 docker container rm 64b
+   46  2021-07-16 08:13:12 docker container rm 61c
+   47  2021-07-16 08:14:04 docker container run -it ubuntu
+   48  2021-07-16 08:27:05 docker container run -it centos
+   49  2021-07-16 08:35:57 docker container attach b76
+   50  2021-07-16 08:37:04 docker ps
+   51  2021-07-16 08:37:21 docker container run -it nginx
+   52  2021-07-16 08:40:43 docker container attach 5e9
+   53  2021-07-16 08:41:08 docker container run -d nginx
+   54  2021-07-16 08:41:44 docker container exec -it 55e ls /
+   55  2021-07-16 08:41:51 docker container exec -it 55e ps -ef
+   56  2021-07-16 08:42:07 docker container exec -it 55e ls /usr/share/nginx/
+   57  2021-07-16 08:52:33 docker container stop 55e
+   58  2021-07-16 08:52:36 docker container ls
+   59  2021-07-16 08:53:04 docker container start 55e
+   60  2021-07-16 08:53:29 docker container restart 55e
+   61  2021-07-16 08:53:33 docker container ls -aa
+   62  2021-07-16 08:54:05 docker container inspect 55e
+   63  2021-07-16 08:57:12 curl 127.0.17.3
+   64  2021-07-16 08:57:19 docker container inspect 55e | less
+   65  2021-07-16 08:58:08 docker container exec -it 55e bash
+   66* 2021-07-16 08:58:59 
+   67  2021-07-16 08:59:55 docker container pause 55e
+   68  2021-07-16 09:00:44 docker container unpause 55e
+   69  2021-07-16 09:00:57 docker container ls -a
+   70  2021-07-16 09:01:56 curl 172.17.0.3
+   71  2021-07-16 09:03:17 docker container logs -f 55e
+   72  2021-07-16 09:04:22 docker container attach 55e
+      2021-07-16 08:10:28 docker version
+   11  2021-07-16 08:10:28 clear
+   12  2021-07-16 08:10:28 exit
+   13  2021-07-16 08:10:28 usermod -aG docker van
+  41  2021-07-16 08:11:19 docker container ps
+   42  2021-07-16 08:11:52 docker container run -it hello-world
+   43  2021-07-16 08:12:17 docker ls -a
+   44  2021-07-16 08:13:01 docker container rm 64b
+   45  2021-07-16 08:13:12 docker container rm 61c
+   46  2021-07-16 08:14:04 docker container run -it ubuntu
+   47  2021-07-16 08:27:05 docker container run -it centos
+   48  2021-07-16 08:35:57 docker container attach b76
+   49  2021-07-16 08:37:04 docker ps
+   50  2021-07-16 08:37:21 docker container run -it nginx
+   51  2021-07-16 08:40:43 docker container attach 5e9
+   52  2021-07-16 08:41:44 docker container exec -it 55e ls /
+   53  2021-07-16 08:41:51 docker container exec -it 55e ps -ef
+   54  2021-07-16 08:42:07 docker container exec -it 55e ls /usr/share/nginx/
+   55  2021-07-16 08:52:33 docker container stop 55e
+   56  2021-07-16 08:53:04 docker container start 55e
+   57  2021-07-16 08:53:29 docker container restart 55e
+   58  2021-07-16 08:53:33 docker container ls -aa
+   59  2021-07-16 08:54:05 docker container inspect 55e
+   60  2021-07-16 08:57:12 curl 127.0.17.3
+   61  2021-07-16 08:57:19 docker container inspect 55e | less
+   62  2021-07-16 08:58:08 docker container exec -it 55e bash
+   63* 2021-07-16 08:58:59 
+   64  2021-07-16 08:59:55 docker container pause 55e
+   65  2021-07-16 09:00:44 docker container unpause 55e
+   66  2021-07-16 09:01:56 curl 172.17.0.3
+   67  2021-07-16 09:03:17 docker container logs -f 55e
+   68  2021-07-16 09:04:22 docker container attach 55e
+   71  2021-07-16 09:10:46 docker container stop a96
+   72  2021-07-16 09:10:54 dockercontainer ls
+   73  2021-07-16 09:14:13 docker container rm a9674229c5e3
+   74  2021-07-16 09:14:21 docker container rm 55ea342f486f
+   75  2021-07-16 09:14:30 docker container rm 5e96d6e5292e
+   76  2021-07-16 09:14:54 docker container ls -a
+   77  2021-07-16 09:15:03 docker container rm 62385f067064
+   78  2021-07-16 09:15:17 docker container rm 89895373d50e
+   79  2021-07-16 09:15:37 docker container run -d nginx
+   80  2021-07-16 09:15:48 docker container stats fe5
+   81  2021-07-16 10:25:08 docker container top fe5
+   82  2021-07-16 10:26:41 docker container rm -f fe5
+   83  2021-07-16 10:27:16 docker container run -d -m 128M nginx
+   84  2021-07-16 10:28:11 docker container inspect a23 | less
+   85  2021-07-16 10:28:33 bc
+   87  2021-07-16 10:34:07 docker container run -d -m 128M --cpus 0.5 nginx
+   88  2021-07-16 10:34:36 docker container inspect c93 | less
+   89  2021-07-16 10:35:09 docker container ls
+   91  2021-07-16 10:38:47 docker container update --cpus 0.8 c93
+   92  2021-07-16 10:40:50 docker container update --cpus 0.8 --memory 64M c93
+   93  2021-07-16 10:41:04 docker container stats c93
