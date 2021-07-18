@@ -85,3 +85,25 @@
    91  2021-07-16 10:38:47 docker container update --cpus 0.8 c93
    92  2021-07-16 10:40:50 docker container update --cpus 0.8 --memory 64M c93
    93  2021-07-16 10:41:04 docker container stats c93
+ 129  mkdir tosko_dockerfile
+  130  cd tosko_dockerfile/
+  133  vim Dockerfile
+  134  docker image build -t toskeira:1.0 .
+  135  docker image ls
+  136  docker container run -d toskeira:1.0
+  137  docker container ls
+  138  docker container logs -f f2c
+  139  docker container ls
+  140  docker container stats f2c
+  141  docker container inspect f2c
+  142  docker container stop f2c
+  143  docker container rm -f f2c
+  144  docker run -d -m 64M toskeira:1.0
+  145  docker container ls
+  146  docker container stats 933
+  147  docker rm -f 933
+  148  docker run -d -m 128M toskeira:1.0
+  149  docker container stats 6a3
+  150  docker update --cpu 0.2 6a3
+  151  docker update --cpus 0.2 6a3
+  152  docker container stats 6a3
