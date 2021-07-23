@@ -107,3 +107,14 @@
   150  docker update --cpu 0.2 6a3
   151  docker update --cpus 0.2 6a3
   152  docker container stats 6a3
+  159  2021-07-22 13:51:48 sudo mkdir /opt/giropops
+  160  2021-07-22 13:51:59 sudo su
+  161  2021-07-22 13:52:45 ls -lha
+  162  2021-07-22 13:54:08 cd ..
+  163* 2021-07-22 13:54:23 
+  164  2021-07-22 13:54:27 cd
+  165  2021-07-22 13:54:32 cd studies/linux/linuxtips/descomplicando_docker/
+  166  2021-07-22 13:55:10 cd /opt/giropops/
+  167  2021-07-22 13:55:18 cd -
+  168  2021-07-22 13:55:53 df -h
+  169  2021-07-22 13:56:06 docker container run -it --mount type=bind,src=/opt/giropops,dst=/giropops debian
