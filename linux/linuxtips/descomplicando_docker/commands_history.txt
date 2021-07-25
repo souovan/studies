@@ -118,3 +118,50 @@
   167  2021-07-22 13:55:18 cd -
   168  2021-07-22 13:55:53 df -h
   169  2021-07-22 13:56:06 docker container run -it --mount type=bind,src=/opt/giropops,dst=/giropops debian
+ 182  docker volume create giropops
+  183  docker volume ls
+  184  docker volume inspect giropops 
+  185  cd /var/lib/docker/volumes
+  186  ll
+  187  ls
+  188  sudo ls
+  189  cd _data
+  190  cd giropops
+  191  ls
+  192  sudo ls
+  193  cd _data
+  194  ls
+  195  touch GIROPOPS
+  196  sudo touch GIROPOPS
+  197  sudo touch STRIGUS
+  198  ls
+  199  cd -
+  200  cd ~/studies/linux/linuxtips/descomplicando_docker/
+  201  docker container run -it type=volume,src=giropops,dst=/giropops debian
+  202  docker container run -it --mount type=volume,src=giropops,dst=/giropops debian
+  203  docker images ls
+  204  docker container ls
+  205  cd /var/lib/docker/containers
+  206  ls
+  207  cd ~/studies/linux/linuxtips/descomplicando_docker/
+  208  docker container run -it --mount type=volume,src=giropops,dst=/giropops debian
+  209  docker container ls
+  210  docker exec -it a43a067e8d9e touch /giropops/a43a067e8d9e
+  211  sudo cd /var/lib/docker/volumes/giropops
+  212  sudo cd /var/lib/docker
+  213  cd /var/lib/docker
+  214  cd /volumes/giropops/_data
+  215  cd /volumes/giropops/
+  216  cd /volumes/
+  217  cd volumes/giropops/_data
+  218  ls
+  219  docker container ls
+  220  docker container rm -f a43a067e8d9e
+  221  ls
+  222  docker volume rm giropops
+  223  docker container ls
+  224  docker container ls -a
+  225  docker container rm a61
+  226  docker volume rm giropops
+  227  docker container rm 36e473db
+  228  docker volume rm giropops
