@@ -154,14 +154,6 @@
   215  cd /volumes/giropops/
   216  cd /volumes/
   217  cd volumes/giropops/_data
-  218  ls
-  219  docker container ls
-  220  docker container rm -f a43a067e8d9e
-  221  ls
-  222  docker volume rm giropops
-  223  docker container ls
-  224  docker container ls -a
-  225  docker container rm a61
-  226  docker volume rm giropops
-  227  docker container rm 36e473db
-  228  docker volume rm giropops
+  297  docker container create -v /data --name dbdados centos
+  298  docker container run -d -p 5432:5432 --name pgsql1 --volumes-from dbdados -e POSTGRESQL_USER=docker -e POSTGRESQL_PASS=docker -e POSTGRESQL_DB=docker kamui/postgresql
+  299  docker container run -d -p 5433:5432 --name pgsql2 --volumes-from dbdados -e POSTGRESQL_USER=docker -e POSTGRESQL_PASS=docker -e POSTGRESQL_DB=docker kamui/postgresql
