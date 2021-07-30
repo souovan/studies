@@ -158,3 +158,1046 @@
   298  docker container run -d -p 5432:5432 --name pgsql1 --volumes-from dbdados -e POSTGRESQL_USER=docker -e POSTGRESQL_PASS=docker -e POSTGRESQL_DB=docker kamui/postgresql
   299  docker container run -d -p 5433:5432 --name pgsql2 --volumes-from dbdados -e POSTGRESQL_USER=docker -e POSTGRESQL_PASS=docker -e POSTGRESQL_DB=docker kamui/postgresql
 docker container run -ti --mount type=volume,src=dbdados,dst=/data --mount type=bind,src=/opt/backup,dst=/backup debian tar -cvf /backup/bkp-banco.tar /data
+APAGAR DAQUI
+    1  2021-07-30 13:52:34 clear
+    2  2021-07-30 13:52:34 exit
+    3  2021-06-24 13:55:44 ./install.sh 
+    4  2021-07-30 13:52:34 vim ~/.bashrc
+    5  2021-07-30 13:52:34 vi ~/.bashrc
+    6  2021-07-30 13:52:34 sudo vi ~/.bashrc
+    7  2021-07-30 13:52:34 sudo apt install -y vim
+    8  2021-07-30 13:52:34 vim ~/.bashrc
+    9  2021-07-30 13:52:34 sudo apt install -y openssh-server
+   10  2021-07-30 13:52:34 clear
+   11  2021-07-30 13:52:34 sudo apt install -y git
+   12  2021-07-30 13:52:34 clear
+   13  2021-07-30 13:52:34 git clone https://github.com/souovan/dotfiles-linux
+   14  2021-07-30 13:52:34 clear
+   15  2021-07-30 13:52:34 cd dotfiles-linux/
+   16  2021-07-30 13:52:34 su -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   17  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   18  2021-07-30 13:52:34 exit
+   19  2021-06-24 14:04:36 cd dotfiles-linux/
+   20  2021-06-24 14:04:41 ./install.sh 
+   21  2021-07-30 13:52:34 clear
+   22  2021-07-30 13:52:34 exit
+   23  2021-07-30 13:52:34 sudo 
+   24  2021-07-30 13:52:34 clear
+   25  2021-07-30 13:52:34 sudo su
+   26  2021-07-30 13:52:34 exit
+   27  2021-07-30 13:52:34 exit
+   28  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   29  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)
+   30  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   31  2021-07-30 13:52:34 clear
+   32  2021-07-30 13:52:34 exit
+   33  2021-07-30 13:52:34 vim ~/.bashrc
+   34  2021-07-30 13:52:34 exit
+   35  2021-07-30 13:52:34 su -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   36  2021-07-30 13:52:34 clear
+   37  2021-07-30 13:52:34 cd dotfiles-linux/
+   38  2021-07-30 13:52:34 clear
+   39  2021-07-30 13:52:34 ./install.sh 
+   40  2021-07-30 13:52:34 exit
+   41  2021-06-24 14:18:40 ss
+   42  2021-06-24 14:18:43 clar
+   43  2021-06-24 14:18:48 cd dotfiles-linux/
+   44  2021-07-30 13:52:34 ll
+   45  2021-06-25 08:07:24 pwd
+   46  2021-06-25 08:18:39 ll
+   47  2021-06-25 13:46:11 cd dotfiles-linux/
+   48  2021-06-25 13:46:15 ll
+   49  2021-06-25 13:46:20 vim install.sh 
+   50  2021-06-25 13:47:21 cler
+   51  2021-06-25 13:47:21 cler
+   52  2021-06-25 13:57:06 sudo apt install net-tools -y
+   53  2021-06-25 13:57:54 netstat -atunpo
+   54  2021-06-25 13:58:29 netstat -atunpo | more
+   55  2021-06-25 13:58:35 netstat -atunpo | less
+   56  2021-06-25 13:59:23 sudo ufw status
+   57  2021-06-25 13:47:21 cler
+   58  2021-06-25 13:57:06 sudo apt install net-tools -y
+   59  2021-06-25 13:57:54 netstat -atunpo
+   60  2021-06-25 13:58:29 netstat -atunpo | more
+   61  2021-06-25 13:58:35 netstat -atunpo | less
+   62  2021-06-25 14:01:01 cd dotfiles-linux/
+   63  2021-06-25 14:01:04 cd
+   64  2021-06-25 14:01:19 sudo ufw delete 1
+   65  2021-06-25 14:01:48 sudo ufw allow 10.30.3.89 to 22
+   66  2021-06-25 14:01:52 sudo ufw allow 10.30.3.89
+   67  2021-06-25 14:02:06 sudo ufw allow from 10.30.3.89
+   68  2021-06-25 14:02:53 sudo ufw deny from 10.30.0.0/16
+   69  2021-06-25 14:06:31 ll
+   70  2021-06-25 14:06:33 sudo ufw status
+   71  2021-06-25 14:20:54 netstat -r
+   72  2021-06-25 14:21:20 ckear
+   73  2021-07-30 13:52:34 clar
+   74  2021-06-25 13:47:21 cler
+   75  2021-06-25 13:47:21 cler
+   76  2021-06-25 13:57:06 sudo apt install net-tools -y
+   77  2021-06-25 13:57:54 netstat -atunpo
+   78  2021-06-25 13:58:29 netstat -atunpo | more
+   79  2021-06-25 13:58:35 netstat -atunpo | less
+   80  2021-06-25 13:59:23 sudo ufw status
+   81  2021-06-25 13:47:21 cler
+   82  2021-06-25 13:57:06 sudo apt install net-tools -y
+   83  2021-06-25 13:57:54 netstat -atunpo
+   84  2021-06-25 13:58:29 netstat -atunpo | more
+   85  2021-06-25 13:58:35 netstat -atunpo | less
+   86  2021-06-25 14:01:19 sudo ufw delete 1
+   87  2021-06-25 14:01:48 sudo ufw allow 10.30.3.89 to 22
+   88  2021-06-25 14:01:52 sudo ufw allow 10.30.3.89
+   89  2021-06-25 14:02:06 sudo ufw allow from 10.30.3.89
+   90  2021-06-25 14:02:53 sudo ufw deny from 10.30.0.0/16
+   91  2021-06-25 14:06:33 sudo ufw status
+   92  2021-06-25 14:20:54 netstat -r
+   93  2021-06-25 14:21:20 ckear
+   94  2021-07-14 15:15:53 sudo apt upgrade -y
+   95  2021-07-14 15:34:41 git clone https://github.com/souovan/studies.git
+   96  2021-07-14 15:36:35 cd studies/
+   97  2021-07-14 15:36:43 mkdir linux/
+   98  2021-07-14 15:36:52 cd linux/
+   99  2021-07-14 15:37:05 mkdir linuxtips
+  100  2021-07-14 15:37:08 cd linuxtips/
+  101  2021-07-14 15:37:28 mkdir descomplicando_docker
+  102  2021-07-14 15:37:30 cd descomplicando_docker/
+  103  2021-07-15 10:38:54 ll ~/
+  104  2021-07-15 14:27:15 cd dotfiles-linux/
+  105  2021-07-15 14:28:06 vim
+  106  2021-07-15 14:28:10 vim install.sh 
+  107  2021-07-15 14:28:49 ll
+  108  2021-07-15 14:28:58 vim .vimrc 
+  109  2021-07-15 14:29:13 cd
+  110  2021-07-15 15:15:36 sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg     lsb-release
+  111  2021-07-15 15:16:09 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  112  2021-07-15 15:16:26 echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  113  2021-07-30 13:52:34   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  114  2021-07-15 15:17:20 sudo apt install -y docker-ce docker-ce-cli containerd.io
+  115  2021-07-15 15:18:38 sudo apt update
+  116  2021-07-15 15:19:43 sudo apt clean
+  117  2021-07-15 15:19:46 sudo apt remove
+  118  2021-07-15 15:19:57 sudo apt autoclean
+  119  2021-07-15 15:20:01 sudo apt autoremove
+  120  2021-07-15 15:36:07 curl -fsSL https://get.docker.com | bash
+  121  2021-07-15 15:36:19 sudo curl -fsSL https://get.docker.com | bash
+  122  2021-07-15 15:38:07 sudo su
+  123  2021-07-15 15:38:19 sudo
+  124  2021-07-15 15:38:22 sudo -
+  125  2021-07-15 15:39:28 pwd
+  126  2021-07-15 15:39:33 sudo su - 
+  127  2021-07-15 15:41:24 sudo docker version
+  128  2021-07-15 15:49:03 sudo usermode -aG docker van
+  129  2021-07-15 15:49:11 sudo usermod -aG docker van
+  130  2021-07-15 15:49:32 sudo su -
+  131  2021-07-15 15:49:49 docker version
+  132  2021-07-15 15:50:05 logoff
+  133  2021-07-16 09:03:06 sudo su -
+  134  2021-07-15 15:50:05 logoff
+  135  2021-07-15 15:51:12 docker version
+  136  2021-07-15 16:18:21 docker ps
+  137  2021-07-15 16:37:54 docker network
+  138  2021-07-15 16:38:05 docker network ls
+  139  2021-07-15 16:38:28 docker container run -it hello-world
+  140  2021-07-15 16:47:27 docker contariner ls
+  141  2021-07-15 16:47:37 docker ls
+  142  2021-07-16 08:06:00 sudo su -
+  143  2021-07-19 14:09:08 sudo apt update
+  144  2021-07-19 14:09:08 sudo apt update
+  145  2021-07-19 14:33:30 sudo apt -y upgrade
+  146  2021-07-19 16:22:37 ll
+  147  2021-07-20 08:29:39 git stash
+  148  2021-07-20 08:29:44 git worktree
+  149  2021-07-20 08:29:51 git worktree list
+  150  2021-07-20 16:49:13 pwd
+  151  2021-07-23 11:13:18 ping 10.10.3.89
+  152  2021-07-15 10:38:54 ll ~/
+  153  2021-07-15 14:27:15 cd dotfiles-linux/
+  154  2021-07-15 14:28:06 vim
+  155  2021-07-15 14:28:10 vim install.sh 
+  156  2021-07-15 14:28:58 vim .vimrc 
+  157  2021-07-15 15:15:36 sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg     lsb-release
+  158  2021-07-15 15:16:09 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  159  2021-07-15 15:16:26 echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  160  2021-07-22 13:26:57   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  161  2021-07-15 15:17:20 sudo apt install -y docker-ce docker-ce-cli containerd.io
+  162  2021-07-15 15:19:43 sudo apt clean
+  163  2021-07-15 15:19:46 sudo apt remove
+  164  2021-07-15 15:19:57 sudo apt autoclean
+  165  2021-07-15 15:20:01 sudo apt autoremove
+  166  2021-07-15 15:36:07 curl -fsSL https://get.docker.com | bash
+  167  2021-07-15 15:36:19 sudo curl -fsSL https://get.docker.com | bash
+  168  2021-07-15 15:38:19 sudo
+  169  2021-07-15 15:38:22 sudo -
+  170  2021-07-15 15:39:28 pwd
+  171  2021-07-15 15:39:33 sudo su - 
+  172  2021-07-15 15:41:24 sudo docker version
+  173  2021-07-15 15:49:03 sudo usermode -aG docker van
+  174  2021-07-15 15:49:11 sudo usermod -aG docker van
+  175  2021-07-15 15:49:49 docker version
+  176  2021-07-15 15:50:05 logoff
+  177  2021-07-15 15:50:05 logoff
+  178  2021-07-15 15:51:12 docker version
+  179  2021-07-15 16:37:54 docker network
+  180  2021-07-15 16:38:05 docker network ls
+  181  2021-07-15 16:38:28 docker container run -it hello-world
+  182  2021-07-15 16:47:27 docker contariner ls
+  183  2021-07-15 16:47:37 docker ls
+  184  2021-07-19 14:33:30 sudo apt -y upgrade
+  185  2021-07-20 08:29:39 git stash
+  186  2021-07-20 08:29:44 git worktree
+  187  2021-07-20 08:29:51 git worktree list
+  188  2021-07-20 16:49:13 pwd
+  189  2021-07-22 13:30:55 git pull help
+  190  2021-07-22 13:31:02 git pull --help
+  191  2021-07-22 13:31:40 git fetch
+  192  2021-07-22 13:32:09 git pull origin master
+  193  2021-07-22 13:32:29 git update
+  194  2021-07-22 13:32:35 git --help
+  195  2021-07-22 13:33:23 git fetch origin main
+  196  2021-07-22 13:33:38 git pull origin main
+  197  2021-07-22 13:36:18 git fetch upstream
+  198  2021-07-22 13:38:14 git fetch https://github.com/souovan/studies
+  199  2021-07-22 13:38:58 git pull origin
+  200  2021-07-22 13:41:55 error: insufficient permission for adding an object to repository database .git/objects
+  201  2021-07-22 13:42:33 sudo chgrp -R groupname .
+  202  2021-07-22 13:43:13 sudo chmod -R g+rwX .
+  203  2021-07-22 13:43:31 find . -type d -exec chmod g+s '{}' +
+  204  2021-07-22 13:43:57 sudo chmod -R a+rwX .
+  205  2021-07-22 13:44:17 sudo su -
+  206  2021-07-22 13:46:32 git pull
+  207  2021-07-22 13:49:16 mkdir /opt/giropops
+  208  2021-07-22 13:51:48 sudo mkdir /opt/giropops
+  209  2021-07-22 13:51:59 sudo su
+  210  2021-07-22 13:52:45 ls -lha
+  211  2021-07-22 13:54:27 cd
+  212  2021-07-22 13:55:10 cd /opt/giropops/
+  213  2021-07-22 13:55:18 cd -
+  214  2021-07-22 13:55:53 df -h
+  215  2021-07-22 13:56:06 docker container run -it --mount type=bind,src=/opt/giropops,dst=/giropops debian
+  216  2021-07-22 13:57:17 cat commands_history.txt 
+  217  2021-07-22 13:57:35 sudo echo "APAGAR DAQUI" >> commands_history.txt 
+  218  2021-07-22 13:57:42 ls commands_history.txt 
+  219  2021-07-22 13:58:17 chmod ugo+rw commands_history.txt 
+  220  2021-07-22 13:58:21 sudo chmod ugo+rw commands_history.txt 
+  221  2021-07-22 13:58:25 ls -lha commands_history.txt 
+  222  2021-07-22 13:59:09 vim commands_history.txt 
+  223  2021-07-22 14:00:53 git push origin main
+  224  2021-07-23 08:40:59 git add .
+  225  2021-07-23 08:41:16 git reflog
+  226  2021-07-23 08:43:36 git config --global user.email "souovan@protonmail.com"
+  227  2021-07-23 08:43:58 git config --global user.name "souovan"
+  228  2021-07-23 08:44:03 git commit -m "Comandos até a aula Volumes tipo Bind"
+  229  2021-07-23 08:44:12 sudo git commit -m "Comandos até a aula Volumes tipo Bind"
+  230  2021-07-23 08:44:24 git push
+  231  2021-07-23 08:44:45 git logs
+  232  2021-07-23 08:44:48 git log
+  233  2021-07-23 08:44:59 ll
+  234  2021-07-23 09:13:03 docker ps
+  235  2021-07-23 09:13:45 docker volume create giropops
+  236  2021-07-23 09:16:09 git issues
+  237  2021-07-23 09:20:07 sudo apt update
+  238  2021-07-23 09:20:22 sudo apt upgrade -y
+  239  2021-07-23 09:21:13 sudo apt install hub -y
+  240  2021-07-23 09:21:51 git browse -- issues
+  241  2021-07-23 09:24:46 sudo apt install www-browser --y
+  242  2021-07-23 09:24:52 sudo apt install www-browser -y
+  243  2021-07-23 09:25:07 sudo apt install links2 -y
+  244  2021-07-23 09:25:22 hub browse -- issues
+  245  2021-07-23 09:25:45 hub issue --limit 10
+  246  2021-07-23 09:25:54 hub issue
+  247  2021-07-23 09:29:20 docker volume ls
+  248  2021-07-23 09:29:29 docker volume inspect giropops
+  249  2021-07-23 09:25:07 sudo apt install links2 -y
+  250  2021-07-23 09:25:22 hub browse -- issues
+  251  2021-07-23 09:25:45 hub issue --limit 10
+  252  2021-07-23 09:25:54 hub issue
+  253  2021-07-23 09:29:20 docker volume ls
+  254  2021-07-23 09:29:29 docker volume inspect giropops
+  255  2021-07-29 14:55:15 cd
+  256  2021-07-29 15:31:33 git add .
+  257  2021-07-29 16:34:38 git commit -m "Adicionando Dockerfile"
+  258  2021-07-29 16:36:10 ssh-keygen
+  259  2021-07-29 16:38:22 cat /home/van/.ssh/id_rsa.pub 
+  260  2021-07-29 16:39:17 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC82/IuQPcHYWDcFpoLrQbACYvIaHXomfk0N96Un4/AwEyztpbFDLr4IaHxJddzuqe2LKe4GcMkL7w+abTZs51rsr4XU+ObwF797aiBK/VVaDWGheo475FylL8VEuugGPZzl0lc3oKd3PJXd/Gl4bg2XdlPQCwxUssoZ4aqO4/YtZVUordEvTNn/33AoeimQ7GLvoVJw59GWiP7euOHsF1HiUvh8PiTTJfzMiLUze7cpxv1Rl2h/PcaEbx2HgV1fXMEzAYwk+zDfLIPVpsVO1aozC1Ggx9oKtvGaPrfIBkq1JmKZa+e9IXN8gCsXMr1Ti6ymHG8oRCRt8R04brxGWILXZHhcJvWvvsllMK7Tzf81NIcTI5pN7Putw4KoGzqSyLH+yMXpu0bNwVY67yllCJfhTLXS9HGuclD8qk9csCf9o4H+ZOf6PKUgezUSRjqJsPLvqs+pjII+KS3hqxy7AZDx7ih61bSHp2UNq9dHfpPTtM1Fz2FCcp7g9lvo5cs8zU= van@ubuntu2004-shellscript-prudenciato
+  261  2021-07-29 16:39:22 git push
+  262  2021-07-30 07:54:12 cd ~/studies/
+  263  2021-07-30 07:54:22 cat .git
+  264  2021-07-30 07:54:53 git remote -v
+  265  2021-07-30 07:57:06 git remote set-url git@github.com:souovan/studies.git
+  266  2021-07-30 07:57:33 git remote set-url --add git@github.com:souovan/studies.git
+  267  2021-07-30 07:58:24 git remote set-url origin git@github.com:souovan/studies.git
+  268  2021-07-30 07:59:13 git pull
+  269  2021-07-30 08:00:00 cleat
+  270  2021-07-30 08:00:09 cat .git/config
+  271  2021-07-30 07:54:12 cd ~/studies/
+  272  2021-07-30 07:54:22 cat .git
+  273  2021-07-30 07:54:53 git remote -v
+  274  2021-07-30 07:57:06 git remote set-url git@github.com:souovan/studies.git
+  275  2021-07-30 07:57:33 git remote set-url --add git@github.com:souovan/studies.git
+  276  2021-07-30 07:58:24 git remote set-url origin git@github.com:souovan/studies.git
+  277  2021-07-30 08:00:00 cleat
+  278  2021-07-30 08:05:10 curl wttr.in
+  279  2021-07-30 08:11:47 ssh -T git@github.com
+  280  2021-07-30 08:18:43 git remote --set-url origin https://github.com/souovan/studies.git
+  281  2021-07-30 08:19:08 git remote --help
+  282  2021-07-30 08:19:26 git remote set-url origin 
+  283  2021-07-30 08:19:35 git remote set-url origin https://github.com/souovan/studies.git
+  284  2021-07-30 08:20:37 cd 
+  285  2021-07-30 08:21:16 ls dotfiles-linux/
+  286  2021-07-30 08:22:26 sudo ufw allow ssh
+  287  2021-07-30 08:22:30 sudo ufw status
+  288  2021-07-30 08:22:38 git clone git@github.com:souovan/vancli.git
+  289  2021-07-30 08:37:16 cd studies/
+  290  2021-07-30 09:36:36 cat .git/config
+  291  2021-07-30 09:45:01 git pull
+  292  2021-07-30 09:36:36 cat .git/config
+  293  2021-07-30 09:45:01 git pull
+  294  2021-07-30 13:43:58 pwd
+  295  2021-07-30 13:44:45 cd 2/
+  296  2021-07-30 13:45:03 docker volumes ls
+  297  2021-07-30 13:45:18 docker volume inspect 6863574f2d2441c88684edbb52aa90d83c751ad43b82640e0d0f3c943e92bbdb
+  298  2021-07-30 13:45:46 docker container rm -f -a
+  299  2021-07-30 13:45:59 docker container rm -f 62312c236d80e01fe2376756056b1678997537f63b395275b3716d6b822457e8
+  300  2021-07-30 13:46:04 docker volume rm -f 6863574f2d2441c88684edbb52aa90d83c751ad43b82640e0d0f3c943e92bbdb
+  301  2021-07-30 13:46:10 docker volume ls
+  302  2021-07-30 13:50:51 nmtui
+  303  2021-07-30 13:51:03 sudo nmtui
+  304  2021-07-30 13:51:26 hostname
+  305  2021-07-30 13:52:42 cd studies/linux/linuxtips/descomplicando_docker/
+  306  2021-07-30 15:56:42 cd 2
+  307  2021-07-30 16:02:34 docker container run -d -p 8080:80 meu_apache:2.0.0
+  308  2021-07-30 16:18:57 cd ..
+  309  2021-07-30 16:19:02 cp -R 2 3
+  310  2021-07-30 16:19:03 cd 3
+  311  2021-07-30 16:21:00 vim index.html
+  312  2021-07-30 16:21:44 docker image build -t meu_apache:3.0.0 .
+  313  2021-07-30 16:22:08 docker images ls
+  314  2021-07-30 16:22:39 docker container run -d -p 8000:80 meu_apache:3.0.0
+  315  2021-07-30 16:22:47 curl localhost:8000
+  316  2021-07-30 16:23:47 docker container exec -ti 
+  317  2021-07-30 16:23:52 docker container exec -ti f7c010d1242b41c087bc80e952fad986e5256adc81d917754b0e51e3c8800805 bash
+  318  2021-07-30 16:24:32 docker container rm -f f7c010d1242b
+  319  2021-07-30 16:24:39 docker container rm -f 0193244e487b
+  320  2021-07-30 16:29:46 docker container logs -f 2b79292b76713e033044d0c0e621783554e99314a9f1ee8c6b01f1cc92d14882
+  321  2021-07-30 16:32:39 docker image build -t meu_apache:4.0.0 .
+  322* 2021-07-30 16:33:44 
+  323  2021-07-30 16:34:14 docker container rm -f 33a3a9a0c917
+  324  2021-07-30 16:34:18 docker run -d -p 8080:80 meu_apache:4.0.0
+  325  2021-07-30 16:36:39 docker container logs -f a98e84a6cf3c399b1dcc0a17aee21ee23986522371d3224c37526612cca7329f
+  326  2021-07-30 16:37:56 docker build -t meu_apache:4.0.0 .
+  327  2021-07-30 16:38:11 docker container run -d -p 8080:80 meu_apache:4.0.0
+  328  2021-07-30 16:38:15 docker container ls
+  329  2021-07-30 16:38:21 curl localhost:8080
+  330  2021-07-30 16:39:35 cd dockerfiles/
+  331  2021-07-30 16:39:38 mkdir 4
+  332  2021-07-30 16:39:39 cd 4
+  333  2021-07-30 16:39:58 vim meu_go.go
+  334  2021-07-30 16:41:51 vim Dockerfile
+  335  2021-07-30 16:51:42 vim docker
+  336  2021-07-30 16:52:59 docker image build -t meugo:1.0 .
+  337  2021-07-30 16:53:14 docker image rm -f c26374c83a6e
+  338  2021-07-30 16:53:23 docker image rm -f 09bcdc003114
+  339  2021-07-30 16:53:35 docker image rm -f 5209ae024081
+  340  2021-07-30 16:53:45 docker image ls
+  341  2021-07-30 16:54:02 vim meu_go.go 
+  342  2021-07-30 16:54:54 vim Dockerfile 
+  343  2021-07-30 16:55:39 git status
+  344  2021-07-30 16:56:16 cd ../..
+  345  2021-07-30 16:56:34 echo "APAGAR DAQUI" >> commands_history.txt 
+  346  2021-07-30 16:56:37 tail commands_history.txt 
+  347  2021-07-30 16:56:46 history >> commands_history.txt 
+    1  2021-07-30 13:52:34 clear
+    2  2021-07-30 13:52:34 exit
+    3  2021-06-24 13:55:44 ./install.sh 
+    4  2021-07-30 13:52:34 vim ~/.bashrc
+    5  2021-07-30 13:52:34 vi ~/.bashrc
+    6  2021-07-30 13:52:34 sudo vi ~/.bashrc
+    7  2021-07-30 13:52:34 sudo apt install -y vim
+    8  2021-07-30 13:52:34 vim ~/.bashrc
+    9  2021-07-30 13:52:34 sudo apt install -y openssh-server
+   10  2021-07-30 13:52:34 clear
+   11  2021-07-30 13:52:34 sudo apt install -y git
+   12  2021-07-30 13:52:34 clear
+   13  2021-07-30 13:52:34 git clone https://github.com/souovan/dotfiles-linux
+   14  2021-07-30 13:52:34 clear
+   15  2021-07-30 13:52:34 cd dotfiles-linux/
+   16  2021-07-30 13:52:34 su -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   17  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   18  2021-07-30 13:52:34 exit
+   19  2021-06-24 14:04:36 cd dotfiles-linux/
+   20  2021-06-24 14:04:41 ./install.sh 
+   21  2021-07-30 13:52:34 clear
+   22  2021-07-30 13:52:34 exit
+   23  2021-07-30 13:52:34 sudo 
+   24  2021-07-30 13:52:34 clear
+   25  2021-07-30 13:52:34 sudo su
+   26  2021-07-30 13:52:34 exit
+   27  2021-07-30 13:52:34 exit
+   28  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   29  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)
+   30  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   31  2021-07-30 13:52:34 clear
+   32  2021-07-30 13:52:34 exit
+   33  2021-07-30 13:52:34 vim ~/.bashrc
+   34  2021-07-30 13:52:34 exit
+   35  2021-07-30 13:52:34 su -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   36  2021-07-30 13:52:34 clear
+   37  2021-07-30 13:52:34 cd dotfiles-linux/
+   38  2021-07-30 13:52:34 clear
+   39  2021-07-30 13:52:34 ./install.sh 
+   40  2021-07-30 13:52:34 exit
+   41  2021-06-24 14:18:40 ss
+   42  2021-06-24 14:18:43 clar
+   43  2021-06-24 14:18:48 cd dotfiles-linux/
+   44  2021-07-30 13:52:34 ll
+   45  2021-06-25 08:07:24 pwd
+   46  2021-06-25 08:18:39 ll
+   47  2021-06-25 13:46:11 cd dotfiles-linux/
+   48  2021-06-25 13:46:15 ll
+   49  2021-06-25 13:46:20 vim install.sh 
+   50  2021-06-25 13:47:21 cler
+   51  2021-06-25 13:47:21 cler
+   52  2021-06-25 13:57:06 sudo apt install net-tools -y
+   53  2021-06-25 13:57:54 netstat -atunpo
+   54  2021-06-25 13:58:29 netstat -atunpo | more
+   55  2021-06-25 13:58:35 netstat -atunpo | less
+   56  2021-06-25 13:59:23 sudo ufw status
+   57  2021-06-25 13:47:21 cler
+   58  2021-06-25 13:57:06 sudo apt install net-tools -y
+   59  2021-06-25 13:57:54 netstat -atunpo
+   60  2021-06-25 13:58:29 netstat -atunpo | more
+   61  2021-06-25 13:58:35 netstat -atunpo | less
+   62  2021-06-25 14:01:01 cd dotfiles-linux/
+   63  2021-06-25 14:01:04 cd
+   64  2021-06-25 14:01:19 sudo ufw delete 1
+   65  2021-06-25 14:01:48 sudo ufw allow 10.30.3.89 to 22
+   66  2021-06-25 14:01:52 sudo ufw allow 10.30.3.89
+   67  2021-06-25 14:02:06 sudo ufw allow from 10.30.3.89
+   68  2021-06-25 14:02:53 sudo ufw deny from 10.30.0.0/16
+   69  2021-06-25 14:06:31 ll
+   70  2021-06-25 14:06:33 sudo ufw status
+   71  2021-06-25 14:20:54 netstat -r
+   72  2021-06-25 14:21:20 ckear
+   73  2021-07-30 13:52:34 clar
+   74  2021-06-25 13:47:21 cler
+   75  2021-06-25 13:47:21 cler
+   76  2021-06-25 13:57:06 sudo apt install net-tools -y
+   77  2021-06-25 13:57:54 netstat -atunpo
+   78  2021-06-25 13:58:29 netstat -atunpo | more
+   79  2021-06-25 13:58:35 netstat -atunpo | less
+   80  2021-06-25 13:59:23 sudo ufw status
+   81  2021-06-25 13:47:21 cler
+   82  2021-06-25 13:57:06 sudo apt install net-tools -y
+   83  2021-06-25 13:57:54 netstat -atunpo
+   84  2021-06-25 13:58:29 netstat -atunpo | more
+   85  2021-06-25 13:58:35 netstat -atunpo | less
+   86  2021-06-25 14:01:19 sudo ufw delete 1
+   87  2021-06-25 14:01:48 sudo ufw allow 10.30.3.89 to 22
+   88  2021-06-25 14:01:52 sudo ufw allow 10.30.3.89
+   89  2021-06-25 14:02:06 sudo ufw allow from 10.30.3.89
+   90  2021-06-25 14:02:53 sudo ufw deny from 10.30.0.0/16
+   91  2021-06-25 14:06:33 sudo ufw status
+   92  2021-06-25 14:20:54 netstat -r
+   93  2021-06-25 14:21:20 ckear
+   94  2021-07-14 15:15:53 sudo apt upgrade -y
+   95  2021-07-14 15:34:41 git clone https://github.com/souovan/studies.git
+   96  2021-07-14 15:36:35 cd studies/
+   97  2021-07-14 15:36:43 mkdir linux/
+   98  2021-07-14 15:36:52 cd linux/
+   99  2021-07-14 15:37:05 mkdir linuxtips
+  100  2021-07-14 15:37:08 cd linuxtips/
+  101  2021-07-14 15:37:28 mkdir descomplicando_docker
+  102  2021-07-14 15:37:30 cd descomplicando_docker/
+  103  2021-07-15 10:38:54 ll ~/
+  104  2021-07-15 14:27:15 cd dotfiles-linux/
+  105  2021-07-15 14:28:06 vim
+  106  2021-07-15 14:28:10 vim install.sh 
+  107  2021-07-15 14:28:49 ll
+  108  2021-07-15 14:28:58 vim .vimrc 
+  109  2021-07-15 14:29:13 cd
+  110  2021-07-15 15:15:36 sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg     lsb-release
+  111  2021-07-15 15:16:09 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  112  2021-07-15 15:16:26 echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  113  2021-07-30 13:52:34   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  114  2021-07-15 15:17:20 sudo apt install -y docker-ce docker-ce-cli containerd.io
+  115  2021-07-15 15:18:38 sudo apt update
+  116  2021-07-15 15:19:43 sudo apt clean
+  117  2021-07-15 15:19:46 sudo apt remove
+  118  2021-07-15 15:19:57 sudo apt autoclean
+  119  2021-07-15 15:20:01 sudo apt autoremove
+  120  2021-07-15 15:36:07 curl -fsSL https://get.docker.com | bash
+  121  2021-07-15 15:36:19 sudo curl -fsSL https://get.docker.com | bash
+  122  2021-07-15 15:38:07 sudo su
+  123  2021-07-15 15:38:19 sudo
+  124  2021-07-15 15:38:22 sudo -
+  125  2021-07-15 15:39:28 pwd
+  126  2021-07-15 15:39:33 sudo su - 
+  127  2021-07-15 15:41:24 sudo docker version
+  128  2021-07-15 15:49:03 sudo usermode -aG docker van
+  129  2021-07-15 15:49:11 sudo usermod -aG docker van
+  130  2021-07-15 15:49:32 sudo su -
+  131  2021-07-15 15:49:49 docker version
+  132  2021-07-15 15:50:05 logoff
+  133  2021-07-16 09:03:06 sudo su -
+  134  2021-07-15 15:50:05 logoff
+  135  2021-07-15 15:51:12 docker version
+  136  2021-07-15 16:18:21 docker ps
+  137  2021-07-15 16:37:54 docker network
+  138  2021-07-15 16:38:05 docker network ls
+  139  2021-07-15 16:38:28 docker container run -it hello-world
+  140  2021-07-15 16:47:27 docker contariner ls
+  141  2021-07-15 16:47:37 docker ls
+  142  2021-07-16 08:06:00 sudo su -
+  143  2021-07-19 14:09:08 sudo apt update
+  144  2021-07-19 14:09:08 sudo apt update
+  145  2021-07-19 14:33:30 sudo apt -y upgrade
+  146  2021-07-19 16:22:37 ll
+  147  2021-07-20 08:29:39 git stash
+  148  2021-07-20 08:29:44 git worktree
+  149  2021-07-20 08:29:51 git worktree list
+  150  2021-07-20 16:49:13 pwd
+  151  2021-07-23 11:13:18 ping 10.10.3.89
+  152  2021-07-15 10:38:54 ll ~/
+  153  2021-07-15 14:27:15 cd dotfiles-linux/
+  154  2021-07-15 14:28:06 vim
+  155  2021-07-15 14:28:10 vim install.sh 
+  156  2021-07-15 14:28:58 vim .vimrc 
+  157  2021-07-15 15:15:36 sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg     lsb-release
+  158  2021-07-15 15:16:09 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  159  2021-07-15 15:16:26 echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  160  2021-07-22 13:26:57   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  161  2021-07-15 15:17:20 sudo apt install -y docker-ce docker-ce-cli containerd.io
+  162  2021-07-15 15:19:43 sudo apt clean
+  163  2021-07-15 15:19:46 sudo apt remove
+  164  2021-07-15 15:19:57 sudo apt autoclean
+  165  2021-07-15 15:20:01 sudo apt autoremove
+  166  2021-07-15 15:36:07 curl -fsSL https://get.docker.com | bash
+  167  2021-07-15 15:36:19 sudo curl -fsSL https://get.docker.com | bash
+  168  2021-07-15 15:38:19 sudo
+  169  2021-07-15 15:38:22 sudo -
+  170  2021-07-15 15:39:28 pwd
+  171  2021-07-15 15:39:33 sudo su - 
+  172  2021-07-15 15:41:24 sudo docker version
+  173  2021-07-15 15:49:03 sudo usermode -aG docker van
+  174  2021-07-15 15:49:11 sudo usermod -aG docker van
+  175  2021-07-15 15:49:49 docker version
+  176  2021-07-15 15:50:05 logoff
+  177  2021-07-15 15:50:05 logoff
+  178  2021-07-15 15:51:12 docker version
+  179  2021-07-15 16:37:54 docker network
+  180  2021-07-15 16:38:05 docker network ls
+  181  2021-07-15 16:38:28 docker container run -it hello-world
+  182  2021-07-15 16:47:27 docker contariner ls
+  183  2021-07-15 16:47:37 docker ls
+  184  2021-07-19 14:33:30 sudo apt -y upgrade
+  185  2021-07-20 08:29:39 git stash
+  186  2021-07-20 08:29:44 git worktree
+  187  2021-07-20 08:29:51 git worktree list
+  188  2021-07-20 16:49:13 pwd
+  189  2021-07-22 13:30:55 git pull help
+  190  2021-07-22 13:31:02 git pull --help
+  191  2021-07-22 13:31:40 git fetch
+  192  2021-07-22 13:32:09 git pull origin master
+  193  2021-07-22 13:32:29 git update
+  194  2021-07-22 13:32:35 git --help
+  195  2021-07-22 13:33:23 git fetch origin main
+  196  2021-07-22 13:33:38 git pull origin main
+  197  2021-07-22 13:36:18 git fetch upstream
+  198  2021-07-22 13:38:14 git fetch https://github.com/souovan/studies
+  199  2021-07-22 13:38:58 git pull origin
+  200  2021-07-22 13:41:55 error: insufficient permission for adding an object to repository database .git/objects
+  201  2021-07-22 13:42:33 sudo chgrp -R groupname .
+  202  2021-07-22 13:43:13 sudo chmod -R g+rwX .
+  203  2021-07-22 13:43:31 find . -type d -exec chmod g+s '{}' +
+  204  2021-07-22 13:43:57 sudo chmod -R a+rwX .
+  205  2021-07-22 13:44:17 sudo su -
+  206  2021-07-22 13:46:32 git pull
+  207  2021-07-22 13:49:16 mkdir /opt/giropops
+  208  2021-07-22 13:51:48 sudo mkdir /opt/giropops
+  209  2021-07-22 13:51:59 sudo su
+  210  2021-07-22 13:52:45 ls -lha
+  211  2021-07-22 13:54:27 cd
+  212  2021-07-22 13:55:10 cd /opt/giropops/
+  213  2021-07-22 13:55:18 cd -
+  214  2021-07-22 13:55:53 df -h
+  215  2021-07-22 13:56:06 docker container run -it --mount type=bind,src=/opt/giropops,dst=/giropops debian
+  216  2021-07-22 13:57:17 cat commands_history.txt 
+  217  2021-07-22 13:57:35 sudo echo "APAGAR DAQUI" >> commands_history.txt 
+  218  2021-07-22 13:57:42 ls commands_history.txt 
+  219  2021-07-22 13:58:17 chmod ugo+rw commands_history.txt 
+  220  2021-07-22 13:58:21 sudo chmod ugo+rw commands_history.txt 
+  221  2021-07-22 13:58:25 ls -lha commands_history.txt 
+  222  2021-07-22 14:00:53 git push origin main
+  223  2021-07-23 08:40:59 git add .
+  224  2021-07-23 08:41:16 git reflog
+  225  2021-07-23 08:43:36 git config --global user.email "souovan@protonmail.com"
+  226  2021-07-23 08:43:58 git config --global user.name "souovan"
+  227  2021-07-23 08:44:03 git commit -m "Comandos até a aula Volumes tipo Bind"
+  228  2021-07-23 08:44:12 sudo git commit -m "Comandos até a aula Volumes tipo Bind"
+  229  2021-07-23 08:44:24 git push
+  230  2021-07-23 08:44:45 git logs
+  231  2021-07-23 08:44:48 git log
+  232  2021-07-23 08:44:59 ll
+  233  2021-07-23 09:13:03 docker ps
+  234  2021-07-23 09:13:45 docker volume create giropops
+  235  2021-07-23 09:16:09 git issues
+  236  2021-07-23 09:20:07 sudo apt update
+  237  2021-07-23 09:20:22 sudo apt upgrade -y
+  238  2021-07-23 09:21:13 sudo apt install hub -y
+  239  2021-07-23 09:21:51 git browse -- issues
+  240  2021-07-23 09:24:46 sudo apt install www-browser --y
+  241  2021-07-23 09:24:52 sudo apt install www-browser -y
+  242  2021-07-23 09:25:07 sudo apt install links2 -y
+  243  2021-07-23 09:25:22 hub browse -- issues
+  244  2021-07-23 09:25:45 hub issue --limit 10
+  245  2021-07-23 09:25:54 hub issue
+  246  2021-07-23 09:29:20 docker volume ls
+  247  2021-07-23 09:29:29 docker volume inspect giropops
+  248  2021-07-23 09:25:07 sudo apt install links2 -y
+  249  2021-07-23 09:25:22 hub browse -- issues
+  250  2021-07-23 09:25:45 hub issue --limit 10
+  251  2021-07-23 09:25:54 hub issue
+  252  2021-07-23 09:29:20 docker volume ls
+  253  2021-07-23 09:29:29 docker volume inspect giropops
+  254  2021-07-29 14:55:15 cd
+  255  2021-07-29 15:31:33 git add .
+  256  2021-07-29 16:34:38 git commit -m "Adicionando Dockerfile"
+  257  2021-07-29 16:36:10 ssh-keygen
+  258  2021-07-29 16:38:22 cat /home/van/.ssh/id_rsa.pub 
+  259  2021-07-29 16:39:17 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC82/IuQPcHYWDcFpoLrQbACYvIaHXomfk0N96Un4/AwEyztpbFDLr4IaHxJddzuqe2LKe4GcMkL7w+abTZs51rsr4XU+ObwF797aiBK/VVaDWGheo475FylL8VEuugGPZzl0lc3oKd3PJXd/Gl4bg2XdlPQCwxUssoZ4aqO4/YtZVUordEvTNn/33AoeimQ7GLvoVJw59GWiP7euOHsF1HiUvh8PiTTJfzMiLUze7cpxv1Rl2h/PcaEbx2HgV1fXMEzAYwk+zDfLIPVpsVO1aozC1Ggx9oKtvGaPrfIBkq1JmKZa+e9IXN8gCsXMr1Ti6ymHG8oRCRt8R04brxGWILXZHhcJvWvvsllMK7Tzf81NIcTI5pN7Putw4KoGzqSyLH+yMXpu0bNwVY67yllCJfhTLXS9HGuclD8qk9csCf9o4H+ZOf6PKUgezUSRjqJsPLvqs+pjII+KS3hqxy7AZDx7ih61bSHp2UNq9dHfpPTtM1Fz2FCcp7g9lvo5cs8zU= van@ubuntu2004-shellscript-prudenciato
+  260  2021-07-29 16:39:22 git push
+  261  2021-07-30 07:54:12 cd ~/studies/
+  262  2021-07-30 07:54:22 cat .git
+  263  2021-07-30 07:54:53 git remote -v
+  264  2021-07-30 07:57:06 git remote set-url git@github.com:souovan/studies.git
+  265  2021-07-30 07:57:33 git remote set-url --add git@github.com:souovan/studies.git
+  266  2021-07-30 07:58:24 git remote set-url origin git@github.com:souovan/studies.git
+  267  2021-07-30 07:59:13 git pull
+  268  2021-07-30 08:00:00 cleat
+  269  2021-07-30 08:00:09 cat .git/config
+  270  2021-07-30 07:54:12 cd ~/studies/
+  271  2021-07-30 07:54:22 cat .git
+  272  2021-07-30 07:54:53 git remote -v
+  273  2021-07-30 07:57:06 git remote set-url git@github.com:souovan/studies.git
+  274  2021-07-30 07:57:33 git remote set-url --add git@github.com:souovan/studies.git
+  275  2021-07-30 07:58:24 git remote set-url origin git@github.com:souovan/studies.git
+  276  2021-07-30 08:00:00 cleat
+  277  2021-07-30 08:05:10 curl wttr.in
+  278  2021-07-30 08:11:47 ssh -T git@github.com
+  279  2021-07-30 08:18:43 git remote --set-url origin https://github.com/souovan/studies.git
+  280  2021-07-30 08:19:08 git remote --help
+  281  2021-07-30 08:19:26 git remote set-url origin 
+  282  2021-07-30 08:19:35 git remote set-url origin https://github.com/souovan/studies.git
+  283  2021-07-30 08:20:37 cd 
+  284  2021-07-30 08:21:16 ls dotfiles-linux/
+  285  2021-07-30 08:22:26 sudo ufw allow ssh
+  286  2021-07-30 08:22:30 sudo ufw status
+  287  2021-07-30 08:22:38 git clone git@github.com:souovan/vancli.git
+  288  2021-07-30 08:37:16 cd studies/
+  289  2021-07-30 09:36:36 cat .git/config
+  290  2021-07-30 09:45:01 git pull
+  291  2021-07-30 09:36:36 cat .git/config
+  292  2021-07-30 09:45:01 git pull
+  293  2021-07-30 13:43:58 pwd
+  294  2021-07-30 13:44:45 cd 2/
+  295  2021-07-30 13:45:03 docker volumes ls
+  296  2021-07-30 13:45:18 docker volume inspect 6863574f2d2441c88684edbb52aa90d83c751ad43b82640e0d0f3c943e92bbdb
+  297  2021-07-30 13:45:46 docker container rm -f -a
+  298  2021-07-30 13:45:59 docker container rm -f 62312c236d80e01fe2376756056b1678997537f63b395275b3716d6b822457e8
+  299  2021-07-30 13:46:04 docker volume rm -f 6863574f2d2441c88684edbb52aa90d83c751ad43b82640e0d0f3c943e92bbdb
+  300  2021-07-30 13:46:10 docker volume ls
+  301  2021-07-30 13:50:51 nmtui
+  302  2021-07-30 13:51:03 sudo nmtui
+  303  2021-07-30 13:51:26 hostname
+  304  2021-07-30 13:52:42 cd studies/linux/linuxtips/descomplicando_docker/
+  305  2021-07-30 15:56:42 cd 2
+  306  2021-07-30 16:02:34 docker container run -d -p 8080:80 meu_apache:2.0.0
+  307  2021-07-30 16:18:57 cd ..
+  308  2021-07-30 16:19:02 cp -R 2 3
+  309  2021-07-30 16:19:03 cd 3
+  310  2021-07-30 16:21:00 vim index.html
+  311  2021-07-30 16:21:44 docker image build -t meu_apache:3.0.0 .
+  312  2021-07-30 16:22:08 docker images ls
+  313  2021-07-30 16:22:39 docker container run -d -p 8000:80 meu_apache:3.0.0
+  314  2021-07-30 16:22:47 curl localhost:8000
+  315  2021-07-30 16:23:47 docker container exec -ti 
+  316  2021-07-30 16:23:52 docker container exec -ti f7c010d1242b41c087bc80e952fad986e5256adc81d917754b0e51e3c8800805 bash
+  317  2021-07-30 16:24:32 docker container rm -f f7c010d1242b
+  318  2021-07-30 16:24:39 docker container rm -f 0193244e487b
+  319  2021-07-30 16:29:46 docker container logs -f 2b79292b76713e033044d0c0e621783554e99314a9f1ee8c6b01f1cc92d14882
+  320  2021-07-30 16:32:39 docker image build -t meu_apache:4.0.0 .
+  321* 2021-07-30 16:33:44 
+  322  2021-07-30 16:34:14 docker container rm -f 33a3a9a0c917
+  323  2021-07-30 16:34:18 docker run -d -p 8080:80 meu_apache:4.0.0
+  324  2021-07-30 16:36:39 docker container logs -f a98e84a6cf3c399b1dcc0a17aee21ee23986522371d3224c37526612cca7329f
+  325  2021-07-30 16:37:56 docker build -t meu_apache:4.0.0 .
+  326  2021-07-30 16:38:11 docker container run -d -p 8080:80 meu_apache:4.0.0
+  327  2021-07-30 16:38:15 docker container ls
+  328  2021-07-30 16:38:21 curl localhost:8080
+  329  2021-07-30 16:39:35 cd dockerfiles/
+  330  2021-07-30 16:39:38 mkdir 4
+  331  2021-07-30 16:39:39 cd 4
+  332  2021-07-30 16:39:58 vim meu_go.go
+  333  2021-07-30 16:41:51 vim Dockerfile
+  334  2021-07-30 16:51:42 vim docker
+  335  2021-07-30 16:52:59 docker image build -t meugo:1.0 .
+  336  2021-07-30 16:53:14 docker image rm -f c26374c83a6e
+  337  2021-07-30 16:53:23 docker image rm -f 09bcdc003114
+  338  2021-07-30 16:53:35 docker image rm -f 5209ae024081
+  339  2021-07-30 16:53:45 docker image ls
+  340  2021-07-30 16:54:02 vim meu_go.go 
+  341  2021-07-30 16:54:54 vim Dockerfile 
+  342  2021-07-30 16:55:39 git status
+  343  2021-07-30 16:56:16 cd ../..
+  344  2021-07-30 16:56:34 echo "APAGAR DAQUI" >> commands_history.txt 
+  345  2021-07-30 16:56:37 tail commands_history.txt 
+  346  2021-07-30 16:56:49 vim commands_history.txt 
+  347  2021-07-30 16:58:02 history >> commands_history.txt 
+APAGAR DAQUI
+    1  2021-07-30 13:52:34 clear
+    2  2021-07-30 13:52:34 exit
+    3  2021-06-24 13:55:44 ./install.sh 
+    4  2021-07-30 13:52:34 vim ~/.bashrc
+    5  2021-07-30 13:52:34 vi ~/.bashrc
+    6  2021-07-30 13:52:34 sudo vi ~/.bashrc
+    7  2021-07-30 13:52:34 sudo apt install -y vim
+    8  2021-07-30 13:52:34 vim ~/.bashrc
+    9  2021-07-30 13:52:34 sudo apt install -y openssh-server
+   10  2021-07-30 13:52:34 clear
+   11  2021-07-30 13:52:34 sudo apt install -y git
+   12  2021-07-30 13:52:34 clear
+   13  2021-07-30 13:52:34 git clone https://github.com/souovan/dotfiles-linux
+   14  2021-07-30 13:52:34 clear
+   15  2021-07-30 13:52:34 cd dotfiles-linux/
+   16  2021-07-30 13:52:34 su -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   17  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   18  2021-07-30 13:52:34 exit
+   19  2021-06-24 14:04:36 cd dotfiles-linux/
+   20  2021-06-24 14:04:41 ./install.sh 
+   21  2021-07-30 13:52:34 clear
+   22  2021-07-30 13:52:34 exit
+   23  2021-07-30 13:52:34 sudo 
+   24  2021-07-30 13:52:34 clear
+   25  2021-07-30 13:52:34 sudo su
+   26  2021-07-30 13:52:34 exit
+   27  2021-07-30 13:52:34 exit
+   28  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   29  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)
+   30  2021-07-30 13:52:34 sh -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   31  2021-07-30 13:52:34 clear
+   32  2021-07-30 13:52:34 exit
+   33  2021-07-30 13:52:34 vim ~/.bashrc
+   34  2021-07-30 13:52:34 exit
+   35  2021-07-30 13:52:34 su -c "$(curl -fsSL https://raw.github.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+   36  2021-07-30 13:52:34 clear
+   37  2021-07-30 13:52:34 cd dotfiles-linux/
+   38  2021-07-30 13:52:34 clear
+   39  2021-07-30 13:52:34 ./install.sh 
+   40  2021-07-30 13:52:34 exit
+   41  2021-06-24 14:18:40 ss
+   42  2021-06-24 14:18:43 clar
+   43  2021-06-24 14:18:48 cd dotfiles-linux/
+   44  2021-07-30 13:52:34 ll
+   45  2021-06-25 08:07:24 pwd
+   46  2021-06-25 08:18:39 ll
+   47  2021-06-25 13:46:11 cd dotfiles-linux/
+   48  2021-06-25 13:46:15 ll
+   49  2021-06-25 13:46:20 vim install.sh 
+   50  2021-06-25 13:47:21 cler
+   51  2021-06-25 13:47:21 cler
+   52  2021-06-25 13:57:06 sudo apt install net-tools -y
+   53  2021-06-25 13:57:54 netstat -atunpo
+   54  2021-06-25 13:58:29 netstat -atunpo | more
+   55  2021-06-25 13:58:35 netstat -atunpo | less
+   56  2021-06-25 13:59:23 sudo ufw status
+   57  2021-06-25 13:47:21 cler
+   58  2021-06-25 13:57:06 sudo apt install net-tools -y
+   59  2021-06-25 13:57:54 netstat -atunpo
+   60  2021-06-25 13:58:29 netstat -atunpo | more
+   61  2021-06-25 13:58:35 netstat -atunpo | less
+   62  2021-06-25 14:01:01 cd dotfiles-linux/
+   63  2021-06-25 14:01:04 cd
+   64  2021-06-25 14:01:19 sudo ufw delete 1
+   65  2021-06-25 14:01:48 sudo ufw allow 10.30.3.89 to 22
+   66  2021-06-25 14:01:52 sudo ufw allow 10.30.3.89
+   67  2021-06-25 14:02:06 sudo ufw allow from 10.30.3.89
+   68  2021-06-25 14:02:53 sudo ufw deny from 10.30.0.0/16
+   69  2021-06-25 14:06:31 ll
+   70  2021-06-25 14:06:33 sudo ufw status
+   71  2021-06-25 14:20:54 netstat -r
+   72  2021-06-25 14:21:20 ckear
+   73  2021-07-30 13:52:34 clar
+   74  2021-06-25 13:47:21 cler
+   75  2021-06-25 13:47:21 cler
+   76  2021-06-25 13:57:06 sudo apt install net-tools -y
+   77  2021-06-25 13:57:54 netstat -atunpo
+   78  2021-06-25 13:58:29 netstat -atunpo | more
+   79  2021-06-25 13:58:35 netstat -atunpo | less
+   80  2021-06-25 13:59:23 sudo ufw status
+   81  2021-06-25 13:47:21 cler
+   82  2021-06-25 13:57:06 sudo apt install net-tools -y
+   83  2021-06-25 13:57:54 netstat -atunpo
+   84  2021-06-25 13:58:29 netstat -atunpo | more
+   85  2021-06-25 13:58:35 netstat -atunpo | less
+   86  2021-06-25 14:01:19 sudo ufw delete 1
+   87  2021-06-25 14:01:48 sudo ufw allow 10.30.3.89 to 22
+   88  2021-06-25 14:01:52 sudo ufw allow 10.30.3.89
+   89  2021-06-25 14:02:06 sudo ufw allow from 10.30.3.89
+   90  2021-06-25 14:02:53 sudo ufw deny from 10.30.0.0/16
+   91  2021-06-25 14:06:33 sudo ufw status
+   92  2021-06-25 14:20:54 netstat -r
+   93  2021-06-25 14:21:20 ckear
+   94  2021-07-14 15:15:53 sudo apt upgrade -y
+   95  2021-07-14 15:34:41 git clone https://github.com/souovan/studies.git
+   96  2021-07-14 15:36:35 cd studies/
+   97  2021-07-14 15:36:43 mkdir linux/
+   98  2021-07-14 15:36:52 cd linux/
+   99  2021-07-14 15:37:05 mkdir linuxtips
+  100  2021-07-14 15:37:08 cd linuxtips/
+  101  2021-07-14 15:37:28 mkdir descomplicando_docker
+  102  2021-07-14 15:37:30 cd descomplicando_docker/
+  103  2021-07-15 10:38:54 ll ~/
+  104  2021-07-15 14:27:15 cd dotfiles-linux/
+  105  2021-07-15 14:28:06 vim
+  106  2021-07-15 14:28:10 vim install.sh 
+  107  2021-07-15 14:28:49 ll
+  108  2021-07-15 14:28:58 vim .vimrc 
+  109  2021-07-15 14:29:13 cd
+  110  2021-07-15 15:15:36 sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg     lsb-release
+  111  2021-07-15 15:16:09 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  112  2021-07-15 15:16:26 echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  113  2021-07-30 13:52:34   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  114  2021-07-15 15:17:20 sudo apt install -y docker-ce docker-ce-cli containerd.io
+  115  2021-07-15 15:18:38 sudo apt update
+  116  2021-07-15 15:19:43 sudo apt clean
+  117  2021-07-15 15:19:46 sudo apt remove
+  118  2021-07-15 15:19:57 sudo apt autoclean
+  119  2021-07-15 15:20:01 sudo apt autoremove
+  120  2021-07-15 15:36:07 curl -fsSL https://get.docker.com | bash
+  121  2021-07-15 15:36:19 sudo curl -fsSL https://get.docker.com | bash
+  122  2021-07-15 15:38:07 sudo su
+  123  2021-07-15 15:38:19 sudo
+  124  2021-07-15 15:38:22 sudo -
+  125  2021-07-15 15:39:28 pwd
+  126  2021-07-15 15:39:33 sudo su - 
+  127  2021-07-15 15:41:24 sudo docker version
+  128  2021-07-15 15:49:03 sudo usermode -aG docker van
+  129  2021-07-15 15:49:11 sudo usermod -aG docker van
+  130  2021-07-15 15:49:32 sudo su -
+  131  2021-07-15 15:49:49 docker version
+  132  2021-07-15 15:50:05 logoff
+  133  2021-07-16 09:03:06 sudo su -
+  134  2021-07-15 15:50:05 logoff
+  135  2021-07-15 15:51:12 docker version
+  136  2021-07-15 16:18:21 docker ps
+  137  2021-07-15 16:37:54 docker network
+  138  2021-07-15 16:38:05 docker network ls
+  139  2021-07-15 16:38:28 docker container run -it hello-world
+  140  2021-07-15 16:47:27 docker contariner ls
+  141  2021-07-15 16:47:37 docker ls
+  142  2021-07-16 08:06:00 sudo su -
+  143  2021-07-19 14:09:08 sudo apt update
+  144  2021-07-19 14:09:08 sudo apt update
+  145  2021-07-19 14:33:30 sudo apt -y upgrade
+  146  2021-07-19 16:22:37 ll
+  147  2021-07-20 08:29:39 git stash
+  148  2021-07-20 08:29:44 git worktree
+  149  2021-07-20 08:29:51 git worktree list
+  150  2021-07-20 16:49:13 pwd
+  151  2021-07-23 11:13:18 ping 10.10.3.89
+  152  2021-07-15 10:38:54 ll ~/
+  153  2021-07-15 14:27:15 cd dotfiles-linux/
+  154  2021-07-15 14:28:06 vim
+  155  2021-07-15 14:28:10 vim install.sh 
+  156  2021-07-15 14:28:58 vim .vimrc 
+  157  2021-07-15 15:15:36 sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg     lsb-release
+  158  2021-07-15 15:16:09 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  159  2021-07-15 15:16:26 echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  160  2021-07-22 13:26:57   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  161  2021-07-15 15:17:20 sudo apt install -y docker-ce docker-ce-cli containerd.io
+  162  2021-07-15 15:19:43 sudo apt clean
+  163  2021-07-15 15:19:46 sudo apt remove
+  164  2021-07-15 15:19:57 sudo apt autoclean
+  165  2021-07-15 15:20:01 sudo apt autoremove
+  166  2021-07-15 15:36:07 curl -fsSL https://get.docker.com | bash
+  167  2021-07-15 15:36:19 sudo curl -fsSL https://get.docker.com | bash
+  168  2021-07-15 15:38:19 sudo
+  169  2021-07-15 15:38:22 sudo -
+  170  2021-07-15 15:39:28 pwd
+  171  2021-07-15 15:39:33 sudo su - 
+  172  2021-07-15 15:41:24 sudo docker version
+  173  2021-07-15 15:49:03 sudo usermode -aG docker van
+  174  2021-07-15 15:49:11 sudo usermod -aG docker van
+  175  2021-07-15 15:49:49 docker version
+  176  2021-07-15 15:50:05 logoff
+  177  2021-07-15 15:50:05 logoff
+  178  2021-07-15 15:51:12 docker version
+  179  2021-07-15 16:37:54 docker network
+  180  2021-07-15 16:38:05 docker network ls
+  181  2021-07-15 16:38:28 docker container run -it hello-world
+  182  2021-07-15 16:47:27 docker contariner ls
+  183  2021-07-15 16:47:37 docker ls
+  184  2021-07-19 14:33:30 sudo apt -y upgrade
+  185  2021-07-20 08:29:39 git stash
+  186  2021-07-20 08:29:44 git worktree
+  187  2021-07-20 08:29:51 git worktree list
+  188  2021-07-20 16:49:13 pwd
+  189  2021-07-22 13:30:55 git pull help
+  190  2021-07-22 13:31:02 git pull --help
+  191  2021-07-22 13:31:40 git fetch
+  192  2021-07-22 13:32:09 git pull origin master
+  193  2021-07-22 13:32:29 git update
+  194  2021-07-22 13:32:35 git --help
+  195  2021-07-22 13:33:23 git fetch origin main
+  196  2021-07-22 13:33:38 git pull origin main
+  197  2021-07-22 13:36:18 git fetch upstream
+  198  2021-07-22 13:38:14 git fetch https://github.com/souovan/studies
+  199  2021-07-22 13:38:58 git pull origin
+  200  2021-07-22 13:41:55 error: insufficient permission for adding an object to repository database .git/objects
+  201  2021-07-22 13:42:33 sudo chgrp -R groupname .
+  202  2021-07-22 13:43:13 sudo chmod -R g+rwX .
+  203  2021-07-22 13:43:31 find . -type d -exec chmod g+s '{}' +
+  204  2021-07-22 13:43:57 sudo chmod -R a+rwX .
+  205  2021-07-22 13:44:17 sudo su -
+  206  2021-07-22 13:46:32 git pull
+  207  2021-07-22 13:49:16 mkdir /opt/giropops
+  208  2021-07-22 13:51:48 sudo mkdir /opt/giropops
+  209  2021-07-22 13:51:59 sudo su
+  210  2021-07-22 13:52:45 ls -lha
+  211  2021-07-22 13:54:27 cd
+  212  2021-07-22 13:55:10 cd /opt/giropops/
+  213  2021-07-22 13:55:18 cd -
+  214  2021-07-22 13:55:53 df -h
+  215  2021-07-22 13:56:06 docker container run -it --mount type=bind,src=/opt/giropops,dst=/giropops debian
+  216  2021-07-22 13:57:17 cat commands_history.txt 
+  217  2021-07-22 13:57:42 ls commands_history.txt 
+  218  2021-07-22 13:58:17 chmod ugo+rw commands_history.txt 
+  219  2021-07-22 13:58:21 sudo chmod ugo+rw commands_history.txt 
+  220  2021-07-22 13:58:25 ls -lha commands_history.txt 
+  221  2021-07-22 14:00:53 git push origin main
+  222  2021-07-23 08:40:59 git add .
+  223  2021-07-23 08:41:16 git reflog
+  224  2021-07-23 08:43:36 git config --global user.email "souovan@protonmail.com"
+  225  2021-07-23 08:43:58 git config --global user.name "souovan"
+  226  2021-07-23 08:44:03 git commit -m "Comandos até a aula Volumes tipo Bind"
+  227  2021-07-23 08:44:12 sudo git commit -m "Comandos até a aula Volumes tipo Bind"
+  228  2021-07-23 08:44:24 git push
+  229  2021-07-23 08:44:45 git logs
+  230  2021-07-23 08:44:48 git log
+  231  2021-07-23 08:44:59 ll
+  232  2021-07-23 09:13:03 docker ps
+  233  2021-07-23 09:13:45 docker volume create giropops
+  234  2021-07-23 09:16:09 git issues
+  235  2021-07-23 09:20:07 sudo apt update
+  236  2021-07-23 09:20:22 sudo apt upgrade -y
+  237  2021-07-23 09:21:13 sudo apt install hub -y
+  238  2021-07-23 09:21:51 git browse -- issues
+  239  2021-07-23 09:24:46 sudo apt install www-browser --y
+  240  2021-07-23 09:24:52 sudo apt install www-browser -y
+  241  2021-07-23 09:25:07 sudo apt install links2 -y
+  242  2021-07-23 09:25:22 hub browse -- issues
+  243  2021-07-23 09:25:45 hub issue --limit 10
+  244  2021-07-23 09:25:54 hub issue
+  245  2021-07-23 09:29:20 docker volume ls
+  246  2021-07-23 09:29:29 docker volume inspect giropops
+  247  2021-07-23 09:25:07 sudo apt install links2 -y
+  248  2021-07-23 09:25:22 hub browse -- issues
+  249  2021-07-23 09:25:45 hub issue --limit 10
+  250  2021-07-23 09:25:54 hub issue
+  251  2021-07-23 09:29:20 docker volume ls
+  252  2021-07-23 09:29:29 docker volume inspect giropops
+  253  2021-07-29 14:55:15 cd
+  254  2021-07-29 15:31:33 git add .
+  255  2021-07-29 16:34:38 git commit -m "Adicionando Dockerfile"
+  256  2021-07-29 16:36:10 ssh-keygen
+  257  2021-07-29 16:38:22 cat /home/van/.ssh/id_rsa.pub 
+  258  2021-07-29 16:39:17 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC82/IuQPcHYWDcFpoLrQbACYvIaHXomfk0N96Un4/AwEyztpbFDLr4IaHxJddzuqe2LKe4GcMkL7w+abTZs51rsr4XU+ObwF797aiBK/VVaDWGheo475FylL8VEuugGPZzl0lc3oKd3PJXd/Gl4bg2XdlPQCwxUssoZ4aqO4/YtZVUordEvTNn/33AoeimQ7GLvoVJw59GWiP7euOHsF1HiUvh8PiTTJfzMiLUze7cpxv1Rl2h/PcaEbx2HgV1fXMEzAYwk+zDfLIPVpsVO1aozC1Ggx9oKtvGaPrfIBkq1JmKZa+e9IXN8gCsXMr1Ti6ymHG8oRCRt8R04brxGWILXZHhcJvWvvsllMK7Tzf81NIcTI5pN7Putw4KoGzqSyLH+yMXpu0bNwVY67yllCJfhTLXS9HGuclD8qk9csCf9o4H+ZOf6PKUgezUSRjqJsPLvqs+pjII+KS3hqxy7AZDx7ih61bSHp2UNq9dHfpPTtM1Fz2FCcp7g9lvo5cs8zU= van@ubuntu2004-shellscript-prudenciato
+  259  2021-07-29 16:39:22 git push
+  260  2021-07-30 07:54:12 cd ~/studies/
+  261  2021-07-30 07:54:22 cat .git
+  262  2021-07-30 07:54:53 git remote -v
+  263  2021-07-30 07:57:06 git remote set-url git@github.com:souovan/studies.git
+  264  2021-07-30 07:57:33 git remote set-url --add git@github.com:souovan/studies.git
+  265  2021-07-30 07:58:24 git remote set-url origin git@github.com:souovan/studies.git
+  266  2021-07-30 07:59:13 git pull
+  267  2021-07-30 08:00:00 cleat
+  268  2021-07-30 08:00:09 cat .git/config
+  269  2021-07-30 07:54:12 cd ~/studies/
+  270  2021-07-30 07:54:22 cat .git
+  271  2021-07-30 07:54:53 git remote -v
+  272  2021-07-30 07:57:06 git remote set-url git@github.com:souovan/studies.git
+  273  2021-07-30 07:57:33 git remote set-url --add git@github.com:souovan/studies.git
+  274  2021-07-30 07:58:24 git remote set-url origin git@github.com:souovan/studies.git
+  275  2021-07-30 08:00:00 cleat
+  276  2021-07-30 08:05:10 curl wttr.in
+  277  2021-07-30 08:11:47 ssh -T git@github.com
+  278  2021-07-30 08:18:43 git remote --set-url origin https://github.com/souovan/studies.git
+  279  2021-07-30 08:19:08 git remote --help
+  280  2021-07-30 08:19:26 git remote set-url origin 
+  281  2021-07-30 08:19:35 git remote set-url origin https://github.com/souovan/studies.git
+  282  2021-07-30 08:20:37 cd 
+  283  2021-07-30 08:21:16 ls dotfiles-linux/
+  284  2021-07-30 08:22:26 sudo ufw allow ssh
+  285  2021-07-30 08:22:30 sudo ufw status
+  286  2021-07-30 08:22:38 git clone git@github.com:souovan/vancli.git
+  287  2021-07-30 08:37:16 cd studies/
+  288  2021-07-30 09:36:36 cat .git/config
+  289  2021-07-30 09:45:01 git pull
+  290  2021-07-30 09:36:36 cat .git/config
+  291  2021-07-30 09:45:01 git pull
+  292  2021-07-30 13:43:58 pwd
+  293  2021-07-30 13:44:45 cd 2/
+  294  2021-07-30 13:45:03 docker volumes ls
+  295  2021-07-30 13:45:18 docker volume inspect 6863574f2d2441c88684edbb52aa90d83c751ad43b82640e0d0f3c943e92bbdb
+  296  2021-07-30 13:45:46 docker container rm -f -a
+  297  2021-07-30 13:45:59 docker container rm -f 62312c236d80e01fe2376756056b1678997537f63b395275b3716d6b822457e8
+  298  2021-07-30 13:46:04 docker volume rm -f 6863574f2d2441c88684edbb52aa90d83c751ad43b82640e0d0f3c943e92bbdb
+  299  2021-07-30 13:46:10 docker volume ls
+  300  2021-07-30 13:50:51 nmtui
+  301  2021-07-30 13:51:03 sudo nmtui
+  302  2021-07-30 13:51:26 hostname
+  303  2021-07-30 13:52:42 cd studies/linux/linuxtips/descomplicando_docker/
+  304  2021-07-30 15:56:42 cd 2
+  305  2021-07-30 16:02:34 docker container run -d -p 8080:80 meu_apache:2.0.0
+  306  2021-07-30 16:18:57 cd ..
+  307  2021-07-30 16:19:02 cp -R 2 3
+  308  2021-07-30 16:19:03 cd 3
+  309  2021-07-30 16:21:00 vim index.html
+  310  2021-07-30 16:21:44 docker image build -t meu_apache:3.0.0 .
+  311  2021-07-30 16:22:08 docker images ls
+  312  2021-07-30 16:22:39 docker container run -d -p 8000:80 meu_apache:3.0.0
+  313  2021-07-30 16:22:47 curl localhost:8000
+  314  2021-07-30 16:23:47 docker container exec -ti 
+  315  2021-07-30 16:23:52 docker container exec -ti f7c010d1242b41c087bc80e952fad986e5256adc81d917754b0e51e3c8800805 bash
+  316  2021-07-30 16:24:32 docker container rm -f f7c010d1242b
+  317  2021-07-30 16:24:39 docker container rm -f 0193244e487b
+  318  2021-07-30 16:29:46 docker container logs -f 2b79292b76713e033044d0c0e621783554e99314a9f1ee8c6b01f1cc92d14882
+  319  2021-07-30 16:32:39 docker image build -t meu_apache:4.0.0 .
+  320* 2021-07-30 16:33:44 
+  321  2021-07-30 16:34:14 docker container rm -f 33a3a9a0c917
+  322  2021-07-30 16:34:18 docker run -d -p 8080:80 meu_apache:4.0.0
+  323  2021-07-30 16:36:39 docker container logs -f a98e84a6cf3c399b1dcc0a17aee21ee23986522371d3224c37526612cca7329f
+  324  2021-07-30 16:37:56 docker build -t meu_apache:4.0.0 .
+  325  2021-07-30 16:38:11 docker container run -d -p 8080:80 meu_apache:4.0.0
+  326  2021-07-30 16:38:15 docker container ls
+  327  2021-07-30 16:38:21 curl localhost:8080
+  328  2021-07-30 16:39:35 cd dockerfiles/
+  329  2021-07-30 16:39:38 mkdir 4
+  330  2021-07-30 16:39:39 cd 4
+  331  2021-07-30 16:39:58 vim meu_go.go
+  332  2021-07-30 16:41:51 vim Dockerfile
+  333  2021-07-30 16:51:42 vim docker
+  334  2021-07-30 16:52:59 docker image build -t meugo:1.0 .
+  335  2021-07-30 16:53:14 docker image rm -f c26374c83a6e
+  336  2021-07-30 16:53:23 docker image rm -f 09bcdc003114
+  337  2021-07-30 16:53:35 docker image rm -f 5209ae024081
+  338  2021-07-30 16:53:45 docker image ls
+  339  2021-07-30 16:54:02 vim meu_go.go 
+  340  2021-07-30 16:54:54 vim Dockerfile 
+  341  2021-07-30 16:55:39 git status
+  342  2021-07-30 16:56:16 cd ../..
+  343  2021-07-30 16:56:34 echo "APAGAR DAQUI" >> commands_history.txt 
+  344  2021-07-30 16:58:04 vim commands_history.txt 
+  345  2021-07-30 16:58:33 sudo echo "APAGAR DAQUI" >> commands_history.txt 
+  346  2021-07-30 16:58:42 tail commands_history.txt 
+  347  2021-07-30 16:58:49 history >> commands_history.txt 
