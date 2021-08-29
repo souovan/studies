@@ -6,8 +6,6 @@
 
 # Linux
 
-# Network
-
 # English
 
 # Tools
