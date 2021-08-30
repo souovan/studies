@@ -113,6 +113,12 @@ strace -fp #trace by PID
 strace -c #List syscalls
 ```
 
+```
+# Troubleshoot from restarting servers
+journalctl --list-boots
+journalctl --since "2021-08-14 11:00:00" # since format "YYYY-MM-DD HH:MM:SS"
+```
+
 # Network
 
 ```
