@@ -118,6 +118,10 @@ strace -c #List syscalls
 journalctl --list-boots
 journalctl --since "2021-08-14 11:00:00" # since format "YYYY-MM-DD HH:MM:SS"
 ```
+```
+# List all systemctl services
+systemctl list-units-files --type=service
+```
 
 # Network
 
