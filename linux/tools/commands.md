@@ -123,6 +123,16 @@ journalctl --since "2021-08-14 11:00:00" # since format "YYYY-MM-DD HH:MM:SS"
 systemctl list-units-files --type=service
 ```
 
+```
+# Display the largest folders/files including the sub-directories
+du -Sh | sort -rh 
+```
+
+```
+# Display the biggest file sizes only
+find -type f -exec du -Sh {} + | sort -rh
+```
+
 # Network
 
 ```
