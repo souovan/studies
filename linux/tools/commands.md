@@ -84,6 +84,11 @@ netstat -atunp
 ```
 
 ```
+# Show the process ID using the ports
+ss -tunapl
+```
+
+```
 # Show processes
 ps -ef
 ```
