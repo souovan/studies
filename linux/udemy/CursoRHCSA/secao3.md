@@ -89,4 +89,138 @@ tail
 cut
 ```
 
+# Saídas padrão SHELL
+
+| Nome | Destino padrão | Redirecionamento | Número que descreve arquivo |
+| --- | --- | --- | --- |
+| STDIN | Teclado | <(mesmo que 0<) | 0 |
+| STDOUT | Monitor | >(mesmo que 1>) | 1 |
+| STDERR | Monitor | 2> | 2 |
+
+# Redirecionamentos comuns do bash
+
+| Redirecionamento | Descrição |
+| --- | --- |
+| > (mesmo que 1>) | Redireciona o STDOUT. Se para um arquivo, o conteúdo do arquivo é apagado |
+| < (mesmo que 0<) | Redireciona o STDIN |
+| >> (mesmo que 1>>) | Redireciona o STDOUT. Se para um arquivo, adiciona ao final do arquivo |
+| 2> | Redireciona o STDERR | 
+| 2>&1 | Redireciona STDERR para o mesmo destino que STDOUT |
+
+# PIPES
+
+> Representado pela barra vertical: |
+> Transfere a saída do comando a esquerda para o comando a direita
+> Podem ser feitos diversos pipes: 
+> `comando1 | comando2 | comando3`
+
+# Principais comandos do VI
+
+| comando | descrição |
+| --- | --- |
+| ESC |  |
+| i | entrar no modo inserir |
+| o | abre uma linha embaixo da linha atual no modo comando |
+| :wq | write and quit (escreve(salva) e termina o programa) |
+| :q! | sai do programa sem salvar |
+| :w nome | salva arquivo atual para outro arquivo chamado "nome" |
+| dd | apaga linha atual em modo comando |
+| yy | cola seleção atual em modo comando |
+| v | modo visual (usado para selecionar partes do texto) |
+| u | undo(desfaz última modificação) em modo comando |
+| gg | vai para o inicio do texto em modo comando |
+| G | vai para o final do texto em modo comando |
+| / | busca para baixo do texto em modo comando |
+| ? | busca de baixo para cima em modo comando |
+
+# Link físico e simbólico
+
+> * Links são como atalhos para um outro arquivo
+> * Cada nome de arquivo sabe qual o inode que tem que acessar para obter informação sobre o arquivo
+> * Cada nome associado com um inode se chama um "Link Físico":
+>   - Link físicos precisam estar no mesmo dispositivo (exemplo: /dev/sdb)
+>   - Não pode usar para diretórios
+>   - Quando o último link físico for removido, blocos associados são removidos também.
+
+```bash
+# Cria um link físico chamado "nome_do_link" para o arquivo chamado "destino"
+$ ln destino nome_do_link
+
+# Cria um link simbólico chamado "link" para o arquivo "/etc/hosts"
+# ln -s /etc/hosts link
+```
+
+> NÃO UTILIZAR -r ou -f: `rm -rf` QUANDO APAGANDO LINK, POIS TAMBÉM APAGARÁ O CONTEÚDO DO DIRETÓRIO OU ARQUIVO ALVO DO LINK
+
+> Se o arquivo alvo do link físico for excluído o link físico continua funcionando pois ele aponta para o bloco de dados
+
+```bash
+$ ls -l meuarquivo
+#  user
+#   | group
+#   | |  other usuario dono do arquivo
+#   | |  |      |
+# -rw-rw-r--. 1 user user 0 Out 16 03:39 meuarquivo
+# |                   |
+# tipo de arquivo    grupo dono do arquivo
+```
+
+```bash
+# Muda permissão de arquivos e diretórios
+chmod
+```
+
+```bash
+# Edita grupos e usuarios donos do arquivo ou diretório
+chown
+```
+
+# Uso das permissões ler, escrever e executar
+
+| Permissão | Para arquivos | Para diretórios |
+| --- | --- | --- |
+| Ler | Abrir um arquivo | Listar conteúdo |
+| Escrever | Mudar conteúdo do arquivo | Criar, deletar, e mudar permissões do arquivo |
+| Executar | Rodar um arquivo(script;programa) | Mudar para o diretório |
+
+# Permissões para o CHMOD
+
+| Permissão | Numérico | Permissão |
+| --- | --- | --- |
+| Ler | 4 | r |
+| Escrever | 2 | w |
+| Executar | 1 | x |
+
+# Buscando ajuda no Linux
+
+> <comando> --help ou -h
+
+> man <comando>
+
+## Dica
+```bash
+# Atualiza as páginas do man
+mandb 
+```
+
+> info
+> ou
+> info <comando>
+
+>/usr/share/doc
+
+# Painel de controle do RHEL (futuro substituto do virt-manager)
+```bash
+# Instala o painel de controle
+dnf install -y cockpit
+
+# Habilita o painel de controle e inicia
+systemctl enable cockpit.socket
+systemctl start cockpit.socket
+
+# Habilita a porta do painel de controle no firewall
+firewall-cmd --permanent --add-port=9090/tcp
+```
+> O painel de controle possui uma interface web que poderá ser aberta em https://localhost:9090
+> E para login deverão ser utilizados os usuários disponíveis na máquina host(servidor)
 
