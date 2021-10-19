@@ -185,3 +185,70 @@ ps -ef
 > * O usuário raiz pode mudar o nice
 
 
+
+# Gerenciar perfis de ajuste
+
+* Você pode criar ou modificar perfis ajustados (tuned profiles) para otimizar o desempenho do sistema para o caso de uso desejado.
+
+```bash
+# Instale e habilite o Tuned (rhel 8 vem instalado por padrão perfil workstation)
+dnf install -y tuned
+```
+
+* Tuned fornece vários perfis predefinidos para casos de uso típicos. Você também pode criar, modificar e excluir perfis.
+
+## Perfis fornecidos com o tuned
+
+* Perfis de economia de energia
+* Perfis de aumento de desempenho(inclui):
+  - Baixa latência para armazenamento e rede
+  - Alta taxa de transferência para armazenamento e rede
+  - Desempenho da máquina virtual
+  - Desempenho do host de virtualização
+
+### Como buscar ajuda
+
+```bash
+tuned-adm --help
+
+man 5 tuned.conf
+
+man 7 tuned-profiles (descrição dos perfis de ajuste)
+
+man 8 tuned
+
+man 8 tuned-adm
+```
+
+### Arquivos principais
+
+```bash
+/etc/tuned/
+
+/usr/lib/tuned/
+```
+
+## Tuning estático e dinâmico
+
+* Tuning Estático: consiste de aplicações pré-definidas
+* Tuning Dinâmico: tuned é ajustado de acordo com informação do sistema
+* Edite `/etc/tuned/tuned-main.conf` mude `dynamic_tinung para` 1
+  * Caso necessário, ajuste intervalos de ajuste em segundos modificando a opção `update_interval`no arquivo acima
+* E use `systemctl restart tuned`para aplicar mudanças
+* Para ver as mudanças em tempo real:
+  * `tail -f /var/log/tuned/tuned.log`
+
+```bash
+# Comandos interessantes
+tuned-adm --help # ver lista de comandos
+
+tuned-adm list # ver lista de perfis
+
+tuned-adm active # ver perfil ativo
+
+tuned-adm recommend # ver perfil recomendado
+
+tuned-adm profile throughput-performance # escolher qual perfil deveria ser usado utilize assim
+
+```
+
