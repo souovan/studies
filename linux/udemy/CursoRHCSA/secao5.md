@@ -252,3 +252,54 @@ tuned-adm profile throughput-performance # escolher qual perfil deveria ser usad
 
 ```
 
+# Arquivos de Log
+
+* System daemons, kernel, e aplicativos todos emitem dados operacionais que são logados.
+* Em resumo a vida de um log é ser pesquisado, filtrado, resumido, analizado, comprimido, arquivado e eventualmente descartado.
+* Um arquivo de log geralmente é uma linha de texto que contém propriedades tais como data, tipo e severidade do evento, e nome e ID (PID) do processo.
+* Quando algo da errado, os logs de daemons é onde vamos olhar por erros, bugs, e problemas de segurança
+
+## JOURNALD
+
+* **Com a introdução do systemd, o systemd-journald foi introduzido**. O journald é altamente integrado com o systemd.
+* O journald coleta mensagens, armazena as mensagens de forma comprimida e indexada em um formato binário
+* Podemos usar o comando "systemctl status" para ver o status do serviço junto com mensagens de log
+* Mensagens não são persistentes por padrão
+* Use o cmando "journalctl" para ver as mensagens no jornal de log
+
+```bash
+# Use para ver logs
+journalctl
+# Use opção "-u" para ver logs de uma unit específica
+journalctl -u httpd
+
+journalctl --disk-usage
+
+journalctl --list-boots
+
+journalctl -b 0 -u ssh
+
+journalctl --since=yesterday --until=now
+```
+
+
+
+## RSYSLOGD
+
+* Mensagens são enviadas para o serviço rsyslogd para serem salvas arquivos de texto
+* Mensagens são escritas para o diretório `/var/log` por padrão
+* Vantagens do rsyslog são habilidade de usar uma central de logs e módulos para filtrar as mensagens de log
+
+
+
+* Para especificar como cada mensagem é gerenciada, rsyslog usa:
+  * **Facility**: Categirua de informação que deve ser logada
+  * **Priority**: Severidade da mensagem de log a ser logada. Prioridade definida e todas acimas são logadas
+  * **Destiny**: Para onde as mensagens serão logadas
+* Configuradas no arquivo `/etc/rsyslog.conf`e `/etc/rsyslog.d`
+
+```bash
+# Use para lista das facilidades e prioridades
+man 5 rsyslog.conf
+```
+
