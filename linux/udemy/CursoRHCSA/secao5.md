@@ -303,3 +303,11 @@ journalctl --since=yesterday --until=now
 man 5 rsyslog.conf
 ```
 
+#Logrotate
+
+* Usado para prevenir o seu disco de encher com logs
+* Depois que logs são reciclados, eles serão apagados permanentemente.(Verifique sempre a politica de logs de sua empresa)
+* Use também o `/etc/logrotate.d` para fazer configurações adicionais
+* Use `man logrotate` para maiores detalhes
+
+
