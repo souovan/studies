@@ -310,4 +310,23 @@ man 5 rsyslog.conf
 * Use também o `/etc/logrotate.d` para fazer configurações adicionais
 * Use `man logrotate` para maiores detalhes
 
+# Transferir de forma segura arquivos entre sistemas
+
+* Precisa do serviço sshd ativo - OpenSSH SSH Daemon
+* Usamos o comando `scp`, que é similar ao `cp`, transfere arquivo entre servidores de forma criptografada
+* Usado para copiar arquivos e diretórios entre servidores
+* Use a opção `-P` para definir uma porta diferente da padrão 22
+ 
+Exemplos:
+```bash
+# Copiar do servidor local para o servidor remoto
+scp meuarquivo user1@servidorremoto:/home/user1/meuarquivo
+
+# Copiar do servidor remoto para o servidor local
+scp user1@servidorremoto:/home/user1/meuarquivo .
+
+# Copiar diretórios e subdiretórios
+scp -r /etc/ root@servidorremoto:/tmp
+```
+
 
