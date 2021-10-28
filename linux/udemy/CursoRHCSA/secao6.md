@@ -1,4 +1,4 @@
-# Camadas de gerenciamento de armazenament
+# Camadas de gerenciamento de armazenamento
 
 ```
  ----------------------------------------------------------
@@ -48,4 +48,46 @@
 
 > Você não pode usar o MBR e o GPT juntos como partição no mesmo dispositivo de disco
 
+# Criar e remover volumes físicos
+
+* Necessário aplicar um tipo de partição LVM para uso junto com Volumes Lógicos
+
+```bash
+# Prepara o volume para ser usado com um LVM (Gerenciador de volumes lógicos)
+pvcreate
+
+# Use o comando para criar
+pvcreate /dev/sdb1
+
+# Use para ver os volumes físicos 
+pvs
+# ou para ver em detalhes
+pvdisplay
+
+# Use para remover um volume físico
+pvremove /dev/sdb1
+```
+
+## Atribuir volumes físicos a grupos
+
+* Crie um grupo de volume com `vgcreate`
+
+```bash
+# Cria o grupo de volume EXEMPLO com volume físico /dev/sdb1
+vgcreate EXEMPLO /dev/sdb1
+```
+
+* Liste os grupos de volumes
+
+```bash
+vgdisplay EXEMPLO
+# ou
+vgs
+```
+
+* Estenda um Grupo de Volume
+
+```bash
+vgextend EXEMPLO /dev/sdc1 /dev/sdd1
+```
 
