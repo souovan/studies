@@ -91,3 +91,55 @@ vgs
 vgextend EXEMPLO /dev/sdc1 /dev/sdd1
 ```
 
+# Criar e excluir volumes lógicos
+
+* Crie um volume lógico com `lvcreate`
+
+```bash
+# Cria o volume lógico meulv1 do grupo de volumes EXEMPLO
+lvcreate -L 500M -n meulv1 EXEMPLO
+
+# Cria o volume lógico com 10 pe a partir do grupo de volumes EXEMPLO
+lvcreate -l 10 -n meulv2 EXEMPLO
+
+# Liste os grupos de volumes
+lvdisplay EXEMPLO
+# ou
+lvs
+```
+
+# Montar sistemas de arquivos com (UUID) ou rótulo
+
+* Montar manualmente:
+  - `mount /dev/sdb1 /mnt`
+* Para montar de forma automática, configuramos o arquivo `/etc/fstab`
+  - Podemos montar pelo nome:`/dev/sdb2`
+  - Por um rótulo (label)
+  - Pela UUID: Identificação única do arquivo de sistema
+* Para definir rótulos em um arquivo de sistemas:
+  - Use `tune2fs -L` para arquivos de sistema ext3 ou ext4 
+  - Use `xfs_admin -L` para arquivos de sistema xfs
+* Use `lsblk -fi` para ver o tipo de arquivo de sistemas
+
+# Memória SWAP
+
+* Swap é um espaço em disco usado quando a quantidade de memória RAM está cheia. Quando um sistema Linux fica sem RAM, as páginas inativas são movidas da RAM para o espaço de Swap.
+* Mais lento que RAM
+* O uso de Swap indica uma má performance do seu servidor
+
+## Adicionar Swap em novas partições e volumes lógicos e alternar de forma não destrutiva
+
+* Temos 2 formas de fazer essa tarefa:
+  -  Criar uma partição e marcar tipo swap, depois formatar com o comando `mkswap <partição>`, e ativar o swap com `swapon <partição>`
+  - Criar um volume lógico, e formatar com `mkswap` e ativar com `swapon`
+* Ative swap com `swapon` e desative com `swapoff`
+* Edite o arquivo `/etc/fstab` para o arquivo de sistemas SWAP ser montado na inicialização do sistema
+
+```bash
+# Mostrar os dispositivos de swap
+swapon -s
+
+# Mostrar o total de swap
+free -m
+```
+
