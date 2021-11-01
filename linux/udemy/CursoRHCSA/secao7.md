@@ -36,3 +36,32 @@ Atualize a entrada no arquivo `/etc/fstab`:
 srv0.temweb.local:/dados  /meunfs nfs _netdev 0 0
 ```
 
+# Ampliar os volumes lógicos existentes
+
+* Grupo de volume lógico pode ser extendido com `vgextend`
+  - Certifique-se de preparar o dispositivo de bloco com `pvcreate`
+* Para ampliar o volume lógico são 2 etapas:
+  - Primeiro aumentamos o tamanho do volume lógico
+  - Segundo expandimos o arquivo de sistemas para usar o novo espaço
+* Podemos fazer a expansão do volume lógico e arquivo de sistemas com o comando:
+
+```bash
+# Parametro -l minúsculo é usado para indicar que será usado o tamanho em PEs ( Physical Extensions ) que podem ser conferidos com o comando `vgdisplay <grupo_de_volume_logico>`
+lvresize -r -l +60 /dev/EXEMPLO/meulv1
+```
+
+> Arquivo de sistemas XFS pode apenas ser expandido, e não pode ser reduzido
+
+* Para reduzir o volume lógico são 2 etapas: (ext3 e ext4)
+  - Primeiro diminuímos o tamanho do arquivo de sistemas
+  - Segundo diminuímos o volume lógico
+* Podemos fazer a redução do arquivo de sistemas e do volume lógico com o comando:
+
+```bash
+# Parametro -L maiúsculo é usado para indicar que será usado o tamanho em Megas ou Gigas que também pode ser conferido com o comando `vgdisplay <grupo_de_volume_logico>` 
+lvreduce -r -L -70M /dev/EXEMPLO/meulv3`
+```
+
+> Tanto no comando `lvresize` como no `lvreduce` o símbolo de `-` ou `+` indica que serão aumentados ou diminuídos o tamanho que segue o símbolo, **caso o símbolo seja omitido o comando alterará o tamanho total para o valor que segue o símbolo**
+
+
