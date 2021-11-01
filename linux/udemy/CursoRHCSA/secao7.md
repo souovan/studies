@@ -64,4 +64,41 @@ lvreduce -r -L -70M /dev/EXEMPLO/meulv3`
 
 > Tanto no comando `lvresize` como no `lvreduce` o símbolo de `-` ou `+` indica que serão aumentados ou diminuídos o tamanho que segue o símbolo, **caso o símbolo seja omitido o comando alterará o tamanho total para o valor que segue o símbolo**
 
+# SET-GID (definir ID do grupo)
+
+* Quando configurado em diretórios, o SET-GID faz arquivos criados dentro do diretório assumirem o grupo dono do diretório
+* Para o exame, você terá que configurar o SET-GID
+* Isso permite diretórios serem criados para colaboração com vários usuários
+
+# Permissões avançadas
+
+| Nome | Valor numérico | Valor relativo | Em arquivos | Em diretórios |
+| --- | --- | --- | --- | --- |
+| stick bit | 1000 | +t | - | Usuário pode apagar arquivo apenas se ele for o dono do arquivo ou diretório |
+| SUID - Set user ID | 4000 | u+s | Executa arquivos com permissões do dono do arquivo | - |
+| GUID - Set Group ID | 2000 | g+s | Executa arquivo com permissões do grupo dono do arquivo | Arquivos criados no diretório tem o dono do grupo do arquivo |
+
+## Principais comandos para SET-GID
+
+```bash
+# Para adicionar um grupo
+groupadd
+
+# Adicionar usuários
+useradd
+
+# Mudar o dono de diretório (ou arquivos)
+chown
+
+# Mudar as permissões do diretório
+chmod
+```
+
+>```bash
+># Ao utilizar os comandos chown ou chmod podem ser utilizados os parametrôs especiais nobody(usuário especial) ou nogroup (grupo especial) que servem para que o diretório ou arquivo não tenha dono ou grupo dono
+>#Exemplos:
+>chown nobody:gerentes /home/gerentes/
+>chown gerente:nogroup /home/gerentes/
+>```
+
 
