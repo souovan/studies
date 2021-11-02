@@ -101,4 +101,55 @@ chmod
 >chown gerente:nogroup /home/gerentes/
 >```
 
+# Configurar compactação de disco
+
+* Virtual Data Optimization - VDO (optimização de dados virtuais)
+* Troca entre recursos de CPU e RAM por espaço em disco
+* Comprime e faz deduplicação de arquivos
+  - Deduplicação: Elimina dados duplicados ou redundanetes
+* Pode economizar até 10:1 para KVM hypervisor usando máquinas virtuais - 1GB aparece como 10GB
+* Vamos usar 3:1 para arquivos - 1GB aparece como 3GB de espaço
+  - Exemplo: um disco de 10GB mostrará 30GB de espaço disponível
+* Minímo de 10GB para teste
+
+```                                 
+                                    _____________________   _____________________
+                                   |                     | |                     |
+                                   | Arquivo de Sistemas | | Arquivo de Sistemas |
+                                   |_____________________| |_____________________|
+                                    _____________________   _____________________
+                                   |                     | |                     |
+                                   |    Volume lógico    | |    Volume lógico    |
+                                   |_____________________| |_____________________|
+ ________________________________   _____________________________________________
+|                                | |                                             |
+| Arquivo de Sistemas: xfs, ext4 | |            Grupo de Volume Lógico           |
+|________________________________| |_____________________________________________|
+ ________________________________   _____________________________________________
+|                                | |                                             |
+|              VDO               | |                     VDO                     |
+|________________________________| |_____________________________________________|
+ ________________________________   _____________________________________________
+|                                | |                                             |
+|     Dispositivo de bloco       | |            Dispositivo de Bloco             |
+|________________________________| |_____________________________________________|
+```
+
+## Passos para configuração da compactação de disco (VDO)
+
+```bash
+dnf install -y vdo kmod-kvdo
+
+systemctl start vdo && systemctl enable vdo
+
+# Criamos o dispositivo chamado "meuvdo" com 30GB de espaço lógico no disco de 10GB /dev/sdd
+# writePolicy é a forma de escrever em disco, recomendado usar auto
+vdo create --name=meuvdo --device=/dev/sdd --vdoLogicalSize=30G --writePolicy=auto
+
+# Prepare para LVM e formatecom um arquivo de sistemas
+mkfs.xfs -K /dev/DISCOVDO/meuvdo1
+
+# Edite o /etc/fstab
+/dev/DISCOVDO/meuvdo1 /mnt  xfs defaults,_netdev,x-systemd.requires=vdo.service 0 0
+```
 
