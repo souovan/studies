@@ -153,3 +153,63 @@ mkfs.xfs -K /dev/DISCOVDO/meuvdo1
 /dev/DISCOVDO/meuvdo1 /mnt  xfs defaults,_netdev,x-systemd.requires=vdo.service 0 0
 ```
 
+# Gerenciar armazenamento em camadas
+
+* Usamos o `stratisd` como gerenciamento de armazenamento em camadas
+
+* O `stratisd`é um arquivo de sistemas gerenciador de volumes
+
+* Conceito principal: Criamos uma piscina a partir dos dispositivos de bloco, e a partir dessa piscina de discos ou partições criamos volumes
+
+* Usa XFS como padrão
+
+* Recomendado usar UUID quando configurar montagem automática no `/etc/fstab`
+
+  > ```bash
+  > # Exemplo de configuração /etc/fstab (note que é preciso adicionar defaults,x-systemd.requires=stratisd.service)
+  > UUID=<id>	/camadas/fs1	xfs	defaults,x-systemd.requires=stratisd.service	0 0
+  > 
+  > # Após adicionar entrada do stratis no arquivo /etc/fstab utilizar
+  > systemctl daemon-reload
+  > ```
+
+* Os sistemas de arquivos são provisionados de forma thin (virtual) e não tem um tamanho total fixo
+
+* O tamanho real de um sistema de arquivos aumenta com os dados armazenados nele. Se o tamanho dos dados se aproxima do tamanho virtual do sistema de arquivos, Stratis aumenta o volume e o sistema de arquivos automáticamente
+
+```bash
+# Mostra o espaço real usado por um sistema de arquivos
+stratis filesystem list
+```
+
+* Componentes:
+  * **filesystem**: Cada pool contém diversos arquivos de sistemas
+  * **pool**: Conjunto de blockdevs
+  * **blockdev**: Dispositivos de bloco e partições
+
+```
+ ____________________   ____________________   ____________________
+| filesystem(arquivo | | filesystem(arquivo | | filesystem(arquivo | 
+|  de sistemas XFS)  | | de sistemas XFS)   | | de sistemas XFS)   |
+|____________________| |____________________| |____________________|
+ __________________________________________________________________
+|                  Pool (piscina de blockdevs)                     |
+|__________________________________________________________________|
+ ___________________   _____________________   ____________________
+|    blockdev       | |      blockdev       | |     blockdev       |
+|___________________| |_____________________| |____________________|
+```
+
+```bash
+# Para instalar o stratis
+dnf install -y stratisd stratiscli
+
+# Habilitar o stratis
+systemctl enable stratisd
+
+# Iniciar o stratis
+systemctl start stratisd
+```
+
+
+
