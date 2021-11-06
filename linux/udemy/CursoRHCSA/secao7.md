@@ -211,5 +211,20 @@ systemctl enable stratisd
 systemctl start stratisd
 ```
 
+* Podemos fazer um backup de um *stratis filesytem* com snapshots
+  - Primeiro criamos o snapshot, e depois podemos facilmente restaurar um arquivo de sistemas stratis
+* Poremos remover um arquivo de sistemas e removê-lo da pool:
+  - Desmontamos o arquivo de sistemas
+  - Removemos o arquivo de sistemas
+* Podemos remover uma pool do stratis
+  - Removemos todos os arquivos de sistemas stratis
+  - Removemos a pool
+
+> ```bash
+> # Consultar a utilização do stratis
+> stratis -h 
+> # ou
+> stratis <comando> -h
+> ```
 
 
