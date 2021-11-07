@@ -67,5 +67,114 @@ ls -l /etc | grep cron
 >   - `date`: ver a data atual
 >   - Use `man date` para ver diversos exemplos
 
+> # YUM vs DNF
+>
+> * O comando yum não existe mais, mas agora é um alias apontando para o comando dnf
+> * Como código-fonte do comando yum havia se tornado um pesadelo, a RedHat decidiu iniciar um novo projeto chamado dnf (Dandified Yum), seguindo a mesma sintaxe
+> * A reescrita demorou vários anos
+> * De acordo com vários relatórios, o comando dnf seria muito mais rápido que o yum
+
+# Configurar um repositório de instalação local
+
+* Após instalação do RHEL podemos instalar software de 2 formas:
+  - Através de uma assinatura do RHN - Red Hat Network - usando o subscription manager
+  - Através de um repositório de instalação local
+
+```bash
+# Desabilita a assinatura do RHN para usar repositório local
+subscription-manager config --rhsm.manage_repos=0
+
+# Habilita a assinatura do RHN
+subscription-manager config --rhsm.manage_repos=1
+```
+
+```bash
+# Para criar o repositório local é preciso criar um arquivo em /etc/yum.repos.d/ com a extensão .repo contendo:
+[BaseOS]
+  name=meu_BaseOS
+  baseurl=https://rhel8.temweb.local/BaseOS
+  enabled=1
+  gpgcheck=0
+
+[AppStream]
+  name=meu_AppStream
+  baseurl=http://rhel8.temweb.local/AppStream
+  enabled=1
+  gpgcheck=0
+```
+
+> ```bash
+> # Verifica quais repositórios de instalação e atualização estão configurados
+> dnf repolist
+> ```
+
+## Instalar e atualizar pacotes de software a partir da Red Hat Network
+
+* Usamos o `subscription-manager`
+  - Use a ajuda para ver comandos e navegar pelo comando
+  - Use `subscription-manager register` para registrar sua máquina
+  - Use `subscription-manager attach` para associar sua assinatura a sua máquina
+
+> ```bash
+> # Lista os repositórios que a máquina tem direito de usar
+> subscription-manager repos
+> ```
+
+# Trabalhar com streams de módulo de pacote
+
+* Um módulo é um conjunto de pacotes RPM que representa um componente e geralmente são instalados juntos
+* Um módulo típico contém pacotes com um aplicativo, pacotes com bibliotecas de dependência específicas do aplicativo, pacotes com documentação para o aplicativo e pacotes com utilitários auxiliares
+* Módulos Streams
+  - Os fluxos de módulo representam versões dos componentes AppStream
+  - Os fluxos de módulo podem estar ativos ou inativos. Os fluxos ativos fornecem ao sistema acesso aos pacotes RPM dentro do fluxo de módulo específico
+
+> Streams de Módulo são versões diferentes de cada módulo
+
+```bash
+# Listar todos módulos
+dnf module list postgresql
+
+# Listar detalhes de módulos
+dnf module info postgresql
+
+# Instalar um módulo
+dnf module install postgresql
+
+# Para mudar a versão padrão usada do módulo
+dnf module enable postgresql:12
+
+# Para selecionar uma versão
+dnf module install postgresql:9.6
+
+# Remover o módulo
+dnf module remove --all postgresql
+
+# Resetar a versão padrão
+dnf module reset postgresql
+```
+
+# Modificar o carregador de inicialização do sistema
+
+* GRUB2 garante que Linux kernel pode ser carregado
+* Inicia todos os dispositivos - drivers necessários para inicialização de seu servidor Linux
+* Editamos o GRUB2 no arquivo `/etc/default/grub`
+* Escrevemos essas mudanças para o arquivo princial com o comando:
+  - `grub2-mkconfig -o /boot/grub2/grub.cfg`
+
+> Memorizar o comando `grub2-mkconfig -o /boot/grub2/grub.cfg` para o exame
+
+* Use `cat /etc/default/grub` para ver e alterar as variáveis
+
+| **GRUB_TIMEOUT** | define o tempo de espera de inicialização |
+| --- | --- |
+| GRUB_DISTRIBUTOR | contém o nome da distribuição |
+| GRUB_DEFAULT | especifica a entrada do menu padrão |
+| GRUB_DISABLE_SUBMENU | permite(falso) ou não (verdadeiro) a exibição de um submenu |
+| GRUB_TERMINAL_OUTPUT| define o dispositivo de entrada e saída do termina |
+| GRUB_SERIAL_COMMAND | configura a porta serial |
+| **GRUB_CMDLINE_LINUX** | específica os argumentos de linha de comando adicionados às entradas de menu para o kernal Linux |
+| GRUB_DISABLE_RECOVERY | define as entradas podem ser selecionadas no modo de recuperação por meio de uma linha separada (falso) ou apenas a entrada padrão (verdadeiro) |
+
+
 
 
