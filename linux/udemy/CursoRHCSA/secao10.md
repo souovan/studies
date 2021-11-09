@@ -49,3 +49,8 @@ nmcli c up mycon
 > nmcli c m mycon +ipv4.dns 1.1.1.1 +ipv4.dns 1.0.0.1
 > ```
 
+## NMTUI
+
+* Interface de usuário de modo texto ( Text User Interface )
+* Preferível para se usar no exame pois é mais simples de utilizar
+
