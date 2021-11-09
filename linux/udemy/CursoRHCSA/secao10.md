@@ -54,3 +54,23 @@ nmcli c up mycon
 * Interface de usuário de modo texto ( Text User Interface )
 * Preferível para se usar no exame pois é mais simples de utilizar
 
+# Configurar endereços IPv6
+
+* Todas as conexões configuradas podem ser editadas diretamente no diretório:
+  * `/etc/sysconfig/network-scripts`
+* Note que arquivos tem prefiso de ifcfg- por padrão
+* Endereços de IPv6 não é recomendado configuração manual por ser prone a erros
+* Essencial:
+  * IPV6INIT="yes" Inicializa a interface para endereçamento IPv6
+  * IPV6_AUTOCONF="yes" Ativa a configuração automática de IPv6 para a interface
+* Outros:
+  * IPV6_DEFROUTE="yes" Indica que a rota IPv6 padrão foi atribuida à interface
+  * IPV6_FAILURE_FATAL="no" Indica que o sistema não falhará mesmo quando o IPv6 falhar
+* Use o comando `ip` para ver a configuração de rede em sua máquina virtual:
+  * `man ip` (Veja exemplos no fim da página do manual)
+  * `ip addr`(Mostra endereços de IP de todas as interfaces)
+  * `ip route`(Mostra a tabela de rotas)
+* Use **nmcli** ou **nmtui** para ver configurações de IPv6
+
+
+
