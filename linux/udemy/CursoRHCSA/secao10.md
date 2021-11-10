@@ -72,5 +72,16 @@ nmcli c up mycon
   * `ip route`(Mostra a tabela de rotas)
 * Use **nmcli** ou **nmtui** para ver configurações de IPv6
 
+# Configurar resolução de nome do host
 
+* Podemos fazer de 2 formas:
+  * Apontar para um servidor de DNS
+  * Configurar o arquivo `/etc/hosts`
+* Para o exame, provável ter que apontar para um servidor DNS conforme instruções
+* Para o curso, editamos o arquivo `/etc/hosts`
+* Veja os servidores de DNS ativos no arquivo:
+  * `cat /etc/resolv.conf`
+  * Use `systemctl restart NetworkManager` caso tenha feito alguma alteração
+
+> Também pode ser alterado editando o arquivo em `/etc/sysconfig/network-scripts/ifcfg-<nome_do_adaptador>`
 
