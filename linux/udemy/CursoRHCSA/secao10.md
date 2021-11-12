@@ -85,3 +85,30 @@ nmcli c up mycon
 
 > Também pode ser alterado editando o arquivo em `/etc/sysconfig/network-scripts/ifcfg-<nome_do_adaptador>`
 
+# Restrigir acesso à rede usando firewall-cmd
+
+* Firewall usa portas para filtrar(bloquear) acesso externo a um serviço
+* Para pacotes da network terem acesso a um serviço, a porta precisa estar aberta
+* Todas as portas são fechadas por padrão, então usamos a firewall para abrir as portas de acordo
+* Podemos abrir portas:
+  - Com serviços pré-definidos
+  - Diretamente uma porta específica
+* Temos uma seção específica dedicada a Firewalld
+
+```bash
+# Exibe informações sobre quais serviços estão habilitados para a zona ativa do firewall
+firewall-cmd --list-all
+
+# Para verificar a lista completa
+firewall-cmd --get-services
+
+# Adiciona um serviço em tempo de execução (runtime) não é persistente após reboot
+firewall-cmd --add-service=https
+
+# Adicionar permanentemente e persiste ao reboot 
+firewall-cmd --permanent --add-service=https
+# (não entra no runtime sendo preciso recarregar o firewall)
+firewall-cmd --reload
+```
+
+
