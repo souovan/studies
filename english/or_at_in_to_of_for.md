@@ -1,4 +1,6 @@
-# Prepositions are words that join a noun, a pronoun or the noun phrases and make each sentence complete. Moreover, prepositions are used in the sentences to indicate _location_, _direction_, _time_ or sometimes, to _introduce_ an object.
+# Prepositions
+
+Are words that join a noun, a pronoun or the noun phrases and make each sentence complete. Moreover, prepositions are used in the sentences to indicate _location_, _direction_, _time_ or sometimes, to _introduce_ an object.
 
 | Preposition | Use | Examples |
 | --- | --- | --- |
