@@ -7,3 +7,8 @@ Em inglês, só se diz _**em** trabalho_ ou _**em** escola_
 
 > I study music **at** school
 
+---
+
+Em perguntas que começam com palavras como **what** ou **how**, você deve usar **do**
+
+> Where **do** they live ?
