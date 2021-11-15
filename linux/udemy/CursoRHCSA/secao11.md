@@ -35,3 +35,14 @@ id joana
 > useradd -s /sbin/nologin bob
 > ```
 
+# Alterar senhas e ajustar tempo de senha para contas de usuário locais
+
+* Use comando `passwd` para definir password de usuário
+  - `passwd joana`
+  - Use o comando `passwd` como usuário _root_
+* Use o comando `chage` (change age - mudar idade) para configurar propriedades do password (como root)
+  - Use `man chage` para ver exemplo de expiração de conta:
+    - `chage -E $(date -d +180days +%Y-%m-%d)`
+* Use `chage -l joana` para ver info sobre password do usuário joana
+* Use `chage joana` para entrar em um menu e preecher as opções
+
