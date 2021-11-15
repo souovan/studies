@@ -73,4 +73,32 @@ id joana
 |                |                                        |          | do grupo secundário |
 |________________|________________________________________|__________|_____________________|
 ```
+# Configurar acesso de superusuário
+
+* Conta _root_: Todo sistema Linux tem um supersusuário
+* Usuário _root_, tem a UID 0 e permissões totais de acesso e modificação do sistema
+* Pode criar problemas de segurança e administração, devido a esses poderes absolutos
+* Também dificulta auditoria do sistema
+* Menos pior, ao invés de fazer login com usuário _root_, seria acessar com usuário normal e acessar a conta _root_ com o comando `su`
+* Solução ideal: `sudo`
+* Executa programas como usuário _root_
+* Registra todas as ações no arquivo de log `/var/log/secure`
+* Adicione usuário ao grupo "wheel" para ter acesso sudo
+* sudo é configurado no arquivo `/etc/sudoers`
+  - Use `visudo`para editar o arquivo `/etc/sudoers`
+  - Fácil de quebrar login se editar sem `visudo`(visudo garante integridade do arquivo)
+  - Outra solução para configurar sudo:
+    - Crie um arquivo com o nome do usuário em `/etc/sudoers.d/` e coloque opções: `echo "russell ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/russell`
+* Permissões de linha do arquivo `/etc/sudoers`(Veja exemplos usando `man /etc/sudoers`):
+
+```
+......................................................................................................
+|                                 russel ALL=(ALL)SWD:ALL                                            |
+|                                tina rh=/usr/bin/mount bob                                          |
+|____________________________________________________________________________________________________|
+|                     |                             |                      | Identidade de           |
+|  Usuário ao qual a  | Quais máquinas (servidores) | Comandos que usuário | usuário assumida quando |
+|  linha se aplica    | essa linha se aplica        | pode executar        | executar o comando      |
+|_____________________|_____________________________|______________________|_________________________|
+```
 
