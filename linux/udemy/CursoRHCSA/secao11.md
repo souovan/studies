@@ -88,7 +88,7 @@ id joana
   - Use `visudo`para editar o arquivo `/etc/sudoers`
   - Fácil de quebrar login se editar sem `visudo`(visudo garante integridade do arquivo)
   - Outra solução para configurar sudo:
-    - Crie um arquivo com o nome do usuário em `/etc/sudoers.d/` e coloque opções: `echo "russell ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/russell`
+    - Crie um arquivo com o nome do usuário em `/etc/sudoers.d/` e coloque opções: `echo "russell ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/russell`
 * Permissões de linha do arquivo `/etc/sudoers`(Veja exemplos usando `man /etc/sudoers`):
 
 ```
