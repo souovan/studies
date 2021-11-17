@@ -57,3 +57,7 @@
 
 * Use `firewall-cmd --runtime-to-permanent`para tornar a configuração de tempo permanente
 
+> ```bash
+> # Para verificar informações específicas de um serviço
+> firewall-cmd --info-service=http
+> ```
