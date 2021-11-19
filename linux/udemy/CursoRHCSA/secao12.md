@@ -93,7 +93,7 @@
 
 * Configurando uma ACL:
 
-  * `setfacl [ opção ] [ especificação ] arquivo
+  * `setfacl [ opção ] [ especificação ] arquivo`
   * opção pode ser modificar `-m`, resetar `-b` ou remover `-x`
   * especificação seria o usuario ou grupo que estamos alterando a permissão na ACL
   * podemos usar `-d (padrão)` para um diretório
