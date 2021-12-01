@@ -35,3 +35,29 @@
   * podemos usar `-d (padrão)` para um diretório
   * podemos usar `-R` para aplicar ACL de acesso de uma forma recursiva
 
+# Conceitos de autenticação com base em chave
+
+* Vantagens: não transferimos o password pela rede, protege contra ataques de força bruta, podemos desabilitar acesso por password e obrigar acesso por chave
+
+```
+Chave privada
+     🔑    ---------------> 🔒 Chave Pública com extensão .pub         🖥 
+      __________________                                           Servidor 2
+                        |
+    🖥                  |
+  Servidor 1            --> 🔒 Chave Pública com extensão .pub         🖥 
+                                                                   Servidor 3
+```
+
+## Configurar autenticação com base em chave para SSH
+
+* Passos a serem feitos:
+  - Gerar as chaves públicas e privadas
+  - `ssh-keygen`
+  * Instalar a chave pública no servidor
+    - copiar usando o comando `ssh-copy-id` para o servidor
+    - chaves são copiadas de forma automática para o diretório `/home/user/.ssh/authorized_keys`
+* Autenticação de teste
+
+
+
