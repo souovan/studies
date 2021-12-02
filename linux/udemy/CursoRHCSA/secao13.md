@@ -59,5 +59,28 @@ Chave privada
     - chaves são copiadas de forma automática para o diretório `/home/user/.ssh/authorized_keys`
 * Autenticação de teste
 
+# Visão geral do SELinux
 
+* O SELinux - Security Enhanced Linux - Segurança melhorada do linux - prove uma camada adicional de segurança
+* Criado pela NSA - National Security Agency (Agencia de Segurança Nacional) americana e desenvolvido pela Red Hat
+* Vantagens
+  - A Acão padrão é negar. Se uma regra de política SELinux não existir para permitir o acesso, como para um processo que abre um arquivo, o acesso é negado
+  - O SELinux pode confirmar os usuários do Linux,
+  - Maior sepração de dados e processos
+  - O SELinux ajuda a mitigar os danos causados por erros de configuração
+* Política de acesso padrão baseado em usuário, grupo e outras permissões são referidas como DAC - Discretionary Access Control - Controle de Acesso Discricionário - ou seja, usuárioa com permissões suficientes podem passar permissões para outros usuários
+* O SELinux é implementado com MAC - Mandatory Access Control - Controle de Acesso Mandatório - ou seja, políticas de segurança a nível de sistema operacional da empresa
+* O SELinux usa contextos - as vezes referidos com rótulos - como identificador que remove detalhes a nível de sistema e foca na segurança de uma entidade
+* Por exemplo, processoss correndo servidor de web precisam ter um contexto de `httpd_t` para acessar arquivos no diretório `/var/www/html` e outros diretórios de web. Neste caso, `httpd_sys_content_t`
+* Caso o servidor de web seja comprometido, acesso não sera permitido a outros arquivos devido ao contexto
+
+---
+
+* **O SELinux tem muitas configurações e pode ficar complexo, porém para o exame iremos abordar apenas os tópicos pedidos, facilitando assim o domínio de atividades pedidas.**
+* Nessa seção, vamos cobrir:
+  - Definir modos o SELinux
+  - Listar e identificar os contextos de processos e arquivos do SELinux
+  - Restaurar contextos padrões do SELinux
+  - Usar configurações de booleans (Ligado ou desligado) do SELinux
+  - Diagnosticar e resolver mensagens de violações de politica do SELinux
 
