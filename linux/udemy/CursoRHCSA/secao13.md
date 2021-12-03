@@ -84,3 +84,13 @@ Chave privada
   - Usar configurações de booleans (Ligado ou desligado) do SELinux
   - Diagnosticar e resolver mensagens de violações de politica do SELinux
 
+* SELinux pode correr em 3 modos: **enforcing**, **permissive**, ou **disabled**
+  - O modo de imposição(enforcing), o SELinux opera normalmente, reforçando a política de segurança carregada em todo o sistema
+  - O modo permissivo, o sistema atua como se o SELinux estivesse impondo a política de segurança carregada, e registra o acesso nos logs, mas não nega nenhuma operação
+  - O modo desativado é fortemente desencorajado; o sistema não apenas evita a aplicação da política SELinux, mas também evita rotular quaisquer objetos persistentes, como arquivos, tornando difícil habilitar o SELinux no futuro
+* Usamos o comando `getenforce` para ver o modo atual do SELinux
+* Usamos `setenforce` para mudar o modo do SELinux para enforcing ou permissivo. Essa mudança não sobrevive a um _reboot_ do sistema
+* `setenforce 0` para modo permissivo `setenforce 1` para modo de imposição(_enforcing_)
+* Use `setstatus` para ver informações do status do SELinux
+* Para desabilitar ou mudar o modo SELinux, edite o arquivo `/etc/selinux/config`
+
