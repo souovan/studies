@@ -94,3 +94,13 @@ Chave privada
 * Use `setstatus` para ver informações do status do SELinux
 * Para desabilitar ou mudar o modo SELinux, edite o arquivo `/etc/selinux/config`
 
+> No exame se o SELinux estiver desabilitado pode ser necessário editar o arquivo `/etc/selinux/config` dar reboot na máquina
+
+# Contextos de processos e arquivos
+
+* Instale o pacotte `setroubleshoot-server`
+* Definir contextos de arquivos e diretórios:
+  - Use `man semanage-fcontext` para exemplos completos (busque "Example") **importante**
+* Restaurar contextos de arquivo padrão
+  - Use `restorecon` (de forma recursiva "-R") após usar os comandos do `semanage`, como descrito nos exemplos acima
+* Use `ls -Z`para ver o contexto de diretórios e arquivos
