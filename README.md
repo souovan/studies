@@ -1,11 +1,11 @@
-# A repository for my self studies activities
+# A repository for my studies activities
 
 ## Note to self: clone this repo everytime i start a new course/study and put the content on the destination area folder below.
 
-# Security
+# 🔐 [Security](https://github.com/souovan/studies/tree/main/security)
 
-# Linux
+# 🐧 [Linux](https://github.com/souovan/studies/tree/main/linux)
 
-# English
+# 🇺🇳: 󠀁[English](https://github.com/souovan/studies/tree/main/english)
 
-# Tools
+# 🔧 [Tools](https://github.com/souovan/studies/tree/main/linux/tools)
