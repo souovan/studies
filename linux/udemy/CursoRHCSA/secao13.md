@@ -131,15 +131,15 @@ Chave privada
 >   - Configuração booleana precisa ser modificada
 > * **Quando o SELinux nega uma ação, uma mensagem do Access Vector Cache (AVC) é registrada nos arquivos `/var/log/audit/audit.log` e `/var/log/messages` ou no `journald`**
 > * **Verifique esses arquivos e busque por AVC se você suspeitar que o SELinux negou uma ação que você tentou executar**
-> * Use `setenforce 0` para botar em modo permissivo para ver se o problema é relacionado ao SELinux
+ * Use `setenforce 0` para botar em modo permissivo para ver se o problema é relacionado ao SELinux
 > * **Use o _journalctl_ para ver descrição do erro:**
 >   - **`journalctl -t setroubleshoot --since="10 minutes ago"`**
-> * Use a ferramenta _ausearch_ para ver mensagens de AVC:
->   - `ausearch -m AVC -ts recent`
->   - `-m` especifica o tipo de mensagem a ser retornada, e `-ts` significa timestanp, ou seja: retorne mensagens do tipo AVC que sejam recentes
-> * Use _sealert_ para ler detalhes da mensagem de AVC:
->   - `grep AVC /var/log/audit/audit.log`
->   - `sealert -l [ID da mensagem retornada acima]
+ * Use a ferramenta _ausearch_ para ver mensagens de AVC:
+   - `ausearch -m AVC -ts recent`
+   - `-m` especifica o tipo de mensagem a ser retornada, e `-ts` significa timestanp, ou seja: retorne mensagens do tipo AVC que sejam recentes
+ * Use _sealert_ para ler detalhes da mensagem de AVC:
+   - `grep AVC /var/log/audit/audit.log`
+   - `sealert -l [ID da mensagem retornada acima]`
 
 
 
