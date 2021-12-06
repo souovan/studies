@@ -6,6 +6,6 @@
 
 # 🐧 [Linux](https://github.com/souovan/studies/tree/main/linux)
 
-# 🇺🇳: 󠀁[English](https://github.com/souovan/studies/tree/main/english)
+# 🇺🇳 󠀁[English](https://github.com/souovan/studies/tree/main/english)
 
 # 🔧 [Tools](https://github.com/souovan/studies/tree/main/linux/tools)
