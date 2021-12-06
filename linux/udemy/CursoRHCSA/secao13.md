@@ -104,3 +104,42 @@ Chave privada
 * Restaurar contextos de arquivo padrão
   - Use `restorecon` (de forma recursiva "-R") após usar os comandos do `semanage`, como descrito nos exemplos acima
 * Use `ls -Z`para ver o contexto de diretórios e arquivos
+
+# Configurações booleanas
+
+* O SELinux usa booleans para tornar sua política mais flexível
+* A política básica do SELinux é bastante rígida, mas atende à maioria dos requisitos
+* Caso tenha necessidades para casos especiais, você pode ajustar a política do SELinux usando booleans
+* Certifique que o `setroubleshoot-server` está instalado
+* Use `man semanage-boolean` para exemplos
+* Veja lista completa de booleans:
+  - `getsebool -a `
+* Filtra lista para ver homedirs do httpd:
+  - `getsebool -a | grep homedirs`
+* Veja a configuração atual e permanente do boolean:
+  - `semanage boolean -l | grep homedirs`
+* Mude configuração de forma permanente:
+  - `setsebool -P <BOOLEAN> on/off`
+
+> Lista booleans que não estão na configuração padrão (customizados)
+> `semanage boolean -l -C`
+
+# Diagnosticar e resolver violações a políticas de rotina do SELinux
+
+>* **Problemas mais comuns no SELinux para o exame**:
+>   - Um arquivo, diretório ou processo com o contexto de SELinux errado
+>   - Configuração booleana precisa ser modificada
+> * **Quando o SELinux nega uma ação, uma mensagem do Access Vector Cache (AVC) é registrada nos arquivos `/var/log/audit/audit.log` e `/var/log/messages` ou no `journald`**
+> * **Verifique esses arquivos e busque por AVC se você suspeitar que o SELinux negou uma ação que você tentou executar**
+> * Use `setenforce 0` para botar em modo permissivo para ver se o problema é relacionado ao SELinux
+> * **Use o _journalctl_ para ver descrição do erro:**
+>   - **`journalctl -t setroubleshoot --since="10 minutes ago"`**
+> * Use a ferramenta _ausearch_ para ver mensagens de AVC:
+>   - `ausearch -m AVC -ts recent`
+>   - `-m` especifica o tipo de mensagem a ser retornada, e `-ts` significa timestanp, ou seja: retorne mensagens do tipo AVC que sejam recentes
+> * Use _sealert_ para ler detalhes da mensagem de AVC:
+>   - `grep AVC /var/log/audit/audit.log`
+>   - `sealert -l [ID da mensagem retornada acima]
+
+
+
