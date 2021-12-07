@@ -45,3 +45,74 @@
                |_________________________________________________________| 
 ```
 
+## Passo importante quando usando o Podman no RHEL 8
+
+Para poder user o podman de forma rootless, ou seja, com um usuário que não seja o usuário raiz, é importante carregar as variáveis de ambiente de forma correta.
+
+>IMPORTANTE:
+> Quando mudar para um usuário comum usando o podman, use `su - worker` quando acessar o usuário worker, ou diretamente no ssh com `ssh srv0 -l worker`. Desta forma estaremos carregando o ambiente de trabalho de forma correta.
+
+# Comandos importantes
+
+>```sh
+># Instala a ferramenta ps
+>yum install -y procps-ng
+>```
+
+```sh
+#Puxa imagem do registro local ou remoto
+podman pull
+```
+
+```sh
+#Obtém informação pela ID ou nome do objeto (container, image, network, volume)
+podman inspect
+```
+
+```sh
+#Inicia um container a partir de uma imagem
+podman run
+```
+
+```sh
+#Cria uma imagem a partir das mudanças feitas no container
+podman commit
+```
+
+```sh
+#Adiciona um ou mais nomes adicionais a imagens locais
+podmain tag
+```
+
+```sh
+#Empurra uma imagem para um repositório de imagens de containers remotos
+podman push
+```
+
+```sh
+# (utilizado da máquina host do container) Lista processos em execução dentro do container
+podman top <nome_do_container> hpid pid user args
+```
+
+```sh
+# exibe containers em execução
+podman ps
+
+# exibe todos containers em execução (até os parados)
+podman ps -a
+```
+
+```sh
+# remove um container
+podman rm <nome_do_container>
+
+# remove todos containers
+podman rm -a
+```
+
+> ```sh
+> # (executado dentro do container) Sai do container sem matá-lo (encerrar o processo dele)
+> CTRL+p
+> CTRL+q
+> ```
+
