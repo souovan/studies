@@ -66,7 +66,7 @@ podman pull
 
 ```sh
 #Obtém informação pela ID ou nome do objeto (container, image, network, volume)
-podman inspect
+podman inspect <nome_do_objeto>
 ```
 
 ```sh
@@ -116,3 +116,30 @@ podman rm -a
 > CTRL+q
 > ```
 
+# Ferramentas de containers no RHEL8/CentOS8
+
+* podman - É um gerenciador de container runtime e ferramenta mais eficientes que o docker. Integrado com buildah
+* buildah - criar imagens de container pela linha de comando ou por Containerfiles(Dockerfiles)
+* skopeo - copia containers e imagens entre diferentes tipos de armazenamento de containers
+
+```
+            ___________________
+           |                   |
+           |  Image registry   |
+           |___________________|
+                   ^            
+                   |       skopeo
+               ____|_____
+              |          |
+              |  Podman  |
+              |__________|
+                  |  |
+     Buildah      |  |    ____________
+    ________      |  \-->|            |
+   |        |<----/  |   | containers |
+   | Images |        |   |____________|
+   |________|        |    ____________
+                     \-->|            |
+                         |  kernel    |
+                         |____________|
+```
