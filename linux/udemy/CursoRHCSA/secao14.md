@@ -59,6 +59,12 @@ Para poder user o podman de forma rootless, ou seja, com um usuário que não se
 >yum install -y procps-ng
 >```
 
+>```sh
+># Instala as ferramentas de configuração avançadas de roteamento e rede
+># que habilita o comando ss -tuna para checar as conexões de rede atreladas ao container
+>yum install -y iproute
+>```
+
 ```sh
 #Puxa imagem do registro local ou remoto
 podman pull
