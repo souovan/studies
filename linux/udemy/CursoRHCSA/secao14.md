@@ -157,12 +157,78 @@ podman rm -a
 * Se precisar configurar seu ambiente de container rootless, edite os arquivos de configuração em seu diretório inicial `$HOME/.config/containers/`
 * Os arquivos de configuração incluem **storage.conf** (para configurar o armazenamento) e **libpod.conf** (para diversas configurações de container). Você também pode criar um aquivo **registries.conf** para identificar os registros de container disponíveis quando você executa `podman pull` ou `podman run`
 
-> Dica: copie os arquivos de configuração do `/etc/containers/` do usuário _root_
-
 * Para verificar se a configuração rootless, você pode executar comandos dentro do namespace modificado do usuário com o comando:
     - `podman unshare cat /proc/self/uid_map`
 * Mapas para usuários são configurados em:
     - `/etc/subuid`
     - Note que o usuário _root_ não entra nessa mapeação, ao qual é feita para usuários de containers rootless
     - No RHEL8 o arquivo `/etc/subuid` é populado de forma automática quando criamos um usuário
+
+# Configuração de busca para registros remotos
+
+```sh
+# Arquivo de configuração do root fica em: 
+/etc/containers/registries.conf
+
+# Arquivo de configuração rootless fica em:
+~/.config/containers/registries.conf
+```
+
+> Dica: copie os arquivos de configuração do `/etc/containers/` do usuário _root_ retirando todas linhas que iniciam com comentário:
+> 
+> `grep -v "^#" /etc/containers/registries.conf > ~/.config/containers/registries.conf`
+
+# Variáveis de ambiente
+
+```sh
+# Parametro -e(environment) sobe o container passando variáveis de ambiente para ele 
+podman run -it -e COLOR=blue
+```
+# Armazenamento persistente com volumes
+
+```
+  ________________________________________________
+ |                    ___________                 |
+ |    /var/lib/mysql |           | 127.0.0.1:3306 | IP-DA-VM:3306
+ |          |      | | mariadb   |                |
+ |          |      | | container |                |
+ |       ---/      | |___________|                |
+ |      |          |                              |
+ |      v          |                              |
+ |     Bind Mount   \----------------> volume     |
+ |  /home/worker/mariadb                 |        |
+ |        |           ------------------/         |
+ |  ______|__________|____                        |
+ | |      v          |    |                       |
+ | | Arquivo de  ____v___ |_______________________| 
+ | | Sistemas   | Volume ||                       |
+ | |            | podman ||        Rede           |
+ | |            |________||                       |
+ | |______________________|_______________________|
+ | |        CPU           |        Memória        |
+ |_|______________________|_______________________|       
+ ```
+
+# VOLUME
+
+> Mais eficiente que bind e muitas vezes é a forma recomendada
+
+* `podman run -d --name myvol -v myvol:/var/lib/mysql -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306 rhel8/mariadb-103`
+
+# BIND
+
+* `mkdir -p /home/worker/mysql`
+* `podman run -d --name bindvol -v /home/worker/mysql:/var/lib/mysql:Z -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306 rhel8/mariadb-103`
+
+## Comandos interessantes
+
+```sh
+podman inspect -f "{{.Mounts}}" <nome ou id do container>
+
+podman volume list
+
+podman volume inspect <nomedovolume>
+
+podman inspect <nomedovolume>
+```
 
