@@ -232,3 +232,19 @@ podman volume inspect <nomedovolume>
 podman inspect <nomedovolume>
 ```
 
+> **Um dos comandos mais importantes para troubleshoot de containers**
+>
+> `podman inspect`
+> 
+> ou
+>
+> `podman inspect -f "{{.Chave}}"` para filtrar o retorno pela chave ou chaves `{{.Chave.Chave.Chave}}`
+
+> CMD define comandos e/ou parâmetros padrão para um container. CMD é uma instrução que é melhor se você precisar de um comando padrão que os usuários possam facilmente substituir
+>
+> Exemplo:
+>
+> `podman inspect -f "{{.Config.Cmd}}" meuweb`
+> 
+> `[/bin/sh -c httpd -D FOREGROUND]`
+
