@@ -149,3 +149,20 @@ podman rm -a
                          |  kernel    |
                          |____________|
 ```
+
+# Rootless containers
+
+* Quer dizer correr containers sem ser o usuário root
+* Como um usuário rootless, as imagens de container são armazenadas em seu diretório inicial `$HOME/.local/share/containers/storage/`, enquanto o do usuário _root_ fica em `/var/lib/containers`
+* Se precisar configurar seu ambiente de container rootless, edite os arquivos de configuração em seu diretório inicial `$HOME/.config/containers/`
+* Os arquivos de configuração incluem **storage.conf** (para configurar o armazenamento) e **libpod.conf** (para diversas configurações de container). Você também pode criar um aquivo **registries.conf** para identificar os registros de container disponíveis quando você executa `podman pull` ou `podman run`
+
+> Dica: copie os arquivos de configuração do `/etc/containers/` do usuário _root_
+
+* Para verificar se a configuração rootless, você pode executar comandos dentro do namespace modificado do usuário com o comando:
+    - `podman unshare cat /proc/self/uid_map`
+* Mapas para usuários são configurados em:
+    - `/etc/subuid`
+    - Note que o usuário _root_ não entra nessa mapeação, ao qual é feita para usuários de containers rootless
+    - No RHEL8 o arquivo `/etc/subuid` é populado de forma automática quando criamos um usuário
+
