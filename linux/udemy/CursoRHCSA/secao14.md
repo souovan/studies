@@ -240,6 +240,8 @@ podman inspect <nomedovolume>
 >
 > `podman inspect -f "{{.Chave}}"` para filtrar o retorno pela chave ou chaves `{{.Chave.Chave.Chave}}`
 
+# 
+
 > CMD define comandos e/ou parâmetros padrão para um container. CMD é uma instrução que é melhor se você precisar de um comando padrão que os usuários possam facilmente substituir
 >
 > Exemplo:
@@ -248,3 +250,66 @@ podman inspect <nomedovolume>
 > 
 > `[/bin/sh -c httpd -D FOREGROUND]`
 
+# Executar um serviço em um container
+
+```sh
+# lança um container com imagem universal base redhat
+podman run -it -d ubi
+
+# iniciar processo dentro do container
+podman exec -it <id_container> bash
+
+# dentro do container instalar o apache
+yum instal -y httpd
+
+# sair do container
+exit
+
+# criar imagem do container
+podman commit <id_container> meuweb
+
+# modificar comando inicial do inicio do container que é obtido com (podman inspect -f "{{.Config.Cmd}}" meuweb) para que seja executado o servidor apache no inicio do container
+podman run -it -d -p 8080:80 meuweb /bin/sh -c "httpd -D FOREGROUND"
+
+# salvar imagem com comando que inicia o container atualizando nossa imagem (meuweb)
+podman commit <id_container> meuweb
+
+# fazer tag da imagem
+podman tag localhost/meuweb quay.io/souovan/meuweb
+
+# fazer login no repositório remoto
+podman login quay.io
+
+# subir imagem para o repositório remoto
+podman push quay.io/souovan/meuweb
+```
+
+# Iniciar container automaticamente como serviço do systemd
+
+>```sh
+># Descompactar arquivo
+>tar -xzvf meusite.tar.gz
+>
+># Lançar um container pré configurado que executa o apache
+>podman run -it -d -p 8080:80 -v /home/worker/meusite:/var/www/html:Z --name meusite localhost/meuweb
+>
+># Configura-lo como serviço do systemd
+># mudar para o diretório
+>cd ~/.config/systemd/user/
+>
+># criar o arquivo (podman generate systemd --help)
+>podman generate systemd --new --files --name meusite
+>
+># o arquivo gerado é: container-meusite.service
+># e fica no diretório:  ~/.config/systemd/user/
+>
+># execute systemctl com parametro --user para ter acesso como usuario ao systemctl
+># ativa o serviço
+>systemctl --user start container-meusite.service
+>
+># habilita o serviço no boot
+>systemctl --user enable container-meusite.service
+>
+># é preciso habilitar (loginctl --help) para que o container inicie automáticamente no boot do sistema caso contrário o container só inicia quando for feito login na conta do usuário
+>loginctl enable-linger worker
+>```
