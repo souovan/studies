@@ -42,10 +42,10 @@
 ```
 Chave privada
      🔑    ---------------> 🔒 Chave Pública com extensão .pub         🖥 
-      __________________                                           Servidor 2
+      ------------------+                                          Servidor 2
                         |
     🖥                  |
-  Servidor 1            --> 🔒 Chave Pública com extensão .pub         🖥 
+  Servidor 1            +-> 🔒 Chave Pública com extensão .pub         🖥 
                                                                    Servidor 3
 ```
 
