@@ -17,6 +17,18 @@ kill -15 [PID]
 cfdisk
 ```
 
+>Caso for provisionar um sistema de arquivos que irá utilizar mais de 16Tb 
+>
+>Forçe para o tipo ser ext4 que habilita a opção 64bit conforme arquivo de configuração `less /etc/mke2fs.conf`.
+> **Esta opção só ser configurada no momento de formatação da partição**
+
+Uso de swap no SSD reduz a vida útil dele
+
+```bash
+# Parametro de ajuste do kernel que faz o sistema usar minimamente possivel o swap para preservar o SSD
+echo 1 > /proc/sys/vm/sawppiness
+```
+
 ## Comandos
 
 ```bash
@@ -45,7 +57,7 @@ df -hT
  
 | `ext3` | `ext4` | `xfs` |
 | --- | --- | --- |
-| mais antigo com tamanho de partições mais limitado | evolução do _ext3_, permite capacidades maiores e verificação de sistemas de arquivos em caso de corrompimento com uso das `extends` | bastante utilizado em ambiente enterprise, possuí _journaling_ e é mais seguro e menos suscetível a corrupção dos dados |
+| mais antigo com tamanho de partições mais limitado | evolução do _ext3_, permite capacidades maiores e verificação de sistemas de arquivos em caso de corrompimento com uso das `extent` | bastante utilizado em ambiente enterprise, possuí _journaling_ e é mais seguro e menos suscetível a corrupção dos dados |
 
 Quando for realizar migração a quente da partição `/usr` as pastas que podem ser removidas são:
 
@@ -70,4 +82,24 @@ Quando for realizar migração a quente da partição `/usr` as pastas que podem
 # nodev = não permite montagem de dispositivos na partição montada
 /dev/sdaX   /particao    ext4    defaults,noatime,nodiratime,norelatime,noexec   0 0
 ...
+```
+### Blocos reservados
+
+5% dos blocos são reservados para manutenção do sistema operacional pelo _root_
+
+```bash
+# Quantidade de blocos pode ser conferidas em sistemas ext2, ext3 e ext4 com o comando (Reserved block count)
+dumpe2fs <dispositivo> | less
+```
+
+```bash
+# % de blocos reservados pode ser diminuida com
+tune2fs -m 1 <dispositivo>
+```
+
+### Discard e trimming
+
+```bash
+# Excluir inodes nao utilizados e libera espaço em dispositivos SSD
+fstrim -va
 ```
