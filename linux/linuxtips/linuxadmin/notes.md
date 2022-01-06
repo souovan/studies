@@ -103,3 +103,23 @@ tune2fs -m 1 <dispositivo>
 # Excluir inodes nao utilizados e libera espaço em dispositivos SSD
 fstrim -va
 ```
+
+### LVM (Linux Volume Manager)
+
+> Tecnologia que permite realizar ajuste de particionamento sem precisar parar serviços ou sistema operacional
+
+```
+     +---------------+
+     | volume fisico | tamanho nao pode ser alterado (particao do HD)
+     +---------------+ 
+            |
+     +------------------+
+     | grupo de volumes | uma particao fisica ou mais 
+     +------------------+
+            |
+     +---------------+
+     | volume logico | particao real
+     +---------------+ 
+```
+
+Melhor criar partições pequena e ir aumentando conforme necessidade, pois pode ser necessário desmontar a partição e se for sistema ext4 quando reduzido perde a flag 64bit impedindo que posteriormente a partição seja extendida além do limite de 16Tb
