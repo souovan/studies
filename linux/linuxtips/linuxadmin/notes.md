@@ -123,3 +123,10 @@ fstrim -va
 ```
 
 Melhor criar partições pequena e ir aumentando conforme necessidade, pois pode ser necessário desmontar a partição e se for sistema ext4 quando reduzido perde a flag 64bit impedindo que posteriormente a partição seja extendida além do limite de 16Tb
+
+# Troubleshoot de HARDWARE
+
+```bash
+# Para avaliar quais dispositivos de hardware estão utilizando os processadores
+irqtop
+```
