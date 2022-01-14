@@ -130,3 +130,10 @@ Melhor criar partições pequena e ir aumentando conforme necessidade, pois pode
 # Para avaliar quais dispositivos de hardware estão utilizando os processadores
 irqtop
 ```
+
+# Administração de usuários e grupos
+
+```bash
+# Permite manipular permissão de usuários e grupos sem necessidade de root
+gpasswd
+```
