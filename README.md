@@ -9,3 +9,5 @@
 # 🇺🇳 󠀁[English](https://github.com/souovan/studies/tree/main/english)
 
 # 🔧 [Tools](https://github.com/souovan/studies/tree/main/linux/tools)
+
+# 📓 [Notes](https://github.com/souovan/studies/tree/main/notes)
