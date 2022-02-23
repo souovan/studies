@@ -4,7 +4,7 @@ Uma contração é uma forma reduzida de uma palavra ou uma combinação de pala
 
 No inglês falado e informal é muito comum as formas abreviadas do verbo "ser" e outros verbos auxiliares (Have, Verbos Modals etc). Já que estes são utilizados em contextos mais informal, devem ser evitados no inglês formal escrito.
 
-## Como reconhecer contração i'd
+## Como reconhecer contração 'd
 
 > Se o verbo após a contração estiver no infinitivo, a contração significa would
 
