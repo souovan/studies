@@ -137,3 +137,41 @@ irqtop
 # Permite manipular permissão de usuários e grupos sem necessidade de root
 gpasswd
 ```
+
+# Redirecionamentos
+
+```bash
+> # Redireciona a saida padrao - stdout
+
+< # Redireciona a entrada padrao - stdin
+
+>> # Redireciona a saida padrao e concatena em arquivo/disp indicado
+
+<< # Redireciona a entrada padrao - stdin
+
+2> # Redireciona a saida de erro padrao - stderr
+
+2>> # Redireciona a saida de erro padrao e concatena em arquivo/disp indicado - stderr
+
+2>&1 # Redireciona a saida de erro padrao para um file descriptor nesse caso para o stdout
+
+# FD = File Descriptor
+# stdin = 0
+# stdout = 1
+# stderr = 2
+```
+
+> ```bash
+> # Exibe sessões dos terminais gráficos
+> ps -ef | grep pts
+> ```
+
+## Pipe e tee
+
+```bash
+# Exibe a saida na saida padrao stdout e também salva a saida dentro do arquivo
+ls | tee arquivo.txt
+```
+
+> Para que o `tee` adicione o conteúdo ao final do arquivo sem sobrescreve-lo é preciso usar o parametro `-a`
+
