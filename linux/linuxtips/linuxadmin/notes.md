@@ -175,3 +175,19 @@ ls | tee arquivo.txt
 
 > Para que o `tee` adicione o conteúdo ao final do arquivo sem sobrescreve-lo é preciso usar o parametro `-a`
 
+## Localizando ajuda
+
+```
+man
+
+info
+```
+
+`man` possuí seções para determinados tipos de manuais ver `man man`
+
+> Para buscar qual ajuda verificar no manual
+>
+> `apropos -e <comando>`
+
+`info` possuí links marcados por `*`, para acessa-los pressione enter
+
