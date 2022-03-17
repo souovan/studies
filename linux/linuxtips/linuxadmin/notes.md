@@ -191,3 +191,85 @@ info
 
 `info` possuí links marcados por `*`, para acessa-los pressione enter
 
+## VIM
+
+```
+ESC = retorna ao modo comando
+
+MODO DE INSERÇÃO
+
+i = inserir na posição do cursor
+I = inserir no inicio da linha
+o = inserir texto na linha abaixo
+O = inserir texto na linha acima
+a = inserir um caractere a frente
+A = inserir no final da linha
+
+SALVANDO E SAINDO
+:w = Salvar
+:q = Sair
+:qa = Sair de todos os arqs abertos
+:q! = Sair forçando
+:wq = Sair e Salvar
+:x = Sair e Salvar
+ZZ = Zair e Zalvar - Sair e Salvar
+ZQ = Zair sem salvar
+
+COPIANDO COLANDO E RECORTANDO
+yy = copia
+p = cola na linha abaixo
+P = cola na linha acima
+y8y = copiar 8 linhas (yNy - copiar N linhas) 
+dd = apaga / recorta a linha inteira
+d8d = apaga / recorta 8 linhas inteiras
+dw = apaga uma palavra
+dG = apaga da posiçao atual ate o final do arquivo
+dgg = apaga da posiçao atual ate o inicio do arquivo
+cw = recortou uma palavra
+yw = copiar uma palavra
+x = apaga um caractere (igual ao Delete)
+X = apaga um caractere antes do cursor (igual ao backspace)
+r + N = replace - substituir o caractere atual pelo N
+
+VISUAL
+v = visual - selecionar um pedaço do texto
+V = visual line - selecionar linhas do texto
+CTRL + v = visual block - selecionar um bloco de texto
+
+VOLTANDO E REFAZENDO
+u = voltar
+CTRL + Z = refazer
+
+BUSCAS e LOCALIZAÇÃO
+/STRIGUS = buscar a palavra STRIGUS descendo arquivo
+?STRIGUS = buscar a palavra STRIGUS subindo o arquivo
+n = continua com a busca
+N = continua com a busca ao contrario
+gg = vai para a primeira linha
+G = vai para a ultima linha
+M = meio da tela
+H = no alto da tela
+L = na parte da tela
+
+COMANDOS set
+
+:set nlsearch = highlight para as buscas
+:set number = numera as linhas
+:set tabstop = Tamanho do TAB
+:set expandtab = converte o TAB em espaços
+:set bg=light = muda o esquema de cor
+:e BLA = abre outro arquivo BLA
+:r BLA = copia o conteudo do arquivo BLA para o arquivo atual
+:split BLA = divide a tela com o arquivo BLA
+:vsplit BLA = divide a tela com o arquivo BLA
+:! comando = executa o comando no shell e retorna para o vim
+!! comando = executa e copia/cola o comando para dentro do arquivo
+
+
+SUBSTITUINDO
+:40s/palavra_antiga/palavra_novo/ = substitui na linha 40 a palavara_antiga
+:40,50s/palavra_antiga/palavra_novo/ = substitui entre a linha 40 e a linha 50 a palavara_antiga
+:%s/palavra_antiga/palavra_novo/ = substitui a palavara_antiga em todo o arquivo - uma palavra por linha
+:%s/palavra_antiga/palavra_novo/g = substitui a palavara_antiga em todo o arquivo
+```
+
