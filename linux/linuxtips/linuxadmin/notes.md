@@ -273,3 +273,48 @@ SUBSTITUINDO
 :%s/palavra_antiga/palavra_novo/g = substitui a palavara_antiga em todo o arquivo
 ```
 
+## Variáveis de ambiente
+
+```bash
+# Exibe as variáveis de ambiente 
+env 
+# Exibe as variáveis de ambiente
+printenv 
+# Exibe o valor da variável 
+printenv <VARIAVEL> 
+# Seta valor para variável de ambiente local
+set VARIAVEL=valor
+# Seta valor para a variável de ambiente global
+export VARIAVEL=valor
+# Remove valor das variáveis
+unset VARIAVEL
+# Atribui dois valores para uma variável de ambiente
+export VARIAVEL=valor1:valor2
+```
+
+> Para que a variável de ambiente persista a reboot é preciso adiciona-la a um dotfile (.bashrc, .profile etc)
+>
+> Porém o local correto onde a variável deve ser adicionada é em `/etc/environment`
+
+> Quando for alterar as variáveis LANG também deve ser informado o encoding:
+> ```bash
+> LANG=pt_BR.UTF-8
+> LC_MESSAGES=pt_BR.UTF-8
+> LC_ALL=pt_BR.UTF-8
+>
+> #Para verificar as opções de encoding disponíveis
+> cat /etc/locale.gen
+> ```
+
+### Alias
+
+```bash
+# Cria um atalho
+alias comando="comando"
+
+# Remove um atalho
+unalias comando
+```
+
+> Para que o atalho fique disponivel após reboot é preciso adiciona-lo a um dotfile (.bashrc, .profile etc)
+
