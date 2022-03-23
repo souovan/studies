@@ -318,3 +318,18 @@ unalias comando
 
 > Para que o atalho fique disponivel após reboot é preciso adiciona-lo a um dotfile (.bashrc, .profile etc)
 
+## Gerenciamento de Logs
+
+```bash
+# Arquivo de configuração dos logs
+vim /etc/rsyslog.conf
+```
+
+> Mantenha os logs em um servidor dedicado para evitar perda em caso de crash da máquina ou apagamento
+
+```bash
+# Comando para visualização dos logs sem olhar diretamente nos arquivos de logs
+man journalctl 
+```
+
+
