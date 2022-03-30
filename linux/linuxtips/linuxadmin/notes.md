@@ -332,4 +332,34 @@ vim /etc/rsyslog.conf
 man journalctl 
 ```
 
+### Redes
+
+```bash
+# Arquivo de configurações de rede
+/etc/network/interfaces
+```
+
+```bash
+# Comando para listar rotas
+ip route ls
+```
+
+```bash
+# Ferramenta para cálculo de subrede (apt-get install -y subnetcalc)
+subnetcalc <IP/CIDR>
+```
+
+> Opção `auto <interface>` no arquivo `/etc/network/interfaces` sobe a placa de rede/configuração de forma forçada no boot
+> 
+> Opção `allow-hotplug <interface>` no arquivo `/etc/network/interfaces` só sobe a configuração de rede se houver um link conectado e funcional na máquina (utilizado para redundância)
+
+> É possível configurar execução de comandos/scripts através do arquivo `/etc/network/interfaces` ( por exemplo quando houver queda/reconexão )
+
+#### Portas
+
+```bash
+# Arquivo que mapeia portas mais comuns de acordo com o serviço padrão
+less /etc/services
+```
+
 
