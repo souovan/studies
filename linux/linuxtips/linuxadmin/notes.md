@@ -362,4 +362,133 @@ subnetcalc <IP/CIDR>
 less /etc/services
 ```
 
+### Segurança
+
+```bash
+# Exibe usuários que estão conectados ao terminal
+less /etc/securetty
+```
+
+```bash
+# Comando que exibe quem está conectado e o que o usuário está fazendo
+w
+```
+
+> Boa prática não deixar terminais conectados e proibir acesso do usuário root ao console tty1 e proibir acesso com usuário root através de senha (utilizar certificado ou kerberos)
+
+#### Algumas dicas de Hardening
+
+```bash
+# É possível restrigir acesso via usuário root a terminais virtuais comentando a linha ao determinado terminal no arquivo
+/etc/securetty
+```
+
+```bash
+# É possível restrigir quais usuários podem conectar via ssh através do arquivo
+/etc/ssh/sshd_config
+
+# Importante testar se a configuração do arquivo está correta com o comando
+sshd -t
+```
+
+##### TCP Wrappers
+
+```bash
+# É possível restrigir acesso a partir de determinados hosts editando os arquivos
+/etc/hosts.allow
+/etc/hosts.deny
+```
+
+> Ordem de checagem de acessos Firewall, TCP Wrappers, arquivo `/etc/ssh/sshd_config`
+
+#### Comandos para troubleshoot de rede
+
+```bash
+# Exibe quem está logado
+who
+```
+
+##### Serviços inseguros
+
+```bash
+telnet
+```
+
+```bash
+finger
+```
+
+### Planejamento de capacidade e Seleção de Recursos
+
+* Levar em consideração qual função irá ateneder
+* Qual capacidade de armazenamento utilizará
+* Qual será o crescimento do sistema
+
+**Como calcular requisitos de disco ?**
+
+* Tamanho total
+* Tipo
+* Crescimento do que será hospedado
+* LVM é seu amigo
+
+**Tipos de disco ( taxa real gravação, não do bararamento )**
+
+* Flash - 50Mb/s roteadores embarcados, pouco log, pouca gravação
+* SATA - 350Mb/s baixa performance de gravação 5k RPM - 10k RPM
+* SAS (padrão corporativo) - 450Mb/s boa performance de gravação 15k RPM
+* SSD - 600Mb/s excelente performance de gravação/baixa latência x 32 cmd
+* NVME/M2 - 6Gb/s e 64k comandos
+
+> Evitar usar memória swap em SSD por que reduz a vida útil do disco
+
+**Requisitos de memória**
+
+* Tamanho de memória 
+* Frequência (máquina física)
+
+```
+Java 4Gb mínimo por aplicativo
+dnsmasq - 1Mb (engloba os serviços bind e dhcp de forma bem mais leve)
+bind - 50Mb
+dhcp - 10Mb
+Apache - 20Mb
+```
+
+**CPU**
+
+* Frequência da CPU
+* Tamanho do cache L2
+* Tipo de operação
+       - Residencial - AMD Ryzen 7, Intel i3, i5, i7, i9 etc... 
+       - Corporativos - Xeon, AMD Epyc
+
+**Rede de comunicação**
+
+* Velocidade (10/100/1000/10Gb/100Gb)
+* Tecnologia: Cabeada, Fibra, virtual switch
+* Distância: (em datacenters mentor latência = máquinas mais próximas). Hospedagem internacional é sempre mais barata
+
+#### Troubleshoot
+
+```bash
+# Trio de ferramentas
+df -hT
+free -h
+top
+```
+
+> bônus:
+>
+> `du -ks*` verificar espaço em uso
+>
+> `dmesg -T` verificar logs do kernel
+>
+> `ping` para verificar latência
+>
+> `logs`
+
+
+
+
+
 
