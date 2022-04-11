@@ -487,8 +487,79 @@ top
 >
 > `logs`
 
+### Hardening
 
+**Aumento de complexidade de senhas**
 
+```bash
+# No Debian instalar lib-pamcracklib ou pwcomplexity
+# Parametrizar o arquivo:
+/etc/pam.d/common-password
+```
 
+**Expiração de contas de sistema e trocas de senha periódicas**
 
+```bash
+# Para verificar/alterar politicas de expiração de senhas de contas
+chage
+```
+
+```bash
+# Parametrizar o arquivo:
+/etc/login.defs
+```
+
+**Desativando serviços desnecessários**
+
+Deixando ativado somente os serviços que atenderão a finalidade do uso da máquina
+
+```bash
+# Restrigir quais usuários podem acessar a máquina e definir o IP a ser utilizado e alterar a porta que o serviço utilizará via acesso SSH parametrizando o arquivo
+/etc/sshd
+```
+
+**Segurança por obscuridade**
+
+Alterar porta padrão que o serviço irá utilizar
+
+**Manter atualizações de segurança em dia**
+
+**Com frequência salvar lista de pacotes instalados na máquina para auditoria futura**
+
+```bash
+# Debian based
+dpkg --get-selections | tee <Nome-da-lista>
+
+# Comparação futura com diff
+diff -u <Nome-da-lista-1> <Nome-da-lista-2>
+```
+
+**Procurar binários SUID e SGUID que estão instalados no sistema**
+
+Para evitar escalação de privilégio
+
+```bash
+find . -perm /4000
+find . -perm /2000
+```
+
+**ULIMIT - Listar limites que usuário pode ter durante a sessão dele**
+
+```bash
+# Checa limites
+ulimit -a
+
+# Altera limites
+/etc/security/limits.conf
+```
+
+**Monitorar logs e usuários**
+
+```bash
+w
+
+last
+
+last <USER>
+```
 
