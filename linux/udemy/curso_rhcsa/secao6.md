@@ -135,7 +135,7 @@ lvs
 * Mais lento que RAM
 * O uso de Swap indica uma má performance do seu servidor
 
-RAM | Espaço de troca | Espaço de swap se a hibernação for permitida
+RAM | Espaço de SWAP | Espaço de SWAP se a hibernação for permitida
 --- | --- | ---
 2 GB ou menos | Duas vezes a RAM | Três vezes a RAM
 Entre 2 GB e 8 GB | O mesmo que a RAM | Duas vezes a RAM
