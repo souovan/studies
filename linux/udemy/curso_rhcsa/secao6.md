@@ -135,6 +135,13 @@ lvs
 * Mais lento que RAM
 * O uso de Swap indica uma má performance do seu servidor
 
+RAM | Espaço de troca | Espaço de swap se a hibernação for permitida
+--- | --- | ---
+2 GB ou menos | Duas vezes a RAM | Três vezes a RAM
+Entre 2 GB e 8 GB | O mesmo que a RAM | Duas vezes a RAM
+Entre 8 GB e 64 GB | Pelo menos 4 GB | 1.5 vezes a RAM
+Mais de 64 GB | Pelo menos 4 GB |Hibernação não recomendada
+
 ## Adicionar Swap em novas partições e volumes lógicos e alternar de forma não destrutiva
 
 * Temos 2 formas de fazer essa tarefa:
