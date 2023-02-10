@@ -40,6 +40,7 @@
 * Use `gdisk -l` para ver os tipos de partição
 * Use `fdisk -l` para ver os dispositivos disponíveis
 * Use `lsblk -l` para listar os dispositivos de bloco do sistema
+* Use `lsblk --fs` para verificar os dispositivos de bloco conectados a uma máquina e recuperar as UUIDs do sistema de arquivos
 * Use `fdisk <nomedodisco>` para criar uma partição em MBR
   - `fdisk /dev/sdb`
 * Use `gdisk <nome do disco>` para criar uma partição em GPT
