@@ -46,6 +46,13 @@
   - `gdisk /dev/sdc`
 * Use `partprobe` para atualizar a tabela de partições do kernel
 
+> * fdisk é um favorito histórico e é compatível com partições GPT há anos.
+> * gdisk e outras variantes fdisk foram inicialmente criados para dar suporte à GPT.
+> * parted e a biblioteca libparted têm sido o padrão RHEL há anos.
+> * O instalador Anaconda continua a usar a biblioteca libparted.
+> * gnome-disk é a ferramenta gráfica padrão do GNOME, substituindo o upstream gparted.
+> * Quase todos os editores do CLI são bons para scripts, e parted foi projetado para isso.
+
 > Você não pode usar o MBR e o GPT juntos como partição no mesmo dispositivo de disco
 
 # Criar e remover volumes físicos
