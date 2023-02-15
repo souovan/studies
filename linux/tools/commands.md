@@ -138,6 +138,15 @@ du -Sh | sort -rh
 find -type f -exec du -Sh {} + | sort -rh
 ```
 
+```
+# se ao tentar desmontar um diretório montado com umount /mountpoint receber a mensagem device is busy
+# utilize "lsof  /mountpoint" retorna uma lista de nomes de arquivos abertos e o processo que está mantendo o arquivo aberto
+# [root@host ~]# lsof  /mountpoint
+# COMMAND  PID   USER  FD   TYPE  DEVICE  SIZE/OFF  NODE  NAME
+# program  5534  user  txt  REG   252.4   910704    128   /home/user/program
+lsof  /mountpoint
+```
+
 # Network
 
 ```
