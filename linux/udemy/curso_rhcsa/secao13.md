@@ -96,6 +96,11 @@ Chave privada
 
 > No exame se o SELinux estiver desabilitado pode ser necessário editar o arquivo `/etc/selinux/config` dar reboot na máquina
 
+```
+# listar os rótulos de portas do SELinux 
+semanage port -l
+```
+
 # Contextos de processos e arquivos
 
 * Instale o pacotte `setroubleshoot-server`
