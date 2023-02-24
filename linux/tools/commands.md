@@ -66,6 +66,11 @@ ls -1
 echo $0
 ```
 
+```
+# Verifica o diretório pessoal do usuário
+getent passwd <user>
+```
+
 # Troubleshoot
 
 ```
