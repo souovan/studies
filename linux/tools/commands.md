@@ -134,6 +134,11 @@ systemctl list-units-files --type=service
 ```
 
 ```
+# Troubleshoot systemd services
+journalctl -u <service>
+```
+
+```
 # Display the largest folders/files including the sub-directories
 du -Sh | sort -rh 
 ```
