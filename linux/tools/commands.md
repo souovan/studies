@@ -73,6 +73,15 @@ getent passwd <user>
 
 # Troubleshoot
 
+```sh
+#!/bin/bash
+set -exu
+
+# -e (exit on error, evita falhas serem ignoradas em subshells por exemplo)
+# -x (Ativa o modo de debug e faz um print de cada comando executado)
+# -u (Evita variáveis não definidas de serem usadas)
+```
+
 ```
 # Show kernel informations on boot
 dmesg
@@ -172,6 +181,11 @@ curl -s https://checkip.amazonws.com
 ```
 # Check your privates IPs
 hostname -I
+```
+
+```
+# Check connection from different network interfaces
+sudo curl --interface <interface> <address>
 ```
 
 # Hacks
