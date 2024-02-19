@@ -39,12 +39,6 @@ chattr
 lsattr
 ```
 
-```bash
-ls -lhaF
-
-df -hT
-```
-
 ## Notas
 
 ### BIOS
@@ -472,6 +466,7 @@ Apache - 20Mb
 
 ```bash
 # Trio de ferramentas
+df -a # Exibe pseudo filesystem como cgroups
 df -hT
 free -h
 top
