@@ -24,6 +24,11 @@ man 5 passwd
 | 8 | System administration commands (usually only for root) |
 | 9 | Kernel routines [Non standard] |
 
+```
+# To check which pages are available use
+man -k command
+```
+
 # Tools
 
 # Utilities
