@@ -5,7 +5,26 @@
 man 7 hier
 ```
 
-# Tools 
+```
+# Check man pages description
+man man # and goes to DESCRIPTION section to see the type of content each man page contains and then apply it to the command you need to look for documentation
+# Example
+man 5 passwd
+```
+
+| Section | Type of content |
+| --- | --- |
+| 1 | Executable programs or shell commands |
+| 2 | System calls (functions provided by the kernel) |
+| 3 | Library calls (functions within program libraries) |
+| 4 | Special files (usually found in /dev) |
+| 5 | File formats and conventions, e.g. /etc/passwd |
+| 6 | Games |
+| 7 | Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7) |
+| 8 | System administration commands (usually only for root) |
+| 9 | Kernel routines [Non standard] |
+
+# Tools
 
 # Utilities
 
