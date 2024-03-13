@@ -192,6 +192,8 @@ ps -ef
   - `pkill -u user1`(termina todos os processos do usuario user1)
 * `killall` termina o processo pelo nome
   - `killall httpd`
+ 
+> É uma boa prática enviar **SIGTERM** primeiro, depois tentar **SIGINT** e, somente se os dois falharem, tentar novamente com o **SIGKILL**
 
 ## NICE e RENICE
 
