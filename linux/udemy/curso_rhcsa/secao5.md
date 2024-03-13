@@ -154,7 +154,8 @@ ps -ef
 * Use > (filtra por memória) ou < (filtra por uso de CPU) para filtrar diferentes prioridades
 * Load Average: Carga média do CPU em 1, 5 e 15 minutos (mostra a quantidade de CPUs em uso)
 
-> Pressionando `1` na tela do comando `top` exibe a descriçãos dos CPUs 
+> Pressionando `1` na tela do comando `top` exibe a descriçãos dos CPUs
+> Para uma visão mais parecida com o HTOP pode ser usada a combinação das teclas **`l t m`** e a configuração pode ser salva para o arquivo /home/.config/procps/toprc pressionando **SHIFT+w**
 
 | Estado do processo | Descrição |
 | --- | --- |
