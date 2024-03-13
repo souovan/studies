@@ -139,6 +139,11 @@ pidof sshd
 ```
 
 ```bash
+# Liste os processos do usuário van
+pgrep -l -u van
+```
+
+```bash
 # Veja qual comando começou o processo 
 ps -ef
 ```
