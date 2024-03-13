@@ -163,13 +163,15 @@ ps -ef
 | Sinal	| Name | Definição
 | --- | --- | --- |
 | 1 |	HUP |	Hangup: comunica a finalização do processo de controle de um terminal. Também solicita a reinicialização do processo (recarregamento da configuração) sem terminá-lo. |
-| 2 |	INT |	Keyboard interrupt: faz com que o programa termine. Pode ser bloqueado ou manipulado. Enviado pressionando a combinação de teclas INTR (interrupção) (Ctrl+c). |
-| 3	| QUIT |	Keyboard quit: semelhante a SIGINT, adiciona um despejo do processo ao terminar. Enviado pressionando a combinação de teclas QUIT (Ctrl+\). |
-| 9 |	KILL |	Kill, unblockable: faz com que o programa termine abruptamente. Não pode ser bloqueado, ignorado nem manipulado. É constantemente fatal. |
+| **2** |	**INT** |	Keyboard interrupt: faz com que o programa termine. Pode ser bloqueado ou manipulado. Enviado pressionando a combinação de teclas INTR (interrupção) (**Ctrl+c**). |
+| **3**	| **QUIT** |	Keyboard quit: semelhante a SIGINT, adiciona um despejo do processo ao terminar. Enviado pressionando a combinação de teclas QUIT (**Ctrl+\\**). |
+| **9** |	**KILL** |	Kill, unblockable: faz com que o programa termine abruptamente. Não pode ser bloqueado, ignorado nem manipulado. É constantemente fatal. |
 | 15 | padrão | 	TERM	Terminate: faz com que o programa termine. Diferente de SIGKILL, pode ser bloqueado, ignorado ou manipulado. A maneira "limpa" de solicitar que um programa seja encerrado. Ele permite que o programa conclua as operações essenciais e faça a autolimpeza antes do encerramento. |
 | 18 |	CONT |	Continue: enviado a um processo para que ele seja retomado se estiver parado. Não pode ser bloqueado. Mesmo se for manipulado, sempre fará o processo continuar. |
 | 19 |	STOP |	Stop, unblockable: suspende o processo. Não pode ser bloqueado nem manipulado. |
-| 20 |	TSTP |	Keyboard stop: diferente de SIGSTOP, ele pode ser bloqueado, ignorado ou manipulado. Enviado pressionando a combinação de teclas de suspensão (Ctrl+z). 
+| **20** |	**TSTP** |	Keyboard stop: diferente de SIGSTOP, ele pode ser bloqueado, ignorado ou manipulado. Enviado pressionando a combinação de teclas de suspensão (**Ctrl+z**). 
+
+> Os números de sinalização variam entre plataformas de hardware Linux, mas os nomes de sinalização e seus significados são padrão. É aconselhável usar nomes de sinalização em vez de números ao sinalizar. Os números acima são para sistemas de arquitetura x86_64
 
 ## KILL, KILLALL e PKKILL 
 
