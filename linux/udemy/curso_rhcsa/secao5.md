@@ -100,8 +100,8 @@ jobs
 | CTRL+C | Cancela o job |
 | CTRL+D | Não espera o input do usuário |
 | CTRL+Z | Para o job temporariamente |
-| bg | Envia o job para o background |
-| fg | Envia o job para o foreground |
+| bg %n | Envia o job **n** (obtido da listagem do comando jobs) para o background |
+| fg %n | Envia o job **n** (obtido da listagem do comando jobs) para o foreground |
 
 ## Processos
 
