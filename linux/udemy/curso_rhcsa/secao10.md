@@ -87,6 +87,8 @@ nmcli c up mycon
 
 # Restrigir acesso à rede usando firewall-cmd
 
+> Nomes de portas padrão bem conhecidos são listados no arquivo `/etc/services`.
+
 * Firewall usa portas para filtrar(bloquear) acesso externo a um serviço
 * Para pacotes da network terem acesso a um serviço, a porta precisa estar aberta
 * Todas as portas são fechadas por padrão, então usamos a firewall para abrir as portas de acordo
@@ -110,5 +112,3 @@ firewall-cmd --permanent --add-service=https
 # (não entra no runtime sendo preciso recarregar o firewall)
 firewall-cmd --reload
 ```
-
-
