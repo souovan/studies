@@ -6,7 +6,7 @@
 ## Units
 
 * Uma entidade gerenciada pelo systemd é chamada de unit(unidade)
-* Uma unidade pode ser
+* Uma unidade pode ser `.service` `.socket` `.path`
   - Serviço, socket, dispositivo, um ponto de montagem, arquivo swap, um alvo de inicialização
 
 ```bash
@@ -27,6 +27,9 @@ systemctl list-unit-files
 
 # Filtra pelo tipo de unidade
 systemctl list-units --type=service
+
+# Alguns serviços tem dependencias de outros, para lista-las
+systemctl list-dependencies <unit>
 ```
 
 ```bash
@@ -38,6 +41,13 @@ systemctl start <servico>
 
 # Habilita a inicialização automática do serviço
 systemctl enable <servico>
+```
+
+Alguns serviços podem conflitar com outros para evitar que o serviço seja iniciado acidentalmente pode se utilizar **Masking**
+
+```
+# O mascaramento cria um link nos diretórios de configuração para o arquivo /dev/null que impede que o serviço seja iniciado.
+systemctl mask sendmail.service
 ```
 
 ## Comandos para reiniciar e desligar
