@@ -20,7 +20,18 @@
   * `nmtui` - Network Manager Text User Inferface
   * `nmcli` - Network Manager Command Line Interface
 
+## NetworkManager
+
+O serviço NetworkManager monitora e gerencia as configurações de rede de um sistema.
+É possível interagir com o serviço NetworkManager pela linha de comando ou com ferramentas gráficas. Os arquivos de configuração do serviço são armazenados no diretório /etc/NetworkManager/system-connections/.
+
+> A partir do Red Hat Enterprise Linux 8, os arquivos de configuração de formato ifcfg e o diretório /etc/sysconfig/network-scripts/ estão obsoletos. O NetworkManager agora usa um formato de arquivo de chave no estilo INI, que é uma estrutura de par de chave-valor para organizar propriedades. O NetworkManager armazena perfis de rede no diretório /etc/NetworkManager/system-connections/. Para compatibilidade com versões anteriores, as conexões de formato ifcfg no diretório /etc/sysconfig/network-scripts/ ainda são reconhecidas e carregadas.
+
+As conexões de serviço do NetworkManager têm dois tipos de configuração. Propriedades de conexão estáticas são configuradas pelo administrador e armazenadas nos arquivos de configuração /etc/NetworkManager/system-connections/*.nmconnection. As propriedades de conexão dinâmica são solicitadas de um servidor DHCP e não são armazenadas de modo persistente.
+
 ## NMCLI
+
+> Você pode abreviar objetos e ações nmcli. Por exemplo, você pode abreviar `nmcli device disconnect` como `nmcli dev dis` e `nmcli connection modify` como `nmcli con mod`. A abreviação pode ser tão curta quanto uma única letra, mas deve usar caracteres suficientes para identificar exclusivamente o objeto a ser gerenciado.
 
 ```bash
 # Exibe todos dispositivos de rede
@@ -48,6 +59,13 @@ nmcli c up mycon
 > # Configurar uma conexão
 > nmcli c m mycon +ipv4.dns 1.1.1.1 +ipv4.dns 1.0.0.1
 > ```
+
+Embora a maneira recomendada de gerenciar perfis seja com o comando `nmcli` é possivel modificar os perfis de rede editando o arquivo de configuração da conexão em */etc/NetworkManager/system-connections/*. Embora os comandos nmcli se comuniquem diretamente com o NetworkManager para implementar modificações imediatamente, as edições do arquivo de conexão não são implementadas até que o NetworkManager seja solicitado a recarregar o arquivo de configuração. Com a edição manual, você pode criar configurações complexas em etapas e carregar a configuração final quando estiver pronta.
+
+```
+# Use para recarregar todos perfis de conexão
+nmcli con reload
+```
 
 ## NMTUI
 
