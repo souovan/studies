@@ -40,7 +40,7 @@ nmcli d s
 # Exibe todas conexões de rede disponíveis
 nmcli c s
 
-# Verificar dados de uma conexão
+# Verificar as configurações de uma conexão
 nmcli c s <nome_da_conexao>
 
 # Cria uma conexão de rede
