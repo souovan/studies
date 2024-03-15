@@ -103,6 +103,19 @@ nmcli con reload
 
 > Também pode ser alterado editando o arquivo em `/etc/sysconfig/network-scripts/ifcfg-<nome_do_adaptador>`
 
+## Teste de resolução de nomes DNS
+
+```
+host <fqdn.hostname ou IP>
+```
+
+```
+dig <fqdn.hostname>
+```
+
+Os comandos host e dig não exibem a configuração no arquivo */etc/hosts*. Para testar o arquivo */etc/hosts*, use o comando `getent hosts <fqdn.hostname>`.
+
+
 # Restrigir acesso à rede usando firewall-cmd
 
 > Nomes de portas padrão bem conhecidos são listados no arquivo `/etc/services`.
