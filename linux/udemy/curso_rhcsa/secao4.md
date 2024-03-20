@@ -7,6 +7,15 @@ find <diretorio> -size <tamanho>
 find <diretorio> -user <usuario> -exec <comando> {} \;
 ```
 
+# Achar arquivos com comando locate
+
+```bash
+locate <arquivo>
+locate -i <arquivo_sem_diferenciar_maiusculas_minusculas>
+```
+
+> `sudo updatedb` atualiza o banco de dados do locate
+
 # Dicas sed e awk
 
 https://github.com/codenameyau/sed-awk-cheatsheet
