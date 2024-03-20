@@ -4,7 +4,7 @@
   - `mkfs.fstype [-L label] dispositivo`
   - Use `mkfs.<tabtab>` para mostrar as opções de arquivos de sistemas
 * Sempre adicione o arquivo de sistemas ao `/etc/fstab` para o exame
-* Use os comandos `df -h` e `lsblk` para ver suas modificações
+* Use os comandos `df -HT` e `lsblk` para ver suas modificações
 * Use `mount` e `umount` para montar e desmontar um arquivo de sistemas manualmente
 
 # NFS - Network file system
