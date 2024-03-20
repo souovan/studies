@@ -14,7 +14,7 @@ locate <arquivo>
 locate -i <arquivo_sem_diferenciar_maiusculas_minusculas>
 ```
 
-> `sudo updatedb` atualiza o banco de dados do locate
+> `sudo updatedb` atualiza o banco de dados do locate de forma forçada, a atualização já ocorre diariamente
 
 # Dicas sed e awk
 
