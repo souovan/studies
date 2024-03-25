@@ -24,7 +24,7 @@ atrm <número-da-atividade>
 systemctl enable crond
 systemctl start crond
 
-# Example of job definition:
+# O arquivo /etc/crontab tem um diagrama de sintaxe nos comentários
 # .---------------- minute (0 - 59)
 # |  .------------- hour (0 - 23)
 # |  |  .---------- day of month (1 - 31)
@@ -40,6 +40,46 @@ crontab --help
 # Se for colocado script nas pastas listadas com o comando abaixo estes serão executados com cron com intervalo de acordo com nome do diretório
 ls -l /etc | grep cron
 ```
+
+# Execução de comandos periódicos com o Anacron
+
+O comando run-parts também executa os trabalhos diários, semanais, e mensais a partir de um arquivo de configuração `/etc/anacrontab`.
+
+A sintaxe do arquivo `/etc/anacrontab` é diferente dos arquivos de configuração crontab regulares. O arquivo `/etc/anacrontab` contém exatamente quatro campos por linha, conforme exibido a seguir.
+
+```
+#period in days  delay in minutes  job-identifier  command
+1                 5                 cron.daily     nice run-parts  /etc/cron.daily
+7                 25                cron.weekly    nice run-parts  /etc/cron.weekly
+@monthly          45                cron.monthly   nice run-parts  /etc/cron.monthly
+```
+
+* Period in days
+
+Define o intervalo em dias para o trabalho ser executado em um agendamento recorrente. Este campo aceita um inteiro ou um valor macro. Por exemplo, a macro @daily é equivalente ao inteiro 1, o que significa que o trabalho é executado diariamente. Da mesma forma, a macro @weekly é equivalente ao inteiro 7, o que significa que o trabalho é executado semanalmente.
+
+* Delay in minutes
+
+Define o tempo que o daemon crond deve aguardar antes de iniciar o trabalho.
+* Job identifier
+
+Identifica o nome exclusivo do trabalho nas mensagens de log.
+* Command
+
+O comando a ser executado.
+
+> **Recomendado** [Utilizar systemd.timer (`systemd.timer(5)`) em vez de cron](https://opensource.com/article/20/7/systemd-timers)
+> 
+> Vantagens:
+> * Gerenciamento de dependências
+>   - As dependências são declaradas nos arquivos de Units
+> * Syntax de Calendário
+>   - Calendário de eventos é mais intuitivo `man systemd.time`
+>   - Pode ser auxiliado pela ferramenta `systemd-analyze calendar`
+> * Logging
+>   - Os Units mantém os logs no systemd journal e podem ser visualizados com `journalctl`
+
+
 # Configurar clientes de serviço de tempo
 
 * Linux quando é iniciado lê a hora no hardware clock, geralmente reside no hardware do sistema, como uma placa de circuito integrada
