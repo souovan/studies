@@ -312,20 +312,22 @@ journalctl --list-boots
 journalctl -b 0 -u ssh
 
 journalctl --since=yesterday --until=now
+
+journalctl -o verbose
 ```
 
 
 
 ## RSYSLOGD
 
-* Mensagens são enviadas para o serviço rsyslogd para serem salvas arquivos de texto
+* Mensagens são enviadas para o serviço rsyslogd para serem salvas em arquivos de texto
 * Mensagens são escritas para o diretório `/var/log` por padrão
 * Vantagens do rsyslog são habilidade de usar uma central de logs e módulos para filtrar as mensagens de log
 
 
 
 * Para especificar como cada mensagem é gerenciada, rsyslog usa:
-  * **Facility**: Categirua de informação que deve ser logada
+  * **Facility**: Categoria da informação que deve ser logada
   * **Priority**: Severidade da mensagem de log a ser logada. Prioridade definida e todas acimas são logadas
   * **Destiny**: Para onde as mensagens serão logadas
 * Configuradas no arquivo `/etc/rsyslog.conf`e `/etc/rsyslog.d`
@@ -335,12 +337,27 @@ journalctl --since=yesterday --until=now
 man 5 rsyslog.conf
 ```
 
-#Logrotate
+# Logrotate
 
 * Usado para prevenir o seu disco de encher com logs
 * Depois que logs são reciclados, eles serão apagados permanentemente.(Verifique sempre a politica de logs de sua empresa)
 * Use também o `/etc/logrotate.d` para fazer configurações adicionais
 * Use `man logrotate` para maiores detalhes
+
+> O comando `logger` envia mensagens para o serviço do rsyslog. Por padrão, o comando `logger` envia a mensagem para o tipo de usuário com a prioridade notice (`user.notice`), a menos que especificado de outra forma com a opção `-p`
+
+# Armazenamento de diário do sistema
+
+Por padrão, o RHEL armazena o diário do sistema no diretório /run/log e o sistema limpa o diário do sistema após uma reinicialização. Você pode alterar as configurações do serviço systemd-journald no arquivo `/etc/systemd/journald.conf` para manter os diários após uma reinicialização.
+
+O parâmetro Storage no arquivo /etc/systemd/journald.conf define se os diários do sistema devem ser armazenados de maneira volátil ou persistente em uma reinicialização. Defina esse parâmetro como `persistent`, `volatile`, `auto` ou `none` desta forma:
+
+|     |     |
+| --- | --- |
+| persistent | armazena os diários no diretório /var/log/journal, que é mantido nas reinicializações. Se /var/log/journal não existir, o serviço systemd-journald criará o diretório. |
+| volatile   | armazena os diários no diretório /run/log/journal volátil. Como o sistema de arquivos /run é temporário e existe somente na memória de tempo de execução, os dados armazenados nele, inclusive os diários do sistema, não são mantidos na reinicialização. |
+| auto       | se o diretório /var/log/journal existir, o serviço systemd-journald usará o armazenamento persistente, caso contrário, usará o armazenamento volátil. Essa ação será o padrão se o parâmetro Storage não estiver definido. |
+| none       | não usa nenhum armazenamento. O sistema descarta todos os logs, mas você ainda pode encaminhar os logs. |
 
 # Transferir de forma segura arquivos entre sistemas
 
