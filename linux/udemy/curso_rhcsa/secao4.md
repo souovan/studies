@@ -230,5 +230,17 @@ The `-e` flag allows for multiple commands.
 sed -r -e 's/etc\.*//g' -e 's/(\s+)(\))/\2/g' text/geek.txt
 ```
 
+# Gerenciamento de arquivos tar compactados
+
+No Linux, o utilitário tar é o comando comum para criar, gerenciar e extrair arquivos. Use o comando tar para reunir vários arquivos em um único arquivo.
+
+Um usuário deve ter permissões de leitura nos arquivos de destino que estão sendo arquivados. Por exemplo, a criação de um arquivo no diretório /etc exige privilégios root, porque somente usuários com privilégios podem ler todos os arquivos /etc. Um usuário sem privilégios pode criar um arquivo compactado do diretório /etc **mas o arquivo compactado exclui os arquivos que o usuário não pode ler**, além dos diretórios para os quais o usuário não tem permissões de leitura e execução.
+
+> **Importante**: Atributos de arquivo estendidos, como listas de controle de acesso (ACL, Access Control Lists) e contextos de arquivo SELinux, não são preservados por padrão em um arquivo. Use as opções `--acls`, `--selinux` e `--xattrs` para incluir ACLs POSIX, contextos de arquivo SELinux e outros atributos estendidos, respectivamente.
+
+Páginas do man tar(1), gzip(1), gunzip(1), bzip2(1), bunzip2(1), xz(1)
+
+
+
 
 
