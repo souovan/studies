@@ -361,21 +361,24 @@ O parâmetro Storage no arquivo /etc/systemd/journald.conf define se os diários
 
 # Transferir de forma segura arquivos entre sistemas
 
-* Precisa do serviço sshd ativo - OpenSSH SSH Daemon
-* Usamos o comando `scp`, que é similar ao `cp`, transfere arquivo entre servidores de forma criptografada
-* Usado para copiar arquivos e diretórios entre servidores
-* Use a opção `-P` para definir uma porta diferente da padrão 22
- 
-Exemplos:
-```bash
-# Copiar do servidor local para o servidor remoto
-scp meuarquivo user1@servidorremoto:/home/user1/meuarquivo
+> [A Red Hat Não recomenda o uso de scp](https://access.redhat.com/security/cve/cve-2020-15778)
+>
+> Em vez disso, usar outros utilitários, como os comandos `sftp` (man sftp) ou `rsync`, para copiar arquivos de ou para um host remoto.
 
-# Copiar do servidor remoto para o servidor local
-scp user1@servidorremoto:/home/user1/meuarquivo .
+## rsync
 
-# Copiar diretórios e subdiretórios
-scp -r /etc/ root@servidorremoto:/tmp
+Uma vantagem do comando rsync é que ele copia arquivos entre um sistema local e um sistema remoto com segurança e eficiência. Enquanto a sincronização inicial do diretório leva mais ou menos o tempo de uma cópia, as sincronizações subsequentes copiam somente as diferenças pela rede, acelerando significativamente as atualizações.
+
 ```
+# Para simular a execução do comando sem realizar a transferência (dry run)
+rsync -n
+
+# Para transferir a servidor remoto
+rsync -av <file> <user>@<server>:<remote-path>
+```
+
+
+
+
 
 
