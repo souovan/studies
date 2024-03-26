@@ -243,6 +243,12 @@ dnf install -y tuned
 ```bash
 tuned-adm --help
 
+# Exibe profile tuned ativo
+tuned-adm active
+
+# Exibe lista de profiles disponiveis e profile ativo
+tuned-adm list
+
 man 5 tuned.conf
 
 man 7 tuned-profiles (descrição dos perfis de ajuste)
@@ -282,6 +288,8 @@ tuned-adm recommend # ver perfil recomendado
 
 tuned-adm profile throughput-performance # escolher qual perfil deveria ser usado utilize assim
 
+# Checar se o parametro de kernel definido no profile está correto
+sysctl <kernel parameter>
 ```
 
 # Arquivos de Log
