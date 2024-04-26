@@ -1,6 +1,7 @@
 # Agendar tarefas usando `at` e `cron`
 
-* `at` agenda tarefas no futuro que só aconteceram uma vez
+* `at` agenda tarefas no futuro que **só** aconteceram uma vez
+* Usuários sem privilégios só podem ver e controlar seus próprios trabalhos. O usuário root pode ver e gerenciar todos os trabalhos.
 
 ```bash
 # Instalar at
