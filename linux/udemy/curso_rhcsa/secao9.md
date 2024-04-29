@@ -92,6 +92,11 @@ O comando a ser executado.
 
 ## NTP - Network Time Protocol
 
+> A Autoridade para atribuição de números da internet (IANA) fornece um banco de dados de fuso horário público, e o comando timedatectl baseia os nomes de fuso horário nesse banco de dados. Os nomes de fusos horários da IANA são baseados no continente ou no oceano, geralmente seguidos, porém nem sempre, da maior cidade dentro da região do fuso horário. Por exemplo, a maior parte do fuso horário MT (Mountain time) dos EUA é America/Denver.
+
+O comando `tzselect` é útil para identificar o nome do fuso horário correto. 
+Esse comando faz perguntas de modo interativo ao usuário sobre o local do sistema e mostra o nome do fuso horário correto. Ele não altera a configuração de fuso horário do sistema.
+
 * Hora de hardware pode não ser muito precisa
 * NTP é a solução para manter o horário do seu servidor baseado em servidores da internet dedicados a essa atividade
 * Configuraremos NTP no arquivo `/etc/chrony.conf`, que contém uma lista de servidores com protocolo de tempo pela network (NTP servers)
