@@ -74,6 +74,12 @@ Chave privada
 * Por exemplo, processoss correndo servidor de web precisam ter um contexto de `httpd_t` para acessar arquivos no diretório `/var/www/html` e outros diretórios de web. Neste caso, `httpd_sys_content_t`
 * Caso o servidor de web seja comprometido, acesso não sera permitido a outros arquivos devido ao contexto
 
+> Copiar um arquivo sempre cria um inode de arquivo, e os atributos desse inode, incluindo o contexto SELinux, devem ser definidos inicialmente.
+> 
+> Mover um arquivo normalmente não cria um inode se a movimentação ocorrer **dentro do mesmo sistema de arquivos**, mas, em vez disso, move o nome do arquivo do inode existente para um novo local. Como os atributos do inode existente não precisam ser inicializados, um arquivo que é movido com `mv` preserva seu contexto SELinux, a menos que você defina um **novo contexto** no arquivo com a opção `-Z`.
+> 
+> Depois de copiar ou mover um arquivo, verifique se ele tem o contexto SELinux apropriado e defina-o corretamente se necessário.
+
 ---
 
 * **O SELinux tem muitas configurações e pode ficar complexo, porém para o exame iremos abordar apenas os tópicos pedidos, facilitando assim o domínio de atividades pedidas.**
@@ -155,5 +161,5 @@ semanage port -l
    - `grep AVC /var/log/audit/audit.log`
    - `sealert -l [ID da mensagem retornada acima]`
 
-
+> O Cockpit do RHEL inclui ferramentas para solucionar problemas do SELinux
 
