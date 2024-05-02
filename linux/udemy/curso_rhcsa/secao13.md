@@ -94,6 +94,8 @@ Chave privada
 * Use `setstatus` para ver informações do status do SELinux
 * Para desabilitar ou mudar o modo SELinux, edite o arquivo `/etc/selinux/config`
 
+> A Red Hat recomenda reinicializar o servidor quando você alterar o modo SELinux de Permissive para Enforcing. Essa reinicialização garante que os serviços iniciados no modo permissivo sejam confinados no próximo boot.
+
 > No exame se o SELinux estiver desabilitado pode ser necessário editar o arquivo `/etc/selinux/config` dar reboot na máquina
 
 ```
@@ -102,6 +104,13 @@ semanage port -l
 ```
 
 # Contextos de processos e arquivos
+
+> Contexto de arquivos do SELinux
+> ```
+> SELinux user    Role         Type    Sensitivy Level   File
+>       |          |             |            |           |
+>  unconfined_u:object_r:httpd_sys_content_t:s0/var/www/html/file2
+> ```
 
 * Instale o pacotte `setroubleshoot-server`
 * Definir contextos de arquivos e diretórios:
