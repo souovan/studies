@@ -172,6 +172,10 @@ mkfs.xfs -K /dev/DISCOVDO/meuvdo1
 
 * O tamanho real de um sistema de arquivos aumenta com os dados armazenados nele. Se o tamanho dos dados se aproxima do tamanho virtual do sistema de arquivos, Stratis aumenta o volume e o sistema de arquivos automáticamente
 
+> Não use o comando `df` para consultar o espaço do sistema de arquivos Stratis.
+>
+> Em vez disso, sempre use o comando `stratis pool list` para monitorar com precisão o armazenamento disponível de um pool.
+
 ```bash
 # Mostra o espaço real usado por um sistema de arquivos
 stratis filesystem list
