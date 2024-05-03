@@ -204,6 +204,9 @@ vgs
 vgextend EXEMPLO /dev/sdc1 /dev/sdd1
 ```
 
+## Remover de grupos de volumes
+Use o comando `vgremove VG-NAME` para remover um grupo de volumes que não é mais necessário.
+
 # Criar e excluir volumes lógicos
 
 * Crie um volume lógico com `lvcreate`
@@ -220,6 +223,40 @@ lvdisplay EXEMPLO
 # ou
 lvs
 ```
+
+## Estender e reduzir LVM
+Uma das vantagens de usar volumes lógicos é aumentar seu tamanho sem passar por tempo de inatividade.
+
+```
+# Aumenta o tamanho do volume lógico em 500MB
+lvextend -L +500M /dev/vg01/lv01
+```
+
+###  Extensão de um sistema de arquivos XFS para o tamanho do volume lógico
+```
+# O comando xfs_growfs ajuda a expandir o sistema de arquivos para ocupar o LV estendido.
+xfs_growfs /mnt/data/
+```
+
+> O sistema de arquivos de destino deve ser montado antes de você usar o comando xfs_growfs.
+>
+> Sempre execute o comando `xfs_growfs` depois de executar o comando `lvextend`. Use a opção `-r` do comando `lvextend` para executar as duas etapas consecutivamente.
+
+### Extensão de um sistema de arquivos EXT4 para o tamanho do volume lógico
+```
+# O comando resize2fs expande o sistema de arquivos para ocupar o novo LV estendido.
+resize2fs /dev/vg01/lv01
+```
+> A principal diferença entre `xfs_growfs` e `resize2fs` é o argumento incluído para identificar o sistema de arquivos. O comando `xfs_growfs` usa o **ponto de montagem como um argumento**, e o comando `resize2fs` usa o **nome do LV como um argumento**. O comando xfs_growfs é compatível **apenas com um redimensionamento on-line**, enquanto o comando resize2fs é **compatível com o redimensionamento on-line e off-line**.
+
+### Reduzir armazenamento do VG
+A redução de um VG envolve a remoção de PVs não usados do VG. O comando pvmove move dados de extensões em um PV para extensões em outro PV com extensões livres suficientes no mesmo VG. Você pode continuar a usar o LV do mesmo VG durante a redução. Use a opção -A do comando pvmove para fazer backup automaticamente dos metadados do VG após uma alteração. Essa opção usa o comando vgcfgbackup para fazer backup de metadados automaticamente.
+
+```
+pvmove /dev/vdb3
+```
+
+
 
 # Montar sistemas de arquivos com (UUID) ou rótulo
 
