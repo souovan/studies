@@ -27,7 +27,7 @@
   |____________________________________________________|
 ```
 
-# Listar, Criar e Excluir partiçõesem discos MBR e GPT
+# Listar, Criar e Excluir partições em discos MBR e GPT
 
 | MBR | GPT |
 | --- | --- |
@@ -47,14 +47,119 @@
   - `gdisk /dev/sdc`
 * Use `partprobe` para atualizar a tabela de partições do kernel
 
-> * fdisk é um favorito histórico e é compatível com partições GPT há anos.
-> * gdisk e outras variantes fdisk foram inicialmente criados para dar suporte à GPT.
-> * parted e a biblioteca libparted têm sido o padrão RHEL há anos.
+> * `fdisk` é um favorito histórico e é compatível com partições GPT há anos.
+> * `gdisk` e outras variantes fdisk foram inicialmente criados para dar suporte à GPT.
+> * `parted` e a biblioteca libparted têm sido o padrão RHEL há anos.
 > * O instalador Anaconda continua a usar a biblioteca libparted.
 > * gnome-disk é a ferramenta gráfica padrão do GNOME, substituindo o upstream gparted.
-> * Quase todos os editores do CLI são bons para scripts, e parted foi projetado para isso.
+> * Quase todos os editores do CLI são bons para scripts, e `parted` foi projetado para isso.
 
 > Você não pode usar o MBR e o GPT juntos como partição no mesmo dispositivo de disco
+
+> Se forem necessárias mais de quatro partições em um disco com particionamento MBR, crie três partições primárias e uma estendida. A partição estendida serve como um contêiner no qual você pode criar várias partições lógicas.
+
+```bash
+# Criação de particões com parted (sem espeficicar subcomando entra no modo interativo)
+[root@host ~]# parted /dev/vdb
+GNU Parted 3.4
+Using /dev/vdb
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted)
+
+# Depois utilize mkpart para criar uma partição primária ou estendida
+(parted) mkpart
+Partition type?  primary/extended? primary
+
+# Para listar os tipos de filesystem compatíveis
+parted /dev/vdb help mkpart
+
+# Indique o tipo de filesystem
+File system type?  [ext2]? xfs
+
+# Especifique o setor do disco em que a nova partição será iniciada.
+# s para setor
+# B para byte
+# MiB , GiB ou TiB (potências de 2)
+# MB , GB ou TB (potências de 10)
+Start? 2048s
+End? 1000MB
+(parted) quit
+Information: You may need to update /etc/fstab.
+```
+Execute o comando `udevadm settle`. Esse comando aguarda que o sistema detecte a nova partição e crie o arquivo de dispositivo associado no diretório /dev.
+
+É possível criar a particação com um unico comando:
+```
+[root@host ~]# parted /dev/vdb mkpart primary xfs 2048s 1000MB
+```
+
+O esquema de GPT também usa o comando parted para criar partições. Com o esquema de GPT, cada partição recebe um nome.
+```
+[root@host ~]# parted /dev/vdb
+GNU Parted 3.4
+Using /dev/vdb
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted)
+
+(parted) mkpart
+Partition name?  []? userdata
+
+File system type?  [ext2]? xfs
+
+Start? 2048s
+End? 1000MB
+(parted) quit
+Information: You may need to update /etc/fstab.
+```
+Execute o comando `udevadm settle`. Esse comando aguarda que o sistema detecte a nova partição e crie o arquivo de dispositivo associado no diretório /dev.
+
+## Excluir partições `parted`
+```
+[root@host ~]# parted /dev/vdb
+GNU Parted 3.4
+Using /dev/vdb
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted)
+
+# Identifique o número da partição
+(parted) print
+Model: Virtio Block Device (virtblk)
+Disk /dev/vdb: 5369MB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags:
+
+Number  Start   End     Size   File system  Name       Flags
+ 1      1049kB  1000MB  999MB  xfs          usersdata
+
+# Exclua a partição e saia de parted. 
+(parted) rm 1
+(parted) quit
+Information: You may need to update /etc/fstab.
+```
+
+É possível excluir uma partição em um único comando:
+```
+[root@host ~]# parted /dev/vdb rm 1
+```
+
+# Criação de sistema de arquivos
+
+Após a criação de um dispositivo de bloco, o próximo passo é adicionar um sistema de arquivos a ele. O Red Hat Enterprise Linux suporta vários tipos de sistema de arquivos, e XFS é o padrão recomendado.
+
+```
+[root@host ~]# mkfs.xfs /dev/vdb1
+meta-data=/dev/vdb1              isize=512    agcount=4, agsize=60992 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=1, sparse=1, rmapbt=0
+         =                       reflink=1    bigtime=1 inobtcount=1
+data     =                       bsize=4096   blocks=243968, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0, ftype=1
+log      =internal log           bsize=4096   blocks=1566, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+```
 
 # Criar e remover volumes físicos
 
@@ -157,4 +262,10 @@ swapon -s
 # Mostrar o total de swap
 free -m
 ```
+
+> Use o comando `swapon --show` para exibir as prioridades do espaço de swap.
+>
+> As prioridades são definidas no arquivo de configuração `/etc/fstab`
+>
+> ```UUID=da98sd9ada7dadasd9-a8d98a9-d9890890        swap        swap    pri=<numero>          0       0```
 
