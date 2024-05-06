@@ -2,7 +2,7 @@
 
 [Achar arquivos com comando find e manipulações de arquivos](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao4.md#achar-arquivos-com-comando-find)
 
-[SYSTEMD | Processos | Tunning | Logs](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao5.md#systemd)
+[SYSTEMD | Targets | Processos | Tunning | Logs](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao5.md#systemd)
 
 [Camadas de gerenciamento de armazenamento](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao6.md#camadas-de-gerenciamento-de-armazenamento)
 
