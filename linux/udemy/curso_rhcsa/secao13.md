@@ -80,6 +80,12 @@ Chave privada
 > 
 > Depois de copiar ou mover um arquivo, verifique se ele tem o contexto SELinux apropriado e defina-o corretamente se necessário.
 
+> Para exibir uma lista de **todas as páginas do man do SELinux disponíveis**, instale o pacote e execute uma pesquisa de palavra-chave man -k para a string _selinux.
+> ```
+> dnf -y install selinux-policy-doc
+> man -k _selinux
+> ```
+
 ---
 
 * **O SELinux tem muitas configurações e pode ficar complexo, porém para o exame iremos abordar apenas os tópicos pedidos, facilitando assim o domínio de atividades pedidas.**
