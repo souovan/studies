@@ -6,7 +6,7 @@
 
 [Camadas de gerenciamento de armazenamento](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao6.md#camadas-de-gerenciamento-de-armazenamento)
 
-[Sistemas de arquivo: ext4, xfs etc](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao7.md#sistemas-de-arquivo-ext4-e-xfs)
+[Sistemas de arquivo: ext4, xfs etc | Stratis | NFS](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao7.md#sistemas-de-arquivo-ext4-e-xfs)
 
 [Agendar tarefas usando at e cron | Serviços de tempo | GRUB](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao9.md#agendar-tarefas-usando-at-e-cron)
 
