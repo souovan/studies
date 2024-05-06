@@ -76,6 +76,11 @@ man systemd.target
   - `rescue.target` Inicia o sistema como usuário único
 
 ```bash
+# Lista targets disponíveis
+systemctl list-units --type=target --all
+```
+
+```bash
 # Usar um target de forma imediata não persistente a reinicialização
 systemctl isolate multi-user.target
 
