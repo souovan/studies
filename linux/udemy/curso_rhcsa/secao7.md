@@ -226,4 +226,53 @@ systemctl start stratisd
 > stratis <comando> -h
 > ```
 
+# Montagem de armazenamento NFS 
 
+* Necessário instalar o pacote `nfs-utils`
+
+```
+# Exibe diretórios disponíveis para montagem
+showmount -e <servidor>
+```
+
+```
+# Sintaxe do arquivo /etc/fstab:
+server:/export  /mountpoint  nfs  rw  0 0
+```
+
+# Montagem automática de armazenamento NFS
+
+* Necessário instalar o pacote `autofs`
+* Necessário iniciar e habilitar o serviço com `systemctl enable --now autofs`
+* Adicionar um mapa mestre em `/etc/auto.master.d` com extensão `.autofs`
+  - O nome do arquivo do mapa mestre é arbitrário (embora normalmente significativo), mas deve ter uma extensão de .autofs para que o subsistema o reconheça.
+  - Deverá ter o conteúdo:
+    ```
+    /shares  /etc/auto.demo
+    ```
+    ```
+    # conteúdo do arquivo auto.demo
+    work  -rw,sync  serverb:/shares/work
+    ```
+* Criar um mapa **direto** ou **indireto**
+  - **Mapa direto**
+    > Uma montagem direta ocorre quando um sistema de arquivos é montado em um local de ponto de montagem conhecido e inalterado. 
+    - Necessário criar arquivo de mapeamento conforme exemplo `/etc/auto.master.d/direct.autofs` contendo:
+      ```
+      /-  /etc/auto.direct
+      ```
+      ```
+      # O conteúdo de exemplo do arquivo auto.direct
+      /mnt/docs  -rw,sync  serverb:/shares/docs
+      ```
+  - **Mapa indireto**
+    > Uma montagem indireta ocorre quando o local do ponto de montagem não é conhecido até que a demanda de montagem ocorra. 
+  - Quando um servidor NFS exporta vários subdiretórios dentro de um diretório, o montador automático poderá ser configurado para acessar qualquer um desses subdiretórios com uma única entrada de mapeamento.
+  - Necessário criar arquivo de mapeamento conforme exemplo `/etc/auto.master.d/indirect.autofs` contendo:
+    ```
+    # ponto de montagem | opções | local de origem
+    *  -rw,sync  serverb:/shares/&
+    ```
+    > O ponto de montagem (ou chave) é um asterisco (*) e o subdiretório no local de origem é um e comercial (&). Tudo mais na entrada é igual.
+    > 
+    > Quando um usuário tentar acessar /shares/work, a chave * (que é work, neste exemplo) substitui o & no local de origem e serverb:/exports/work é montado. 
