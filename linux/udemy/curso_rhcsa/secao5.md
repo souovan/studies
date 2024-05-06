@@ -91,6 +91,28 @@ systemctl set-default graphical.target
 systemctl get-default
 ```
 
+## Corrigir problemas de boot no systemd
+
+```
+# Habilita o serviço debug-shell que gera um shell root em TTY9 (CTRL+ALT+F9)
+systemctl enable debug-shell.service
+```
+> Desabilite o serviço `debug-shell.service` ao concluir a depuração, pois ele mantém um shell root sem autenticação aberto para qualquer pessoa com acesso ao console local.
+
+Outra forma é utilizar o GRUB2
+* Interrompa a contagem regressiva do boot loader pressionando qualquer tecla, exceto **Enter**.
+* Mova o cursos para a entrada do kernel a ser inicializada
+* Pressine **e** para editar a entrada selecionada
+* Mova o cursor para a linha que começa com `linux`
+* Adicione `systemd.debug-shell
+* Pressione `CTRL+X` para inicializar com as alterações
+
+## Usar os targets de emergency e rescue
+
+Ao acrescentar systemd.unit=rescue.target ou systemd.unit=emergency.target à linha de comando do kernel a partir do boot loader, o sistema entra em um shell de resgate ou de emergência em vez de iniciar normalmente. Esses dois shells exigem a senha do root.
+
+O destino de emergência mantém o sistema de arquivos raiz montado como somente leitura, enquanto o destino de resgate espera a unidade sysinit.target ser concluída, de maneira que o sistema seja inicializado, como o serviço de registro em log ou os sistemas de arquivos. Nesse momento, o usuário root não pode fazer alterações em `/etc/fstab` até que a unidade seja remontada em um estado de leitura/gravação com o comando `mount -o remount,rw /`.
+
 # Alterar password do usuário root
 
 * Na tela do grub apertar tecla `e`;
