@@ -6,18 +6,21 @@
 * O Kernel Linux é o principal componente de um sistema operacional Linux e é a interface principal entre o hardware de um computador e seus processos. Ele se comunica entre os 2, gerenciando os recursos de forma mais eficiente possível
 * Os namespaces e grupos de controle são um recurso do Kernel Linux
 
-## Linux Namespace(Nome de Espaços)
+**O Red Hat Enterprise Linux dá suporte a contêineres usando as seguintes tecnologias principais:**
 
-* Os namespaces particionam os recursos do kernel de forma que um conjunto de processos veja um conjunto de outro conjunto de processos como diferente
-* Exemplos de tais recursos são IDs de processo(PID), IDs de usuário(userid), nomes de arquivo e alguns nomes associados ao acesso à rede e comunicação entre processos(net)
-* Um sistema Linux começa com um único namespace em cada tipo, usado por todos os processos
+* Linux Control Groups
+  - Conhecidos como "cgroups"
+  - Recurso do Kernel Linux que limita, considera e isola o uso de recursos (CPU, memória, disco I/O(entrada e saída) de rede de uma coleção de processos)
+
+* Linux Namespace
+  - Os namespaces particionam os recursos do kernel de forma que um conjunto de processos veja um conjunto de outro conjunto de processos como diferente
+  - Exemplos de tais recursos são IDs de processo(PID), IDs de usuário(userid), nomes de arquivo e alguns nomes associados ao acesso à rede e comunicação entre processos(net)
+  - Um sistema Linux começa com um único namespace em cada tipo, usado por todos os processos
 
 > `lsns --help` do pacote _util-linux_ pode listar todos os diferentes tipos de namespaces em seu sistema Linux
 
-## Linux Control Groups(Grupos de Controle)
-
-* Conhecidos como "cgroups"
-* Recurso do Kernel Linux que limita, considera e isola o uso de recursos (CPU, memória, disco I/O(entrada e saída) de rede de uma coleção de processos)
+* SELinux e Seccomp (modo Secure Computing)
+  - para reforçar os limites de segurança
 
 ## Linux Containers no RHEL8/CentOS8
 
@@ -63,56 +66,29 @@ Para poder user o podman de forma rootless, ou seja, com um usuário que não se
 >yum install -y iproute
 >```
 
-```sh
-#Puxa imagem do registro local ou remoto
-podman pull
-```
-
-```sh
-#Obtém informação pela ID ou nome do objeto (container, image, network, volume)
-podman inspect <nome_do_objeto>
-```
-
-```sh
-#Inicia um container a partir de uma imagem
-podman run
-```
-
-```sh
-#Cria uma imagem a partir das mudanças feitas no container
-podman commit
-```
-
-```sh
-#Adiciona um ou mais nomes adicionais a imagens locais
-podmain tag
-```
-
-```sh
-#Empurra uma imagem para um repositório de imagens de containers remotos
-podman push
-```
+| Comando |	Descrição |
+--- | ---
+`podman info` | Exibe informações de configuração do podman
+`podman build` | 	Compila uma imagem de contêiner com um arquivo de contêiner.
+`podman run` |	Executa um comando em um novo contêiner.
+`podman images` |	Lista imagens no armazenamento local.
+`podman ps` |	Exibe informações sobre contêineres.
+`podman inspect` | Exibe a configuração de um contêiner, imagem, volume, rede ou pod.
+`podman pull` |	Faz download de uma imagem de um registro.
+`podman tag` | Adiciona um ou mais nomes adicionais a imagens locais
+`podman push` | Faz upload de uma imagem para um registry remoto
+`podman cp` |	Copia arquivos ou diretórios entre um contêiner e o sistema de arquivos local.
+`podman exec` |	Executa um comando em um contêiner em execução.
+`podman rm` |	Remove um ou mais contêineres.
+`podman rmi` |	Remove uma ou mais imagens armazenadas localmente.
+`podman search` |	Pesquisa uma imagem em um registro.
 
 ```sh
 # (utilizado da máquina host do container) Lista processos em execução dentro do container
 podman top <nome_do_container> hpid pid user args
 ```
 
-```sh
-# exibe containers em execução
-podman ps
-
-# exibe todos containers em execução (até os parados)
-podman ps -a
-```
-
-```sh
-# remove um container
-podman rm <nome_do_container>
-
-# remove todos containers
-podman rm -a
-```
+> Para mais informações consultar `man -k podman-`
 
 > ```sh
 > # (executado dentro do container) Sai do container sem matá-lo (encerrar o processo dele)
@@ -124,7 +100,7 @@ podman rm -a
 
 * podman - É um gerenciador de container runtime e ferramenta mais eficientes que o docker. Integrado com buildah
 * buildah - criar imagens de container pela linha de comando ou por Containerfiles(Dockerfiles)
-* skopeo - copia containers e imagens entre diferentes tipos de armazenamento de containers
+* skopeo - inspeciona, copia, exclui e assina imagens.
 
 ```        
            +-------------------+
@@ -149,7 +125,7 @@ podman rm -a
 
 # Rootless containers
 
-* Quer dizer correr containers sem ser o usuário root
+* Quer dizer executar containers sem ser o usuário root
 * Como um usuário rootless, as imagens de container são armazenadas em seu diretório inicial `$HOME/.local/share/containers/storage/`, enquanto o do usuário _root_ fica em `/var/lib/containers`
 * Se precisar configurar seu ambiente de container rootless, edite os arquivos de configuração em seu diretório inicial `$HOME/.config/containers/`
 * Os arquivos de configuração incluem **storage.conf** (para configurar o armazenamento) e **libpod.conf** (para diversas configurações de container). Você também pode criar um aquivo **registries.conf** para identificar os registros de container disponíveis quando você executa `podman pull` ou `podman run`
@@ -169,6 +145,18 @@ podman rm -a
 
 # Arquivo de configuração rootless fica em:
 ~/.config/containers/registries.conf
+```
+
+A Red Hat não recomenda usar a opção `--password` para fornecer a senha diretamente, pois ela armazena a senha nos arquivos de log.
+Em vez disso usar `--password-stdin` que lê a senha de stdin
+
+```
+podman login --username <username> --password-stdin <registry_url>
+```
+
+Para verificar se você está conectado a um registro
+```
+podman login quay.io --get-login
 ```
 
 > Dica: copie os arquivos de configuração do `/etc/containers/` do usuário _root_ retirando todas linhas que iniciam com comentário:
