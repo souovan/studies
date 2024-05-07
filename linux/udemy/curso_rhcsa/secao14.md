@@ -297,3 +297,11 @@ podman push quay.io/souovan/meuweb
 ># é preciso habilitar (loginctl --help) para que o container inicie automáticamente no boot do sistema caso contrário o container só inicia quando for feito login na conta do usuário
 >loginctl enable-linger worker
 >```
+
+Também é possível configurar containers `root` com systemd
+O processo é semelhante ao anterior com as exceções:
+* não criar usuário dedicado para o gerenciamento de containers
+* o arquivo de unit deve estar no diretrório `/etc/systemd/system` em vez de `~/.config/systemd/<user>`
+* utilizar o comando `systemd` sem a opção `--user`
+* não executar `loginctl enable-linger`como `root`
+
