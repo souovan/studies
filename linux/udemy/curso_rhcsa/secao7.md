@@ -259,16 +259,23 @@ server:/export  /mountpoint  nfs  rw  0 0
     > Uma montagem direta ocorre quando um sistema de arquivos é montado em um local de ponto de montagem conhecido e inalterado. 
     - Necessário criar arquivo de mapeamento conforme exemplo `/etc/auto.master.d/direct.autofs` contendo:
       ```
+      # ponto de montagem | arquivo de mapa
       /-  /etc/auto.direct
       ```
+    - Necessário criar o arquivo de exemplo `/etc/auto.direct` contendo:
       ```
-      # O conteúdo de exemplo do arquivo auto.direct
+      # ponto de montagem | opções | local de origem
       /mnt/docs  -rw,sync  serverb:/shares/docs
       ```
   - **Mapa indireto**
     > Uma montagem indireta ocorre quando o local do ponto de montagem não é conhecido até que a demanda de montagem ocorra. 
   - Quando um servidor NFS exporta vários subdiretórios dentro de um diretório, o montador automático poderá ser configurado para acessar qualquer um desses subdiretórios com uma única entrada de mapeamento.
   - Necessário criar arquivo de mapeamento conforme exemplo `/etc/auto.master.d/indirect.autofs` contendo:
+    ```
+    # ponto de montagem | arquivo de mapa
+    /remote /etc/auto.indirect
+    ```
+  - Necessário criar o arquivo de mapa exemplo `/etc/auto.indirect` contendo:
     ```
     # ponto de montagem | opções | local de origem
     *  -rw,sync  serverb:/shares/&
