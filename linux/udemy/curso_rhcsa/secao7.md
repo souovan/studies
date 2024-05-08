@@ -15,7 +15,13 @@
 * Permissões de leitura e escrita são necessárias para uso dos diretórios remotos
 
 * Para montar manualmente:
-  - Use `showmount -e <servidor_remoto>` para ver os diretórios disponíveis para montagem no servidor NFS
+  - Use `showmount -e <servidor_remoto>` para ver os diretórios disponíveis para montagem no servidor NFSv3
+ 
+> O `shouwmount` não funciona em compartilhamento NFSv4 sendo necessário montar a raiz do compartilhamento para verificar quais compartilhamentos estão disponíveis
+> ```
+> # exemplo
+> mount -t nfs server:/share /mnt
+> ```
 
 ```bash
 # Monta o diretório remoto **dados** no servidor remoto **srv0.temweb.local** no diretório local **meunfs**
