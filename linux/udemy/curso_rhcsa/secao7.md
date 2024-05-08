@@ -274,7 +274,7 @@ server:/export  /mountpoint  nfs  rw  0 0
       /mnt/docs  -rw,sync  serverb:/shares/docs
       ```
   - **Mapa indireto**
-    > Uma montagem indireta ocorre quando o local do ponto de montagem não é conhecido até que a demanda de montagem ocorra. 
+    > Uma montagem indireta ocorre quando o local do ponto de montagem não é conhecido até que a demanda de montagem ocorra **o diretório de montagem é criado automaticamente**. 
   - Quando um servidor NFS exporta vários subdiretórios dentro de um diretório, o montador automático poderá ser configurado para acessar qualquer um desses subdiretórios com uma única entrada de mapeamento.
   - Necessário criar arquivo de mapeamento conforme exemplo `/etc/auto.master.d/indirect.autofs` contendo:
     ```
