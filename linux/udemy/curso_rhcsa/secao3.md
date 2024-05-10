@@ -1,9 +1,24 @@
 # Comandos utilizados no exame RHCSA
 
+## Usar o man
+
+```
+# atualizar documentação man
+mandb 
+```
+
+```
+# pesquisar tópicos e filtrar com grep pra localizar arquivos de configuração
+man -k <tópico> | grep <filtro>
+```
+
+---
+
 ```bash
 # Descreve os diretórios do sistema de arquivo Linux ( FSH )
 man 7 hier
 ```
+
 ## Comandos básicos de navegação
 
 ```bash
