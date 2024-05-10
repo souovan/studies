@@ -192,6 +192,18 @@ chown
 | Escrever | 2 | w |
 | Executar | 1 | x |
 
+# Funcionamento do umask
+
+O umask é um bitmask octal que limpa as permissões de novos arquivos e diretórios que um processo cria. Se um bit for definido no umask, a permissão correspondente será desmarcada nos novos arquivos. 
+
+Exemplo de cálculo de umask de um arquivo
+
+| | Symbolic | Numeric octal | Numeric Binary |
+--- | --- | --- | ---
+Initial file permissions | rw-rw-rw- | 0666 | 000 110 110 110
+umask | -------w- | 0002 | 000 000  000 010
+Resulting file permissions | rw-rw-r-- | 0664 | 000 110  110 100
+
 # Buscando ajuda no Linux
 
 > <comando> --help ou -h
