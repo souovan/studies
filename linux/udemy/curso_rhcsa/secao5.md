@@ -97,6 +97,7 @@ systemctl get-default
 # Habilita o serviço debug-shell que gera um shell root em TTY9 (CTRL+ALT+F9)
 systemctl enable debug-shell.service
 ```
+>[!WARNING]
 > Desabilite o serviço `debug-shell.service` ao concluir a depuração, pois ele mantém um shell root sem autenticação aberto para qualquer pessoa com acesso ao console local.
 
 Outra forma é utilizar o GRUB2
@@ -191,6 +192,7 @@ ps -ef
 * Use > (filtra por memória) ou < (filtra por uso de CPU) para filtrar diferentes prioridades
 * Load Average: Carga média do CPU em 1, 5 e 15 minutos (mostra a quantidade de CPUs em uso)
 
+>[!TIP]
 > Pressionando `1` na tela do comando `top` exibe a descriçãos dos CPUs
 > Para uma visão mais parecida com o HTOP pode ser usada a combinação das teclas **`l t m`** e a configuração pode ser salva para o arquivo /home/.config/procps/toprc pressionando **SHIFT+w**
 
@@ -214,6 +216,7 @@ ps -ef
 | 19 |	STOP |	Stop, unblockable: suspende o processo. Não pode ser bloqueado nem manipulado. |
 | **20** |	**TSTP** |	Keyboard stop: diferente de SIGSTOP, ele pode ser bloqueado, ignorado ou manipulado. Enviado pressionando a combinação de teclas de suspensão (**Ctrl+z**). 
 
+>[!IMPORTANT]
 > Os números de sinalização variam entre plataformas de hardware Linux, mas os nomes de sinalização e seus significados são padrão. É aconselhável usar nomes de sinalização em vez de números ao sinalizar. Os números acima são para sistemas de arquitetura x86_64
 
 ## KILL, KILLALL e PKKILL 
@@ -230,7 +233,8 @@ ps -ef
   - `pkill -u user1`(termina todos os processos do usuario user1)
 * `killall` termina o processo pelo nome
   - `killall httpd`
- 
+
+>[!TIP]
 > É uma boa prática enviar **SIGTERM** primeiro, depois tentar **SIGINT** e, somente se os dois falharem, tentar novamente com o **SIGKILL**
 
 ## NICE e RENICE
@@ -239,11 +243,10 @@ ps -ef
 * Quanto mais "legal", ou seja, quanto maior o nice, mais para o final da fila o processo vai. **Em Linux o nice vai do -20 ao + 19**
 * **Renice** É como definimos o nice em um processo que já esteja iniciado
 
+>[!IMPORTANT]
 > * Um processo herda o niceness do processo pai
 > * O dono de um processo pode aumentar o nice, mas não pode diminuir para evitar que processos filhos tenham prioridade maiores que o processo pai
 > * O usuário raiz pode mudar o nice
-
-
 
 # Gerenciar perfis de ajuste
 
@@ -379,6 +382,7 @@ man 5 rsyslog.conf
 * Use também o `/etc/logrotate.d` para fazer configurações adicionais
 * Use `man logrotate` para maiores detalhes
 
+>[!IMPORTANT]
 > O comando `logger` envia mensagens para o serviço do rsyslog. Por padrão, o comando `logger` envia a mensagem para o tipo de usuário com a prioridade notice (`user.notice`), a menos que especificado de outra forma com a opção `-p`
 
 # Armazenamento de diário do sistema
@@ -396,6 +400,7 @@ O parâmetro Storage no arquivo /etc/systemd/journald.conf define se os diários
 
 # Transferir de forma segura arquivos entre sistemas
 
+>[!WARNING]
 > [A Red Hat Não recomenda o uso de scp](https://access.redhat.com/security/cve/cve-2020-15778)
 >
 > Em vez disso, usar outros utilitários, como os comandos `sftp` (man sftp) ou `rsync`, para copiar arquivos de ou para um host remoto.
