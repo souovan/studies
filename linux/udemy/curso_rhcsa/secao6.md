@@ -47,6 +47,7 @@
   - `gdisk /dev/sdc`
 * Use `partprobe` para atualizar a tabela de partições do kernel
 
+>[!IMPORTANT]
 > * `fdisk` é um favorito histórico e é compatível com partições GPT há anos.
 > * `gdisk` e outras variantes fdisk foram inicialmente criados para dar suporte à GPT.
 > * `parted` e a biblioteca libparted têm sido o padrão RHEL há anos.
@@ -54,8 +55,10 @@
 > * gnome-disk é a ferramenta gráfica padrão do GNOME, substituindo o upstream gparted.
 > * Quase todos os editores do CLI são bons para scripts, e `parted` foi projetado para isso.
 
+>[!WARNING]
 > Você não pode usar o MBR e o GPT juntos como partição no mesmo dispositivo de disco
 
+>[!TIP]
 > Se forem necessárias mais de quatro partições em um disco com particionamento MBR, crie três partições primárias e uma estendida. A partição estendida serve como um contêiner no qual você pode criar várias partições lógicas.
 
 ```bash
@@ -238,6 +241,7 @@ lvextend -L +500M /dev/vg01/lv01
 xfs_growfs /mnt/data/
 ```
 
+>[!IMPORTANT]
 > O sistema de arquivos de destino deve ser montado antes de você usar o comando xfs_growfs.
 >
 > Sempre execute o comando `xfs_growfs` depois de executar o comando `lvextend`. Use a opção `-r` do comando `lvextend` para executar as duas etapas consecutivamente.
@@ -247,6 +251,8 @@ xfs_growfs /mnt/data/
 # O comando resize2fs expande o sistema de arquivos para ocupar o novo LV estendido.
 resize2fs /dev/vg01/lv01
 ```
+
+>[!IMPORTANT]
 > A principal diferença entre `xfs_growfs` e `resize2fs` é o argumento incluído para identificar o sistema de arquivos. O comando `xfs_growfs` usa o **ponto de montagem como um argumento**, e o comando `resize2fs` usa o **nome do LV como um argumento**. O comando xfs_growfs é compatível **apenas com um redimensionamento on-line**, enquanto o comando resize2fs é **compatível com o redimensionamento on-line e off-line**.
 
 ### Reduzir armazenamento do VG
@@ -300,6 +306,7 @@ swapon -s
 free -m
 ```
 
+>[!TIP]
 > Use o comando `swapon --show` para exibir as prioridades do espaço de swap.
 >
 > As prioridades são definidas no arquivo de configuração `/etc/fstab`
