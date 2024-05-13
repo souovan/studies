@@ -178,6 +178,12 @@ chown
 
 # Uso das permissões ler, escrever e executar
 
+As permissões seguem o padrão `ugo`
+```
+# user (rwx) group(r-x) other(r-x)
+-rwxr-xr-x 1 root root 1799 fev 16 17:09 file.txt
+```
+
 | Permissão | Para arquivos | Para diretórios |
 | --- | --- | --- |
 | Ler | Abrir um arquivo | Listar conteúdo |
