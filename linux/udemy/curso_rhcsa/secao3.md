@@ -110,6 +110,7 @@ cut
 
 # PIPES
 
+>[!TIP]
 > Representado pela barra vertical: |
 > Transfere a saída do comando a esquerda para o comando a direita
 > Podem ser feitos diversos pipes: 
@@ -136,6 +137,7 @@ cut
 
 # Link físico e simbólico
 
+>[!NOTE]
 > * Links são como atalhos para um outro arquivo
 > * Cada nome de arquivo sabe qual o inode que tem que acessar para obter informação sobre o arquivo
 > * Cada nome associado com um inode se chama um "Link Físico":
@@ -151,8 +153,9 @@ $ ln destino nome_do_link
 # ln -s /etc/hosts link
 ```
 
+>[!CAUTION]
 > NÃO UTILIZAR -r ou -f: `rm -rf` QUANDO APAGANDO LINK, POIS TAMBÉM APAGARÁ O CONTEÚDO DO DIRETÓRIO OU ARQUIVO ALVO DO LINK
-
+>
 > Se o arquivo alvo do link físico for excluído o link físico continua funcionando pois ele aponta para o bloco de dados
 
 ```bash
