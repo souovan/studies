@@ -184,6 +184,23 @@ As permissões seguem o padrão `ugo`
 -rwxr-xr-x 1 root root 1799 fev 16 17:09 file.txt
 ```
 
+Permissão especial `s`
+
+user + s
+
+Conhecida como **SUID** tem a função de o arquivo com **SUID** sempre executar como o dono do arquivo
+
+group + s
+
+Conhecida como **SGID** tem duas funções:
+* Se usada em um **arquivo** permite o arquivo ser executado como o grupo dono do arquivo
+* Se usada em um **diretório** qualquer arquivo criado no diretório vai receber o grupo do dono do diretório
+
+Other + t
+
+**Stick bit** não afeta arquivos individuais e sim **diretórios e restrige sua exclusão**
+
+
 | Permissão | Para arquivos | Para diretórios |
 | --- | --- | --- |
 | Ler | Abrir um arquivo | Listar conteúdo |
