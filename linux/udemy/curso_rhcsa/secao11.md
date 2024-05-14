@@ -30,6 +30,7 @@ usermod -aG diretores joana
 # Mostra informações da conta de usuário
 id joana
 ```
+>[!TIP]
 > ```bash
 > # Adiciona um usuário sem acesso a uma shell (não consegue logar)
 > useradd -s /sbin/nologin bob
