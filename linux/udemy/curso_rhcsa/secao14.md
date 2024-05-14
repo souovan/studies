@@ -17,6 +17,7 @@
   - Exemplos de tais recursos são IDs de processo(PID), IDs de usuário(userid), nomes de arquivo e alguns nomes associados ao acesso à rede e comunicação entre processos(net)
   - Um sistema Linux começa com um único namespace em cada tipo, usado por todos os processos
 
+>[!TIP]
 > `lsns --help` do pacote _util-linux_ pode listar todos os diferentes tipos de namespaces em seu sistema Linux
 
 * SELinux e Seccomp (modo Secure Computing)
@@ -50,16 +51,17 @@
 
 Para poder user o podman de forma rootless, ou seja, com um usuário que não seja o usuário raiz, é importante carregar as variáveis de ambiente de forma correta.
 
->IMPORTANTE:
+>[!IMPORTANT]
 > Quando mudar para um usuário comum usando o podman, use `su - worker` quando acessar o usuário worker, ou diretamente no ssh com `ssh srv0 -l worker`. Desta forma estaremos carregando o ambiente de trabalho de forma correta.
 
 # Comandos importantes
 
+>[!TIP]
 >```sh
 ># Instala a ferramenta ps
 >yum install -y procps-ng
 >```
-
+>
 >```sh
 ># Instala as ferramentas de configuração avançadas de roteamento e rede
 ># que habilita o comando ss -tuna para checar as conexões de rede atreladas ao container
@@ -88,8 +90,9 @@ Para poder user o podman de forma rootless, ou seja, com um usuário que não se
 podman top <nome_do_container> hpid pid user args
 ```
 
+>[!TIP]
 > Para mais informações consultar `man -k podman-`
-
+>
 > ```sh
 > # (executado dentro do container) Sai do container sem matá-lo (encerrar o processo dele)
 > CTRL+p
@@ -159,7 +162,8 @@ Para verificar se você está conectado a um registro
 podman login quay.io --get-login
 ```
 
-> Dica: copie os arquivos de configuração do `/etc/containers/` do usuário _root_ retirando todas linhas que iniciam com comentário:
+>[!TIP]
+> copie os arquivos de configuração do `/etc/containers/` do usuário _root_ retirando todas linhas que iniciam com comentário:
 > 
 > `grep -v "^#" /etc/containers/registries.conf > ~/.config/containers/registries.conf`
 
@@ -195,6 +199,7 @@ podman run -it -e COLOR=blue
 
 # VOLUME
 
+>[!IMPORTANT]
 > Mais eficiente que bind e muitas vezes é a forma recomendada
 
 * `podman run -d --name myvol -v myvol:/var/lib/mysql -e MYSQL_USER=user -e MYSQL_PASSWORD=pass -e MYSQL_DATABASE=db -p 3306:3306 rhel8/mariadb-103`
@@ -216,6 +221,7 @@ podman volume inspect <nomedovolume>
 podman inspect <nomedovolume>
 ```
 
+>[!IMPORTANT]
 > **Um dos comandos mais importantes para troubleshoot de containers**
 >
 > `podman inspect`
@@ -224,8 +230,7 @@ podman inspect <nomedovolume>
 >
 > `podman inspect -f "{{.Chave}}"` para filtrar o retorno pela chave ou chaves `{{.Chave.Chave.Chave}}`
 
-# 
-
+>[!IMPORTANT]
 > CMD define comandos e/ou parâmetros padrão para um container. CMD é uma instrução que é melhor se você precisar de um comando padrão que os usuários possam facilmente substituir
 >
 > Exemplo:
@@ -270,6 +275,7 @@ podman push quay.io/souovan/meuweb
 
 # Iniciar container automaticamente como serviço do systemd
 
+>[!TIP]
 >```sh
 ># Descompactar arquivo
 >tar -xzvf meusite.tar.gz
