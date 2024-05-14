@@ -74,12 +74,14 @@ Chave privada
 * Por exemplo, processoss correndo servidor de web precisam ter um contexto de `httpd_t` para acessar arquivos no diretório `/var/www/html` e outros diretórios de web. Neste caso, `httpd_sys_content_t`
 * Caso o servidor de web seja comprometido, acesso não sera permitido a outros arquivos devido ao contexto
 
+>[!IMPORTANT]
 > Copiar um arquivo sempre cria um inode de arquivo, e os atributos desse inode, incluindo o contexto SELinux, devem ser definidos inicialmente.
 > 
 > Mover um arquivo normalmente não cria um inode se a movimentação ocorrer **dentro do mesmo sistema de arquivos**, mas, em vez disso, move o nome do arquivo do inode existente para um novo local. Como os atributos do inode existente não precisam ser inicializados, um arquivo que é movido com `mv` preserva seu contexto SELinux, a menos que você defina um **novo contexto** no arquivo com a opção `-Z`.
 > 
 > Depois de copiar ou mover um arquivo, verifique se ele tem o contexto SELinux apropriado e defina-o corretamente se necessário.
 
+>[!TIP]
 > Para exibir uma lista de **todas as páginas do man do SELinux disponíveis**, instale o pacote e execute uma pesquisa de palavra-chave man -k para a string _selinux.
 > ```
 > dnf -y install selinux-policy-doc
@@ -106,9 +108,11 @@ Chave privada
 * Use `setstatus` para ver informações do status do SELinux
 * Para desabilitar ou mudar o modo SELinux, edite o arquivo `/etc/selinux/config`
 
+>[!WARNING]
 > A Red Hat recomenda reinicializar o servidor quando você alterar o modo SELinux de Permissive para Enforcing. Essa reinicialização garante que os serviços iniciados no modo permissivo sejam confinados no próximo boot.
 
-> No exame se o SELinux estiver desabilitado pode ser necessário editar o arquivo `/etc/selinux/config` dar reboot na máquina
+>[!TIP]
+> No exame se o SELinux estiver desabilitado pode ser necessário editar o arquivo `/etc/selinux/config` e dar reboot na máquina
 
 ```
 # listar os rótulos de portas do SELinux 
@@ -117,6 +121,7 @@ semanage port -l
 
 # Contextos de processos e arquivos
 
+>[!TIP]
 > Contexto de arquivos do SELinux
 > ```
 > SELinux user    Role         Type    Sensitivy Level   File
@@ -147,17 +152,20 @@ semanage port -l
 * Mude configuração de forma permanente:
   - `setsebool -P <BOOLEAN> on/off`
 
+>[!IMPORTANT]
 > Lista booleans que não estão na configuração padrão (customizados)
 > `semanage boolean -l -C`
 
 # Diagnosticar e resolver violações a políticas de rotina do SELinux
 
+>[!IMPORTANT]
 >* **Problemas mais comuns no SELinux para o exame**:
 >   - Um arquivo, diretório ou processo com o contexto de SELinux errado
 >   - Configuração booleana precisa ser modificada
 > * **Quando o SELinux nega uma ação, uma mensagem do Access Vector Cache (AVC) é registrada nos arquivos `/var/log/audit/audit.log` e `/var/log/messages` ou no `journald`**
 > * **Verifique esses arquivos e busque por AVC se você suspeitar que o SELinux negou uma ação que você tentou executar**
  * Use `setenforce 0` para botar em modo permissivo para ver se o problema é relacionado ao SELinux
+>[!TIP]
 > * **Use o _journalctl_ para ver descrição do erro:**
 >   - **`journalctl -t setroubleshoot --since="10 minutes ago"`**
  * Use a ferramenta _ausearch_ para ver mensagens de AVC:
@@ -167,5 +175,6 @@ semanage port -l
    - `grep AVC /var/log/audit/audit.log`
    - `sealert -l [ID da mensagem retornada acima]`
 
+>[!TIP]
 > O Cockpit do RHEL inclui ferramentas para solucionar problemas do SELinux
 
