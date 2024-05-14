@@ -16,7 +16,8 @@
 
 * Para montar manualmente:
   - Use `showmount -e <servidor_remoto>` para ver os diretórios disponíveis para montagem no servidor NFSv3
- 
+
+>[!WARNING]
 > O `shouwmount` não funciona em compartilhamento NFSv4 sendo necessário montar a raiz do compartilhamento para verificar quais compartilhamentos estão disponíveis
 > ```
 > # exemplo
@@ -28,6 +29,7 @@
 mount -t nfs srv0.temweb.local:/dados /meunfs
 ```
 
+>[!TIP]
 >```bash
 ># É necessário instalar o pacote nfs-utils para obter o comando showmount
 >dnf install -y nfs-utils
@@ -56,6 +58,7 @@ srv0.temweb.local:/dados  /meunfs nfs _netdev 0 0
 lvresize -r -l +60 /dev/EXEMPLO/meulv1
 ```
 
+>[!WARNING]
 > Arquivo de sistemas XFS pode apenas ser expandido, e não pode ser reduzido
 
 * Para reduzir o volume lógico são 2 etapas: (ext3 e ext4)
@@ -68,6 +71,7 @@ lvresize -r -l +60 /dev/EXEMPLO/meulv1
 lvreduce -r -L -70M /dev/EXEMPLO/meulv3`
 ```
 
+>[!TIP]
 > Tanto no comando `lvresize` como no `lvreduce` o símbolo de `-` ou `+` indica que serão aumentados ou diminuídos o tamanho que segue o símbolo, **caso o símbolo seja omitido o comando alterará o tamanho total para o valor que segue o símbolo**
 
 # SET-GID (definir ID do grupo)
@@ -100,6 +104,7 @@ chown
 chmod
 ```
 
+>[!IMPORTANT]
 >```bash
 ># Ao utilizar os comandos chown ou chmod podem ser utilizados os parametrôs especiais nobody(usuário especial) ou nogroup (grupo especial) que servem para que o diretório ou arquivo não tenha dono ou grupo dono
 >#Exemplos:
@@ -166,6 +171,7 @@ mkfs.xfs -K /dev/DISCOVDO/meuvdo1
 
 * Recomendado usar UUID quando configurar montagem automática no `/etc/fstab`
 
+  >[!IMPORTANT]
   > ```bash
   > # Exemplo de configuração /etc/fstab (note que é preciso adicionar defaults,x-systemd.requires=stratisd.service)
   > UUID=<id>	/camadas/fs1	xfs	defaults,x-systemd.requires=stratisd.service	0 0
@@ -178,6 +184,7 @@ mkfs.xfs -K /dev/DISCOVDO/meuvdo1
 
 * O tamanho real de um sistema de arquivos aumenta com os dados armazenados nele. Se o tamanho dos dados se aproxima do tamanho virtual do sistema de arquivos, Stratis aumenta o volume e o sistema de arquivos automáticamente
 
+>[!IMPORTANT]
 > Não use o comando `df` para consultar o espaço do sistema de arquivos Stratis.
 >
 > Em vez disso, sempre use o comando `stratis pool list` para monitorar com precisão o armazenamento disponível de um pool.
@@ -225,6 +232,7 @@ systemctl start stratisd
   - Removemos todos os arquivos de sistemas stratis
   - Removemos a pool
 
+>[!TIP]
 > ```bash
 > # Consultar a utilização do stratis
 > stratis -h 
@@ -274,6 +282,7 @@ server:/export  /mountpoint  nfs  rw  0 0
       /mnt/docs  -rw,sync  serverb:/shares/docs
       ```
   - **Mapa indireto**
+    >[!IMPORTANT]
     > Uma montagem indireta ocorre quando o local do ponto de montagem não é conhecido até que a demanda de montagem ocorra **o diretório de montagem é criado automaticamente**. 
   - Quando um servidor NFS exporta vários subdiretórios dentro de um diretório, o montador automático poderá ser configurado para acessar qualquer um desses subdiretórios com uma única entrada de mapeamento.
   - Necessário criar arquivo de mapeamento conforme exemplo `/etc/auto.master.d/indirect.autofs` contendo:
@@ -286,6 +295,8 @@ server:/export  /mountpoint  nfs  rw  0 0
     # ponto de montagem | opções | local de origem
     *  -rw,sync  serverb:/shares/&
     ```
+    
+    >[!TIP]
     > O ponto de montagem (ou chave) é um asterisco (*) e o subdiretório no local de origem é um e comercial (&). Tudo mais na entrada é igual.
     > 
     > Quando um usuário tentar acessar /shares/work, a chave * (que é work, neste exemplo) substitui o & no local de origem e serverb:/exports/work é montado. 
