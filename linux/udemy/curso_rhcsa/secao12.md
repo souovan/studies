@@ -10,6 +10,7 @@
 
 * Uma **conexão só pode fazer parte de uma zona**, mas uma **zona pode ser usada para muitas conexões de rede**
 
+  >[!IMPORTANT]
   >  Lembre: Uma conexão é a configuração aplicada a uma interface de rede
 
 * Use `man firewall.zones` para maiores informações sobre zonas da firewalld
@@ -57,6 +58,7 @@
 
 * Use `firewall-cmd --runtime-to-permanent`para tornar a configuração de tempo permanente
 
+>[!TIP]
 > ```bash
 > # Para verificar informações específicas de um serviço
 > firewall-cmd --info-service=http
