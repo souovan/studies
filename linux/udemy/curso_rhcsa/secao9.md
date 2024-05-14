@@ -69,6 +69,7 @@ Identifica o nome exclusivo do trabalho nas mensagens de log.
 
 O comando a ser executado.
 
+>[!TIP]
 > **Recomendado** [Utilizar systemd.timer (`systemd.timer(5)`) em vez de cron](https://opensource.com/article/20/7/systemd-timers)
 > 
 > Vantagens:
@@ -92,6 +93,7 @@ O comando a ser executado.
 
 ## NTP - Network Time Protocol
 
+>[!IMPORTANT]
 > A Autoridade para atribuição de números da internet (IANA) fornece um banco de dados de fuso horário público, e o comando timedatectl baseia os nomes de fuso horário nesse banco de dados. Os nomes de fusos horários da IANA são baseados no continente ou no oceano, geralmente seguidos, porém nem sempre, da maior cidade dentro da região do fuso horário. Por exemplo, a maior parte do fuso horário MT (Mountain time) dos EUA é America/Denver.
 
 O comando `tzselect` é útil para identificar o nome do fuso horário correto. 
@@ -105,6 +107,7 @@ Esse comando faz perguntas de modo interativo ao usuário sobre o local do siste
 * Ative NTP:
   - `timedatectl set-ntp 1`
 
+>[!IMPORTANT]
 > # Epoch Time
 > * Linux tempo e hora são calculados em epoch time
 > * Epoch Time: Numero de segundos a partir de Janeiro 1 1970
@@ -113,6 +116,7 @@ Esse comando faz perguntas de modo interativo ao usuário sobre o local do siste
 >   - `date`: ver a data atual
 >   - Use `man date` para ver diversos exemplos
 
+>[!TIP]
 > # YUM vs DNF
 >
 > * O comando yum não existe mais, mas agora é um alias apontando para o comando dnf
@@ -149,6 +153,7 @@ subscription-manager config --rhsm.manage_repos=1
   gpgcheck=0
 ```
 
+>[!TIP]
 > ```bash
 > # Verifica quais repositórios de instalação e atualização estão configurados
 > dnf repolist
@@ -161,6 +166,7 @@ subscription-manager config --rhsm.manage_repos=1
   - Use `subscription-manager register` para registrar sua máquina
   - Use `subscription-manager attach` para associar sua assinatura a sua máquina
 
+>[!TIP]
 > ```bash
 > # Lista os repositórios que a máquina tem direito de usar
 > subscription-manager repos
@@ -174,6 +180,7 @@ subscription-manager config --rhsm.manage_repos=1
   - Os fluxos de módulo representam versões dos componentes AppStream
   - Os fluxos de módulo podem estar ativos ou inativos. Os fluxos ativos fornecem ao sistema acesso aos pacotes RPM dentro do fluxo de módulo específico
 
+>[!IMPORTANT]
 > Streams de Módulo são versões diferentes de cada módulo
 
 ```bash
@@ -207,6 +214,7 @@ dnf module reset postgresql
 * Escrevemos essas mudanças para o arquivo princial com o comando:
   - `grub2-mkconfig -o /boot/grub2/grub.cfg`
 
+>[!IMPORTANT]
 > Memorizar o comando `grub2-mkconfig -o /boot/grub2/grub.cfg` para o exame
 
 * Use `cat /etc/default/grub` para ver e alterar as variáveis
