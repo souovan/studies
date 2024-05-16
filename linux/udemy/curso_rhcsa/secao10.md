@@ -70,6 +70,12 @@ Embora a maneira recomendada de gerenciar perfis seja com o comando `nmcli` é p
 nmcli con reload
 ```
 
+>[!TIP]
+> ```
+> # Usado para verificar syntaxe dos comandos do nmcli
+> man nmcli-examples
+> ```
+
 ## NMTUI
 
 * Interface de usuário de modo texto ( Text User Interface )
