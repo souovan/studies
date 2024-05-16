@@ -218,6 +218,10 @@ ps -ef
 
 >[!IMPORTANT]
 > Os números de sinalização variam entre plataformas de hardware Linux, mas os nomes de sinalização e seus significados são padrão. É aconselhável usar nomes de sinalização em vez de números ao sinalizar. Os números acima são para sistemas de arquitetura x86_64
+> ```
+> # Para verificar lista de sinais
+> man 7 signal
+> ```
 
 ## KILL, KILLALL e PKKILL 
 
