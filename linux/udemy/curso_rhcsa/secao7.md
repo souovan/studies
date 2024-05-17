@@ -262,6 +262,7 @@ server:/export  /mountpoint  nfs  rw  0 0
   - O nome do arquivo do mapa mestre é arbitrário (embora normalmente significativo), mas deve ter uma extensão de .autofs para que o subsistema o reconheça.
   - Deverá ter o conteúdo:
     ```
+    # path do compartilhamento | path do arquivo de mapa
     /shares  /etc/auto.demo
     ```
     ```
