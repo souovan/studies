@@ -268,3 +268,12 @@ firewall-cmd --permanent --add-port=9090/tcp
 > O painel de controle possui uma interface web que poderá ser aberta em https://localhost:9090
 > E para login deverão ser utilizados os usuários disponíveis na máquina host(servidor)
 
+# Troubleshoot importante para o exame
+
+>[!TIP]
+> Revisar log do boot para identificar motivo pelo qual o boot falhou
+
+```
+# Verificar os logs do último boot para identificar o que impediu o boot com sucesso
+journalctl -b -p err
+```
