@@ -114,6 +114,21 @@ Ao acrescentar systemd.unit=rescue.target ou systemd.unit=emergency.target à li
 
 O destino de emergência mantém o sistema de arquivos raiz montado como somente leitura, enquanto o destino de resgate espera a unidade sysinit.target ser concluída, de maneira que o sistema seja inicializado, como o serviço de registro em log ou os sistemas de arquivos. Nesse momento, o usuário root não pode fazer alterações em `/etc/fstab` até que a unidade seja remontada em um estado de leitura/gravação com o comando `mount -o remount,rw /`.
 
+# Systemd tmp-files
+
+Cria, deleta e limpa arquivos e diretórios temporários e voláteis, usando o arquivo de configuração com formato e localização especificada em **`tmpfiles.d(5)`**
+O arquivo de configuração `/etc/tmpfiles.d/volatile.conf` deve seguir a sintaxe:
+```
+# type, file or directory | path | mode | user | group | age | argument
+d /run/volatile 0777 root root 30s
+```
+
+>[!IMPORTANT]
+> **Deverá ser executado o comando para ativar o serviço**
+> ```
+> systemd-tmpfiles --create /etc/tmpfiles.d/volatile.conf
+> ```
+
 # Alterar password do usuário root
 
 * Na tela do grub apertar tecla `e`;
