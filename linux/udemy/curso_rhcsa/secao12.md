@@ -10,8 +10,8 @@
 
 * Uma **conexão só pode fazer parte de uma zona**, mas uma **zona pode ser usada para muitas conexões de rede**
 
-  >[!IMPORTANT]
-  >  Lembre: Uma conexão é a configuração aplicada a uma interface de rede
+>[!IMPORTANT]
+>  Lembre: Uma conexão é a configuração aplicada a uma interface de rede
 
 * Use `man firewall.zones` para maiores informações sobre zonas da firewalld
 
