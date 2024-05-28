@@ -63,12 +63,13 @@ Chave privada
 
 * O SELinux - Security Enhanced Linux - Segurança melhorada do linux - prove uma camada adicional de segurança
 * Criado pela NSA - National Security Agency (Agencia de Segurança Nacional) americana e desenvolvido pela Red Hat
+* Atua como um **firewall a nível de Sistema Operacional** impedindo ações indevidas de processos e usuários
 * Vantagens
   - A Acão padrão é negar. Se uma regra de política SELinux não existir para permitir o acesso, como para um processo que abre um arquivo, o acesso é negado
   - O SELinux pode confirmar os usuários do Linux,
   - Maior sepração de dados e processos
   - O SELinux ajuda a mitigar os danos causados por erros de configuração
-* Política de acesso padrão baseado em usuário, grupo e outras permissões são referidas como DAC - Discretionary Access Control - Controle de Acesso Discricionário - ou seja, usuárioa com permissões suficientes podem passar permissões para outros usuários
+* Política de acesso padrão baseado em usuário, grupo e outras permissões são referidas como DAC - Discretionary Access Control - Controle de Acesso Discricionário - ou seja, usuários com permissões suficientes podem passar permissões para outros usuários
 * O SELinux é implementado com MAC - Mandatory Access Control - Controle de Acesso Mandatório - ou seja, políticas de segurança a nível de sistema operacional da empresa
 * O SELinux usa contextos - as vezes referidos com rótulos - como identificador que remove detalhes a nível de sistema e foca na segurança de uma entidade
 * Por exemplo, processoss correndo servidor de web precisam ter um contexto de `httpd_t` para acessar arquivos no diretório `/var/www/html` e outros diretórios de web. Neste caso, `httpd_sys_content_t`
