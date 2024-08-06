@@ -5,7 +5,7 @@ find <diretorio> -name <arquivo>
 find <direcorio> -user <usuario>
 find <diretorio> -size <tamanho>
 find <diretorio> -user <usuario> -exec <comando> {} <argumento_do_comando> \;
-# exemplo movendo todos arquivos de um usuário para um diretório
+# exemplo copiando todos arquivos de um usuário para um diretório
 find <diretorio> -user <usuario> -exec cp -rf {} /diretorio \;
 ```
 
