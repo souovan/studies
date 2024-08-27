@@ -1,4 +1,4 @@
-[Comandos utilizados no exame RHCSA | outras dicas ](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao3.md#comandos-utilizados-no-exame-rhcsa)
+[Comandos utilizados no exame RHCSA | outras dicas ](secao3.md#comandos-utilizados-no-exame-rhcsa)
 
 [Comandos `find` e `locate` e manipulações de arquivos](https://github.com/souovan/studies/blob/main/linux/udemy/curso_rhcsa/secao4.md#achar-arquivos-com-comando-find)
 
