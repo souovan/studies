@@ -16,7 +16,8 @@ dnf install -y ansible-core
 pip install ansible-navigator
 ```
 
-> [!NOTE] To make the ansible-navigator work is necessary to ssh from a terminal to the ansible VM
+> [!NOTE]
+> To make the ansible-navigator work is necessary to ssh from a terminal to the ansible VM
 
 ## .vimrc config to help in the exame
 
