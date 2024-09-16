@@ -29,9 +29,18 @@ ansible <inventory group or all> -a "<shell command>"
 ## to confirm the configuration before the exam starts
 
 ```bash
+# after create the ansible.cfg file
 ansible --version
 ```
 
 ```bash
+# after create the inventory file
+ansible-inventory --graph
+
 ansible all -m ping
+```
+
+```bash
+# check for the right collections installation
+ansible-navigator collections
 ```
