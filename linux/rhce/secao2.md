@@ -44,3 +44,15 @@ ansible all -m ping
 # check for the right collections installation
 ansible-navigator collections
 ```
+
+## to list ansible available modules
+
+```
+# list all available modules
+ansible-doc --list
+```
+
+```
+# filter for builtin modules
+ansible-doc --list | grep builtin
+```
