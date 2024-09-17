@@ -3,3 +3,5 @@
 [Configurations for start the EXAM](secao1.md)
 
 [Tips and tricks](secao2.md)
+
+[Commands for the EXAM](secao3.md)
