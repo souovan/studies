@@ -5,3 +5,5 @@
 [Tips and tricks](secao2.md)
 
 [Commands for the EXAM](secao3.md)
+
+[File examples for the EXAM](secao4.md)
