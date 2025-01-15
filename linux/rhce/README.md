@@ -7,3 +7,5 @@
 [Commands for the EXAM](secao3.md)
 
 [File examples for the EXAM](secao4.md)
+
+[Playbook examples for the EXAM](secao5.md)
