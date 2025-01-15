@@ -19,6 +19,16 @@ pip install ansible-navigator
 > [!NOTE]
 > To make the ansible-navigator work is necessary to ssh from a terminal to the ansible VM
 
+
+```bash
+# Configuration to meet the requirements for exam lab
+cd /home/van/ansible/roles/
+
+git clone https://github.com/bbatsche/Ansible-Nginx-Passenger-Role.git
+
+mv Ansible-Nginx-Passenger-Role bbatsche.Nginx
+```
+
 ## .vimrc config to help in the exame
 
 ```bash
