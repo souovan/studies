@@ -1,7 +1,7 @@
 # Playbook examples for the exam
 
 ```yaml
-# mount_iso.yml
+# playbook mount_iso.yml
 - name: configure mount ISO
   hosts: all
   tasks:
@@ -15,7 +15,7 @@
 ```
 
 ```yaml
-# configure_yum.yml
+# playbook configure_yum.yml
 - name: configure yum
   hosts: all
   tasks:
@@ -40,7 +40,7 @@
 ```
 
 ```yaml
-# requirements.yml
+# roles requirements.yml
 - src: https://github.com/bbatsche/Ansible-PHP-Site-Role.git
   name: phpinfo
 
@@ -109,7 +109,7 @@ My host is {{ ansible_fqdn }} {{ ansible_default_ipv4.address }}
 ```
 
 ```yaml
-# webcontent.yml
+# playbook webcontent.yml
 - name: webcontent playbook
   hosts: dev
   tasks:
@@ -148,7 +148,7 @@ My host is {{ ansible_fqdn }} {{ ansible_default_ipv4.address }}
 ```
 
 ```ini
-# jinja2 hwreport.txt
+# jinja2 file hwreport.txt
 HOSTNAME={{ ansible_hostname }}
 MEMORY={{ ansible_memtotal_mb }}
 BIOS={{ ansible_bios_version }}
@@ -158,7 +158,7 @@ DISK_SIZE_VDB={{ ansible_devices.vdb.size | default('NONE') }}
 ```
 
 ```yaml
-# hwreport.yml
+# playbook hwreport.yml
 - name: collect hardware report from all nodes
   hosts: all
   tasks:
@@ -174,5 +174,96 @@ DISK_SIZE_VDB={{ ansible_devices.vdb.size | default('NONE') }}
         dest: /root/hwreport.txt
 ```
 
+```yaml
+# playbook issue.yml
+- name: configure the /etc/issue
+  hosts: all
+  tasks:
+   
+    - name: configure /etc/issue dev
+      ansible.builtin.copy:
+        content: "Development"
+        dest: /etc/issue
+      when: inventory_hostname in groups['dev']
 
+    - name: configure /etc/issue test
+      ansible.builtin.copy:
+        content: "Test"
+        dest: /etc/issue
+      when: inventory_hostname in groups['test']
+
+    - name: configure /etc/issue prod
+      ansible.builtin.copy:
+        content: "Production"
+        dest: /etc/issue
+      when: inventory_hostname in groups['prod']
+```
+
+```yaml
+# playbook hosts.yml
+- name: collect hosts connection info and updates /etc/hosts
+  hosts: all
+  tasks:
+
+    - name: copy the template to the host file 
+      ansible.builtin.template:
+        src: myhosts.j2
+        dest: /etc/myhosts
+      when: inventory_hostname in groups['dev']
+```
+
+```ini
+# jinja2 file myhosts.j2
+127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1       localhost localhost.localdomain localhost6 localhost6.localdomain6
+{% for x in groups['all'] %}
+{{ hostvars[x].ansible_default_ipv4.address }} {{ hostvars[x].ansible_fqdn }} {{ hostvars[x].ansible_hostname }}
+{% endfor %}
+```
+
+Check [LVM Exercise Nodes preparation](secao3.md#lvm-exercise-nodes-preparation)
+
+```yaml
+# playbook lvm.yml
+- name: lvm playbook
+  hosts: all
+  tasks:
+   
+    - block:
+        - block:
+            - name: create lv of 1500m
+              community.general.lvol:
+                vg: research
+                lv: data
+                size: 1500m
+              when: ansible_lvm.vgs.research.size_g == "2.00"
+        - block:
+            - name: display message vg size is insufficient
+              debug:
+                msg: "INSUFFICIENT SIZE OF VG"
+              when: ansible_lvm.vgs.research.size_g == "1.00"
+            - name: create lv of 800M
+              community.general.lvol:
+                vg: research
+                lv: data
+                size: 800m
+              when: ansible_lvm.vgs.research.size_g == "1.00"
+      when: ansible_lvm.vgs.research is defined
+
+   #- name: debugging
+   #  debug:
+   #    msg: "{{ ansible_facts['ansible_lvm']['vgs'] }}"
+   #  when: ansible_lvm.vgs.research is defined
+
+    - name: format the lv with ext4 filesystem
+      ansible.builtin.filesystem:
+        fstype: ext4
+        dev: /dev/research/data
+      when: ansible_lvm.vgs.research is defined
+
+    - name: display message device not found
+      debug:
+        msg: "VG NOT FOUND"
+      when: ansible_lvm.vgs.research is not defined
+```
 
