@@ -14,6 +14,13 @@ dnf install -y ansible-core
 ```bash
 # Install ansible-navigator on ansible node
 pip install ansible-navigator
+# or
+sudo python3-pip install ansible-navigator
+```
+
+```bash
+# Install the ansible rhel-system-roles
+sudo dnf install -y rhel-system-roles
 ```
 
 > [!NOTE]
