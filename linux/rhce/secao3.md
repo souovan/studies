@@ -83,3 +83,8 @@ ssh node5 -- sudo vgcreate research /dev/vdb1
 
 ssh node5 -- sudo vgs
 ```
+
+```bash
+# Confirm selinux config
+ansible all -a "cat /etc/selinux/config"
+```
