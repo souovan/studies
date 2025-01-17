@@ -267,3 +267,132 @@ Check [LVM Exercise Nodes preparation](secao3.md#lvm-exercise-nodes-preparation)
       when: ansible_lvm.vgs.research is not defined
 ```
 
+```yaml
+# playbook selinux.yml
+- hosts: all
+  vars:
+    selinux_policy: targeted
+    selinux_state: enforcing
+  roles:
+    - rhel-system-roles.selinux
+```
+
+```yaml
+# playbook1 packages.yml
+- name: install multiple packages
+  hosts: all
+  tasks:
+    
+    - name: install php and mariadb
+      ansible.builtin.package:
+        name: 
+          - php
+          - mariadb
+        state: present 
+      when: inventory_hostname in groups['dev'] or inventory_hostname in groups['test'] or inventory_hostname in groups['prod']
+
+    - name: Install the 'RPM Development tools' package group
+      ansible.builtin.dnf:
+        name: '@RPM Development tools'
+        state: present
+      when: inventory_hostname in groups['dev']
+
+    - name: Update all packages on dev
+      ansible.builtin.package:
+        name: "*"
+        state: latest
+      when: inventory_hostname in groups['dev']
+```
+
+```yaml
+# playbook2 packages.yml
+- hosts: dev,test,prod
+  tasks:
+
+    - name: Install php and mariadb
+      ansible.builtin.dnf:
+        name:
+          - php
+          - mariadb
+        state: present
+
+- hosts: dev
+  tasks:
+    
+    - name: Install the 'Develoment Tools' package group
+      ansible.builtin.dnf:
+        name: '@RPM Development Tools'
+        state: present
+
+    - name: Upgrade all packages
+      ansible.builtin.dnf:
+        name: "*"
+        state: latest
+```
+
+```yaml
+# file vault.yml
+pw_developer: lambdev
+pw_manager: lammgr
+```
+
+```yaml
+# file user_list.yml
+users:
+  - name: david
+    job: developer
+    password_expire_days: 10
+  - name: nancy
+    job: manager
+    password_expire_days: 10
+  - name: haley
+    job: developer
+    password_expire_days: 10
+```
+
+```yaml
+# playbook users.yml
+- name: create user developer
+  hosts: dev,test
+  vars_files:
+    - user_list.yml
+    - vault.yml
+  tasks:
+
+      - name: create group opsdev
+        ansible.builtin.group:
+          name: opsdev 
+          state: present
+
+      - name: create user who has developer job
+        ansible.builtin.user:
+          name: "{{ item.name }}"
+          groups: opsdev
+          state: present
+          password: "{{ pw_developer | password_hash('sha512') }}"
+          password_expire_max: "{{ item.password_expire_days }}"
+        loop: "{{ users }}"
+        when: item.job == "developer"
+
+- name: create user manager
+  hosts: test
+  vars_files:
+    - user_list.yml
+    - vault.yml
+  tasks:
+  
+      - name: create group opsmgr
+        ansible.builtin.group:
+          name: opsmgr 
+          state: present
+
+      - name: create user who has manager job
+        ansible.builtin.user:
+          name: "{{ item.name }}"
+          groups: opsmgr
+          state: present
+          password: "{{ pw_manager | password_hash('sha512') }}"
+          password_expire_max: "{{ item.password_expire_days }}"
+        loop: "{{ users }}"
+        when: item.job == "manager"
+```
