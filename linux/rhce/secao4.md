@@ -37,3 +37,8 @@ become_user=root
 become_ask_pass=false
 ```
 
+## .vimrc
+
+```vim
+autocmd FileType yaml setlocal ts=2 sw=2 ai et cuc nu
+```
