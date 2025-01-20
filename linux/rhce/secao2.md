@@ -17,6 +17,7 @@ ansible-doc <ansible_module>
 ```
 
 ```bash
+# When not available via ansible-doc
 check the README inside the role path
 ```
 
