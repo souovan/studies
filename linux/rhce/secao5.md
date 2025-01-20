@@ -396,3 +396,17 @@ users:
         loop: "{{ users }}"
         when: item.job == "manager"
 ```
+
+```yaml
+# Playbook timesync.yml
+- name: Configure NTP
+  hosts: all
+  vars:
+    timesync_ntp_servers:
+    - hostname: 200.160.7.186 # NTP.br
+      iburst: true
+  roles:
+    - rhel-system-roles.timesync
+  tasks:
+    - command: timedatectl set-ntp true
+```
