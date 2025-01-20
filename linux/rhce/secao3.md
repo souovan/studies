@@ -85,6 +85,13 @@ ssh node5 -- sudo vgs
 ```
 
 ```bash
-# Confirm selinux config
+# Check selinux config
 ansible all -a "cat /etc/selinux/config"
+```
+
+```bash
+# Check NTP configuration
+ansible all -a "chronyc sources -v"
+# or
+ansible all -a "timedatectl"
 ```
