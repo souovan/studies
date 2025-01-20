@@ -39,7 +39,11 @@ mv Ansible-Nginx-Passenger-Role bbatsche.Nginx
 ## .vimrc config to help in the exame
 
 ```bash
-autocmd FileType yaml ai ts=2 sw=2 et cuc nu
+autocmd FileType yaml setlocal ai ts=2 sw=2 et cuc nu
 ```
 
+```bash
+# Generates an ansible.cfg example file
+ansible-config init --disabled -t all > ansible.cfg
+```
 
