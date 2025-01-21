@@ -157,21 +157,67 @@ DISK_SIZE_VDA={{ ansible_devices.vda.size | default('NONE') }}
 DISK_SIZE_VDB={{ ansible_devices.vdb.size | default('NONE') }}
 ```
 
+```ini
+# template hwreport.empty
+hostname
+memory
+biosversion
+cpu
+biosversion
+vdasize
+vdbsize
+```
+
 ```yaml
-# playbook hwreport.yml
+# playbook hwreport1.yml
 - name: collect hardware report from all nodes
   hosts: all
   tasks:
    
    #- name: Download the file
    #  ansible.builtin.get_url:
-   #    url: http://....
+   #    url: http://..../hwreport.txt
    #    dest: /root/hwreport.txt
 
     - name: generate report
       ansible.builtin.template:
         src: hwreport.txt
         dest: /root/hwreport.txt
+```
+
+```yaml
+# playbook hwreport2.yml
+- hosts: all
+  tasks:
+    
+   #- name: download the file template
+   #  ansible.builtin.get_url:
+   #    url: http://content.../hwreport.empty
+   #    dest: /root/hwreport.txt
+
+    - name: generate the empty template for the lab
+      ansible.builtin.copy:
+        src: hwreport.empty
+        dest: /root/hwreport.txt
+
+    - name: collect the data and fill the template
+      ansible.builtin.replace:
+        regexp: "{{ item.src }}"
+        replace: "{{ item.dest }}"
+        dest: /root/hwreport.txt
+      with_items:
+        - src: "hostname"
+          dest: "{{ ansible_hostname }}"
+        - src: "cpu"
+          dest: "{{ ansible_processor }}"
+        - src: "biosversion"
+          dest: "{{ ansible_bios_version }}"
+        - src: "memory"
+          dest: "{{ ansible_memtotal_mb }}"
+        - src: "vdasize"
+          dest: "{{ ansible_devices.vda.size|default('NONE') }}"
+        - src: "vdbsize"
+          dest: "{{ ansible_devices.vdb.size|default('NONE') }}"
 ```
 
 ```yaml
@@ -409,4 +455,15 @@ users:
     - rhel-system-roles.timesync
   tasks:
     - command: timedatectl set-ntp true
+```
+
+```yaml
+# Playbook balance.yml
+- hosts: balancers
+  roles:
+    - balancer
+
+- hosts: webservers
+  roles:
+    - phpinfo
 ```
