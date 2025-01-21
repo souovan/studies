@@ -283,8 +283,10 @@ server:/export  /mountpoint  nfs  rw  0 0
       /mnt/docs  -rw,sync  serverb:/shares/docs
       ```
   - **Mapa indireto**
-    >[!IMPORTANT]
-    > Uma montagem indireta ocorre quando o local do ponto de montagem não é conhecido até que a demanda de montagem ocorra **o diretório de montagem é criado automaticamente**. 
+    
+>[!IMPORTANT]
+>Uma montagem indireta ocorre quando o local do ponto de montagem não é conhecido até que a demanda de montagem ocorra **o diretório de montagem é criado automaticamente**.
+    
   - Quando um servidor NFS exporta vários subdiretórios dentro de um diretório, o montador automático poderá ser configurado para acessar qualquer um desses subdiretórios com uma única entrada de mapeamento.
   - Necessário criar arquivo de mapeamento conforme exemplo `/etc/auto.master.d/indirect.autofs` contendo:
     ```
@@ -297,7 +299,7 @@ server:/export  /mountpoint  nfs  rw  0 0
     *  -rw,sync  serverb:/shares/&
     ```
     
-    >[!TIP]
-    > O ponto de montagem (ou chave) é um asterisco (*) e o subdiretório no local de origem é um e comercial (&). Tudo mais na entrada é igual.
-    > 
-    > Quando um usuário tentar acessar /shares/work, a chave * (que é work, neste exemplo) substitui o & no local de origem e serverb:/exports/work é montado. 
+>[!TIP]
+>O ponto de montagem (ou chave) é um asterisco (*) e o subdiretório no local de origem é um e comercial (&). Tudo mais na entrada é igual.
+> 
+>Quando um usuário tentar acessar /shares/work, a chave * (que é work, neste exemplo) substitui o & no local de origem e serverb:/exports/work é montado. 
