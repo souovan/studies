@@ -302,4 +302,4 @@ server:/export  /mountpoint  nfs  rw  0 0
 >[!TIP]
 >O ponto de montagem (ou chave) é um asterisco (*) e o subdiretório no local de origem é um e comercial (&). Tudo mais na entrada é igual.
 > 
->Quando um usuário tentar acessar /shares/work, a chave * (que é work, neste exemplo) substitui o & no local de origem e serverb:/exports/work é montado. 
+>Quando um usuário tentar acessar `/shares/work, a chave * (que é work, neste exemplo) substitui o & no local de origem e `serverb:/exports/work é montado. 
