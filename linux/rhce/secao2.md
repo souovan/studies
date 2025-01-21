@@ -48,12 +48,17 @@ ansible-navigator collections
 
 ## to list ansible available modules
 
-```
+```bash
 # list all available modules
 ansible-doc --list
 ```
 
-```
+```bash
 # filter for builtin modules
 ansible-doc --list | grep builtin
+```
+
+```vim
+" Enable vim to show a ($) sign in the end of line to show that it has no trilling spaces
+set list
 ```
