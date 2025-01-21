@@ -51,6 +51,11 @@ ansible-galaxy init <role_name>
 ```
 
 ```bash
+# List roles available
+ansible-galaxy list
+```
+
+```bash
 # Decrypt or encrypt a file with vault using a file as source of secret
 ansible-vault decrypt vault.yml --vault-pass-file secret.txt
 
