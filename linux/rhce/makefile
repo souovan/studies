@@ -38,6 +38,12 @@ shutdown-vms: ## Shutdown hosts Lab VMs
 		sudo virsh shutdown $$item; \
 	done
 
+reset-ansible: ## Clean all Ansible VM configuration
+	@echo "limpando toda configuração da VM Ansible"
+	ssh ansible -- "rm -rf /home/van/ansible; \
+	rm /home/van/.vimrc; \
+	sudo dnf remove rhel-system-roles -y"
+
 revert-snapshot-ansible: ## Revert ansible VM to snapshot "pre-collection-installs"
 	@echo "revertendo snapshot ansible para snapshot: $(SNAPSHOT_ANSIBLE)"; \
 	sudo virsh snapshot-revert ansible --snapshotname $(SNAPSHOT_ANSIBLE)
