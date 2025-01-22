@@ -1,0 +1,124 @@
+Q1. Install and configure ansible control node as follows:
+* install the required package
+* create static inventory file called /home/van/ansible/inventory
+
+    - node1 is a member of the dev host group
+    - node2 is a member of the test host groups
+    - node3 and node4 are members of the prod host group
+    - node5 is a member of the balancers host groups
+    - the prod group is a member of the webservers host group
+* create a configuration file called ansible.cfg as follows:
+    - the host inventory file should be defined as /home/van/ansible/inventory
+    - the location of roles used in playbooks should be as /home/student/ansible/roles
+    - the localtion of collections used in playbooks should be created as /home/van/ansible/collections
+
+Q2. create a playbook adhoc.yml for configuring repository on all nodes
+
+Q3. Install the collections:
+* create a directory collections under /home/van/ansible
+* using URL http:// to install ansible.posix collection under collections directory
+* using URL http:// to install community.general collection under collections directory
+
+Q4. Install the roles
+* create directory roles under /home/van/ansible
+* create playbook called requirements.yml under roles directory and download the given roles under it using galaxy command
+* role name should be balancer and download it using this URL https://github.com/bbatsche/Ansible-PHP-Site-Role.git
+* role name should be phpinfo and download it using this URL https://github.com/githubixx/ansible-role-haproxy.git
+
+Q5. Create offline role named apache under roles directory
+* initial httpd package and service should be started and enabled
+* host the web using the template.j2
+* the template.j2 should contain 
+    My host is HOSTNAME on IPADDRESS
+    where hostname is fully qualified domain name 
+* create playbook called apache_role.yml and run the role on dev group
+
+Q6. Create a playbook called roles.yml and it should run balancer and phpinfo roles
+* run the balancer role on balancers group
+* run the phpinfo role on webservers group
+
+Q7.2 Create a playbook called selinux.yml and use systemroles
+* set selinux mode as enforcing on all managed nodes
+
+Q8. Create a playbook called /home/van/ansible/packages.yml that:
+Install packages on multiple groups:
+* install php and mariadb package on dev, test and prod group
+* install "RPM Development Tools" group package on dev group
+* update all packages on dev group
+
+Q9. Create a playbook called webcontent.yml and it should run on dev group
+* create a directory /devweb and it should be owned by apache group
+* /devweb directory should have context type as "httpd"
+* assing permissions for user=rwx, group=rwx, others=rx and group special permission should be applied to /devweb
+* create index.html file under /devweb and file should have content "Development"
+* link /devweb to /var/www/html/devweb
+
+Q10. Collect hardware report using a playbook on all nodes
+* download hwreport.txt from the http:// and save it under /root
+
+/root/hwreport.txt should have content with node information as key=value
+# hwreport
+HOSTNAME=
+MEMORY=
+BIOS=
+CPU=
+DISK_SIZE_VDA=
+DISK_SIZE_VDB=
+
+* if there is no information it should show "NONE"
+* playbook name should be hwreport.yml
+
+Q11. Replace file /etc/issue on all managed nodes
+* in dev group /etc/issue should have content "Development"
+* in test group /etc/issue should have content "Test"
+* in prod group /etc/issue should have content "Production"
+* Playbook name issue.yml and run on all managed nodes
+
+Q12. Download file http:// 
+* myhosts.j2 is having content
+    127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+    ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+* the file should collect all node information like ipaddress, fqdn, hostname and it should be same as /etc/hosts, when the playbook
+is run on all the managed nodes it must store values in the file /etc/myhosts
+finally /etc/myhosts should be like as below:
+    127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+    ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+
+    192.168.124.2	node1	node1.9	node1.9.local
+    192.168.124.3	node2	node2.9	node2.9.local
+    192.168.124.4	node3	node3.9	node3.9.local
+    192.168.124.5	node4	node4.9	node4.9.local
+    192.168.124.6	node5	node5.9	node5.9.local
+
+* the playbook name hosts.yml and run it on dev group
+
+Q13. Create a variable file vault.yml and that file should contain variable and its value
+pw_developer is value iamdev
+pw_manager is value iammgr
+* vault.yml file should be encrypted using password "P@ssword"
+* store password in a file named secret.txt and which is used to encrypt the variable file
+
+Q14. Download the variable file 
+http://...users_list.yml and write a playbook named users.yml and then run the playbook 
+on all the nodes using two variables files users_list.yml and vault.yml
+* create a group opsdev
+* create user from users variable who job is equal to developer and need to be in opsdev group
+* assing a password using SHA512 format and run playbook on dev and test group
+* user password is {{ pw_developer }}
+* create a group opsmgr 
+* create user from users variable who job is equal to manager and need to be in opsmgr group
+* assign a password using SHA512 format and run playbook on test group
+* user password is {{ pw_manager }}
+* use when condition for each play
+
+Q16. Create a cronjob for the user student on all nodes, playbook name is crontab.yml and the job details are below:
+* every 2 minutes the job will execute logger "EX294 in progress"
+
+Q17. Create a logical volume named data of 1500M size from volume group "research"
+* verify if vg not exist then it should debug msg "vg not found"
+* 1500M lv size is not existed then is debug msg "Insufficient size of vg"
+* if logical volume is created then assing file-system as "ext4"
+* do not perform any mounting for this lv
+* the playbook name lvm.yml run on all nodes
+
