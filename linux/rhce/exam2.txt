@@ -55,7 +55,6 @@ Q9. Create a playbook called webcontent.yml and it should run on dev group
 
 Q10. Collect hardware report using a playbook on all nodes
 * download hwreport.txt from the http:// and save it under /root
-
 /root/hwreport.txt should have content with node information as key=value
 # hwreport
 HOSTNAME=
@@ -64,7 +63,6 @@ BIOS=
 CPU=
 DISK_SIZE_VDA=
 DISK_SIZE_VDB=
-
 * if there is no information it should show "NONE"
 * playbook name should be hwreport.yml
 
