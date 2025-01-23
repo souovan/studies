@@ -467,3 +467,16 @@ users:
   roles:
     - phpinfo
 ```
+
+```yaml
+# Playbook crontab.yml
+- hosts: all
+  tasks:
+
+    - name: create a crontab
+      ansible.builtin.cron:
+        name: "van"
+        minute: "*/2"
+        job: /usr/bin/logger "EX294 in progress"
+        state: present
+```
