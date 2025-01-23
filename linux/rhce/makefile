@@ -42,7 +42,9 @@ reset-ansible: ## Clean all Ansible VM configuration
 	@echo "limpando toda configuração da VM Ansible"
 	ssh ansible -- "rm -rf /home/van/ansible; \
 	rm /home/van/.vimrc; \
-	sudo dnf remove rhel-system-roles -y"
+	sudo dnf remove rhel-system-roles -y; \
+	sudo dnf remove ansible-core -y; \
+	sudo -s pip3 uninstall ansible-navigator -y"
 
 revert-snapshot-ansible: ## Revert ansible VM to snapshot "pre-collection-installs"
 	@echo "revertendo snapshot ansible para snapshot: $(SNAPSHOT_ANSIBLE)"; \
