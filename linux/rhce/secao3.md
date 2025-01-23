@@ -77,7 +77,7 @@ ssh node4 -- sudo pvcreate /dev/vdb1
 ssh node4 -- sudo vgcreate research /dev/vdb1
 
 ssh node4 -- sudo vgs
-# Create a partition on node4
+# Create a partition on node5
 ssh node5 -- sudo parted /dev/vdb --script mklabel gpt mkpart primary 0% 100% set 1 lvm on
 
 ssh node5 -- sudo partprobe /dev/vdb
