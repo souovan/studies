@@ -56,6 +56,10 @@ ansible-doc --list
 ```bash
 # filter for builtin modules
 ansible-doc --list | grep builtin
+#
+ansible-doc --list | grep .posix
+# 
+ansible-doc --list | grep community.general.
 ```
 
 ```vim
