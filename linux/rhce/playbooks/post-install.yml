@@ -1,0 +1,9 @@
+---
+- name: Post provisioning tasks
+  hosts: lab
+  gather_facts: false
+  tasks:
+    - name: Display lab summary
+      debug:
+        msg: "Host {{ inventory_hostname }} pronto para exercícios RHCE."
+...

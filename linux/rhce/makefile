@@ -12,11 +12,11 @@ RED = \033[1;31m
 GREEN = \033[1;32m
 RESET = \033[0m
 
-VMS_WITH_ANSIBLE := "ansible" "node1.9" "node2.9" "node3.9" "node4.9" "node5.9"
-VMS := "node1.9" "node2.9" "node3.9" "node4.9" "node5.9"
-
-SNAPSHOT := "updated-configured"
-SNAPSHOT_ANSIBLE := "pre-collection-installs"
+VMS_WITH_ANSIBLE := ansible node1 node2 node3 node4 node5
+VMS := node1 node2 node3 node4 node5
+INVENTORY := inventory
+PLAYBOOK := playbooks/master.yml
+VAGRANT := VAGRANT_DEFAULT_PROVIDER=vmware_desktop vagrant
 
 # VARIABLE="some-value"
 
@@ -26,38 +26,34 @@ SNAPSHOT_ANSIBLE := "pre-collection-installs"
 # shell: hello ## Calls hello task and Print $SHELL value
 # 	@echo ${SHELL}
 
-start-vms: ## Start hosts Lab VMs
-	@for item in $(VMS); do \
-		echo "starting VM: $$item"; \
-		sudo virsh start $$item; \
-	done
+start-vms: ## Start all lab VMs with Vagrant (vmware_desktop provider)
+	@echo "Starting Vagrant environment..."
+	@$(VAGRANT) up
 
-shutdown-vms: ## Shutdown hosts Lab VMs
-	@for item in $(VMS); do \
-		echo "starting VM: $$item"; \
-		sudo virsh shutdown $$item; \
-	done
+start-ansible: ## Start only the Ansible control node
+	@echo "Starting Ansible control node..."
+	@$(VAGRANT) up ansible
 
-reset-ansible: ## Clean all Ansible VM configuration
-	@echo "limpando toda configuração da VM Ansible"
-	ssh ansible -- "rm -rf /home/van/ansible; \
-	rm /home/van/.vimrc; \
-	sudo dnf remove rhel-system-roles -y; \
-	sudo dnf remove ansible-core -y; \
-	sudo -s pip3 uninstall ansible-navigator -y"
+provision: ## Re-run provisioning on the Ansible control node
+	@echo "Re-provisioning Ansible control node..."
+	@$(VAGRANT) provision ansible
 
-revert-snapshot-ansible: ## Revert ansible VM to snapshot "pre-collection-installs"
-	@echo "revertendo snapshot ansible para snapshot: $(SNAPSHOT_ANSIBLE)"; \
-	sudo virsh snapshot-revert ansible --snapshotname $(SNAPSHOT_ANSIBLE)
+shutdown-vms: ## Gracefully stop all lab VMs
+	@echo "Stopping Vagrant environment..."
+	@$(VAGRANT) halt
 
-revert-snapshot-hosts: ## Revert hosts VMS to snapshot "updated-configured"
-	@for item in $(VMS); do \
-		echo "revertendo snapshot $$item para snapshot: $(SNAPSHOT)"; \
-		sudo virsh snapshot-revert $$item --snapshotname $(SNAPSHOT); \
-	done
+destroy-vms: ## Destroy all lab VMs
+	@echo "$(RED)Destroying Vagrant environment...$(RESET)"
+	@$(VAGRANT) destroy -f
 
-revert-snapshot-all: ## Revert all VMS to snapshot "updated-configured"
-	@for item in $(VMS_WITH_ANSIBLE); do \
-		echo "revertendo snapshot $$item para snapshot: $(SNAPSHOT)"; \
-		sudo virsh snapshot-revert $$item --snapshotname $(SNAPSHOT); \
-	done
+status: ## Show Vagrant status for the lab
+	@$(VAGRANT) status
+
+ssh-%: ## SSH into a VM using Vagrant (usage: make ssh-node1)
+	@$(VAGRANT) ssh $*
+
+ansible-ping: ## Run ansible ping against all hosts
+	ansible -i $(INVENTORY) all -m ping
+
+ansible-play: ## Run main Ansible playbook
+	ansible-playbook -i $(INVENTORY) $(PLAYBOOK)

@@ -1,0 +1,46 @@
+---
+- name: Configure Ansible control node
+  hosts: ansible
+  become: true
+  vars:
+    controller_home: /home/vagrant
+    project_path: "{{ controller_home }}/ansible"
+  tasks:
+    - name: Ensure base packages present
+      dnf:
+        name:
+          - git
+          - ansible-core
+          - vim
+          - bash-completion
+        state: present
+
+    - name: Create project directory
+      file:
+        path: "{{ project_path }}"
+        state: directory
+        owner: vagrant
+        group: vagrant
+        mode: "0755"
+
+    - name: Ensure ansible.posix collection installed
+      become: false
+      environment:
+        HOME: "{{ controller_home }}"
+      command:
+        argv:
+          - ansible-galaxy
+          - collection
+          - install
+          - ansible.posix
+      args:
+        creates: "{{ controller_home }}/.ansible/collections/ansible_collections/ansible/posix/MANIFEST.json"
+
+    - name: Drop helpful motd
+      copy:
+        dest: /etc/profile.d/rhce-lab.sh
+        mode: "0644"
+        content: |
+          #!/bin/bash
+          echo "Bem-vindo ao laboratório RHCE - use 'ansible-playbook /vagrant/playbooks/master.yml' a partir do controlador."
+...

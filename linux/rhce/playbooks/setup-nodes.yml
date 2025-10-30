@@ -1,0 +1,32 @@
+---
+- name: Configure managed nodes
+  hosts: lab_hosts
+  become: true
+  tasks:
+    - name: Ensure required packages are installed
+      dnf:
+        name:
+          - firewalld
+          - python3-libselinux
+          - python3-libsemanage
+        state: present
+
+    - name: Enable and start firewalld
+      service:
+        name: firewalld
+        state: started
+        enabled: true
+
+    - name: Deploy baseline motd
+      template:
+        src: files/motd.j2
+        dest: /etc/motd
+        mode: "0644"
+
+    - name: Allow SSH through firewalld
+      ansible.posix.firewalld:
+        service: ssh
+        state: enabled
+        permanent: true
+        immediate: true
+...
