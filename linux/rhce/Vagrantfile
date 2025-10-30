@@ -1,0 +1,60 @@
+LAB_MACHINES = [
+  { name: "ansible", hostname: "ansible.rhce.lab", ip: "192.168.99.10", memory: 2048, cpus: 2 },
+  { name: "node1", hostname: "node1.rhce.lab", ip: "192.168.99.11" },
+  { name: "node2", hostname: "node2.rhce.lab", ip: "192.168.99.12" },
+  { name: "node3", hostname: "node3.rhce.lab", ip: "192.168.99.13" },
+  { name: "node4", hostname: "node4.rhce.lab", ip: "192.168.99.14" },
+  { name: "node5", hostname: "node5.rhce.lab", ip: "192.168.99.15" }
+].freeze
+
+Vagrant.configure("2") do |config|
+  config.ssh.insert_key = false
+  config.vm.box_check_update = false
+  config.vm.synced_folder ".", "/vagrant", type: "rsync", rsync__exclude: ".git/"
+
+  LAB_MACHINES.each do |machine|
+    config.vm.define machine[:name] do |node|
+      node.vm.box = "almalinux/9"
+      node.vm.hostname = machine[:hostname]
+      node.vm.network :private_network, ip: machine[:ip]
+
+      node.vm.provider :virtualbox do |vb|
+        vb.name = "rhce-#{machine[:name]}"
+        vb.memory = machine.fetch(:memory, 1536)
+        vb.cpus = machine.fetch(:cpus, 1)
+      end
+
+      node.vm.provider :vmware_desktop do |vmware|
+        vmware.gui = false
+        vmware.vmx["displayName"] = "rhce-#{machine[:name]}"
+        vmware.vmx["memsize"] = machine.fetch(:memory, 1536).to_s
+        vmware.vmx["numvcpus"] = machine.fetch(:cpus, 1).to_s
+      end
+
+      node.vm.provision :shell, inline: <<-'SHELL'
+        sudo sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+        sudo systemctl restart sshd
+      SHELL
+
+      if machine[:name] == "ansible"
+        node.vm.provision :shell, inline: <<-'SHELL'
+          sudo dnf install -y epel-release
+          sudo dnf install -y ansible-core git sshpass python3-libselinux python3-libsemanage
+        SHELL
+
+        node.vm.provision :ansible_local do |ansible|
+          ansible.compatibility_mode = "2.0"
+          ansible.config_file = "/vagrant/ansible.cfg"
+          ansible.inventory_path = "/vagrant/inventory"
+          ansible.limit = "all"
+          ansible.playbook = "/vagrant/playbooks/master.yml"
+          ansible.install = false
+        end
+      else
+        node.vm.provision :shell, inline: <<-'SHELL'
+          sudo dnf install -y python3 python3-libselinux python3-libsemanage
+        SHELL
+      end
+    end
+  end
+end

@@ -1,0 +1,13 @@
+[ansible]
+ansible.rhce.lab ansible_host=192.168.99.10 ansible_user=vagrant ansible_ssh_pass=vagrant ansible_become_password=vagrant
+
+[lab_hosts]
+node1.rhce.lab ansible_host=192.168.99.11 ansible_user=vagrant ansible_ssh_pass=vagrant ansible_become_password=vagrant
+node2.rhce.lab ansible_host=192.168.99.12 ansible_user=vagrant ansible_ssh_pass=vagrant ansible_become_password=vagrant
+node3.rhce.lab ansible_host=192.168.99.13 ansible_user=vagrant ansible_ssh_pass=vagrant ansible_become_password=vagrant
+node4.rhce.lab ansible_host=192.168.99.14 ansible_user=vagrant ansible_ssh_pass=vagrant ansible_become_password=vagrant
+node5.rhce.lab ansible_host=192.168.99.15 ansible_user=vagrant ansible_ssh_pass=vagrant ansible_become_password=vagrant
+
+[lab:children]
+ansible
+lab_hosts
