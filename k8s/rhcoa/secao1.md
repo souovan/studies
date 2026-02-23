@@ -13,6 +13,6 @@
 oc create secret docker-registry redhat-registry-secret \
   --docker-server=registry.redhat.io \
   --docker-username=souovan \
-  --docker-password=s9M6QyiqyPsAkX8
+  --docker-password=<secret>
 ```
 * Attach the secret to the ServiceAccount with `oc secrets link default redhat-registry-secret --for=pull`
