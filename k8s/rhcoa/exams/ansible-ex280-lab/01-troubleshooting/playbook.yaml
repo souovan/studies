@@ -1,0 +1,26 @@
+---
+- name: EX280 CLI - Troubleshooting
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Deploy app running as root (SCC issue)
+      command: >
+        oc run restricted-app
+        --image=registry.access.redhat.com/ubi9/ubi
+        --overrides='
+        {
+          "apiVersion": "v1",
+          "spec": {
+            "containers": [{
+              "name": "app",
+              "image": "registry.access.redhat.com/ubi9/ubi",
+              "securityContext": {
+                "runAsUser": 0
+              }
+            }]
+          }
+        }'
+        -n prod-project
+      ignore_errors: yes

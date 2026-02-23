@@ -1,0 +1,310 @@
+1.
+htpasswd -B -b /tmp/htpasswd susan redhat
+oc create secret generic ex280-secure --from-file htpasswd=/tmp/htpasswd -n openshift-config
+
+oc edit oauth cluster
+
+spec:
+  identityProviders:
+  - htpasswd:
+      fileData:
+        name: ex280-secure
+    mappingMethod: claim
+    name: ex280-idp-secure
+    type: HTPasswd
+
+oc get pods -n openshift-authentication
+
+oc login -u bob -p redhat
+
+oc get users
+
+2.
+oc new-project apollo 
+oc new-project test
+oc new-project demo  
+
+oc adm policy add-cluster-role-to-user cluster-admin bob
+
+oc login -u bob -p redhat
+
+oc adm policy remove-cluster-role-from-group self-provisioner system:authenticated:oauth
+
+oc login -u qwerty -p redhat
+
+oc new-project deepak
+
+oc adm policy add-cluster-role-to-user self-provisioner john
+
+oc policy add-role-to-user view natasha -n apollo
+
+oc policy add-role-tou-user view natasha -n test
+
+oc policy add-role-tou-user admin armstrong -n apollo
+
+oc delete secrets kubeadmin -n kube-system
+
+3.
+oc adm groups new site-users
+
+oc adm groups new guest-users
+
+oc adm groups add-users guest-users qwerty
+
+oc adm groups add-users site-users harry susan
+
+oc get group
+
+oc policy add-role-to-group edit site-users -n test
+
+oc policy add-role-to-group view guest-users -n demo
+
+oc get rolebinding -n test
+
+oc get rolebinding -n demo
+
+4.
+oc project rocky
+
+oc create quota my-quota --hard=cpu=2,memory=1G,pods=3,services=6,replicationcontrollers=6,secrets=6
+
+oc get quota
+
+5.
+oc create -f limits.yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: dev-limit
+  namespace: darpa
+spec:
+  limits:
+    - default:
+        memory: 100Mi
+        cpu: 100m
+      min:
+        memory: 5Mi
+        cpu: 5m
+      max:
+        memory: 300Mi
+        cpu: 300m
+      type: Container
+    - min:
+        memory: 5Mi
+        cpu: 5m
+      max:
+        memory: 300Mi
+        cpu: 300m
+      type: Pod
+
+oc get limitranges
+
+6.
+oc get deployment
+
+oc scale deployment httpd --replicas=5
+
+oc get pods
+
+7.
+oc get deployment
+
+oc set resources deployment httpd --requests=cpu=50m,memory=100Mi
+
+oc get pods
+
+oc autoscale deployment httpd --min=2 --max=9 --cpu-percent=60
+
+oc get hpa
+
+8.
+oc create secret generic monday --from-literal MYSQL_PASSWORD=redhat -n monday
+oc get secret -n monday
+
+9.
+oc project monday
+oc get pods
+oc get deployment 
+oc get dc
+oc logs <podname>
+oc get events
+oc set env --from=secret/monday deployment monday
+oc get pods
+
+10.
+openssl req -x509 -newkey rsa:2048 -keyout req.key -out req.crt -nodes -days 365 -subj "/C=US/ST=North Carolina/L=Raleigh/O=Red Hat/CN=quart.apps.ocp4.example.com"
+
+ls
+
+oc create route edge htquart --service=httpd --hostname=quart.apps.ocp4.example.com --cert ./req.crt --key ./req.key
+
+oc get route
+
+11.
+oc project qed
+oc create serviceaccount project1-sa
+oc adm policy add-scc-to-user anyuid -z project1-sa
+
+12.
+oc project qed
+oc get pods
+oc get deployment
+oc get dc
+oc logs <podname>
+oc get events
+
+oc set serviceaccount deployment/gitlab project1-sa
+
+oc get pods
+
+13.
+helm repo add d0280-repo http://helm.ocp4.example.com/charts
+
+helm search repo --versions
+
+helm install example-app do280-repo/etherpad
+
+oc get all
+
+14.
+oc get all
+
+job.yaml
+...
+    spec:
+      containers:
+        - command:
+            - /bin/bash
+            - -c
+            - date; echo "Hello from the kubernetes cluster"
+          image: any given in exam
+          imagePullPolicy: IfNotPresent
+          name: hello
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: OnFailure
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+schedule: 05 05 2 * *
+successfulJobsHistoryLimit: 14
+suspend: false
+status: {}
+
+oc create sa jupiter
+oc adm policy add-scc-to-user anyuid -z jupiter
+oc adm policy add-cluster-role-to-user cluster-admin -z jupiter
+
+oc set sa cronjob.batch/cron-test jupiter
+
+15.
+oc create -f limit.yaml
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-limit-range
+  namespace: "6654"
+spec:
+  limits:
+    - default:
+        memory: 512Mi
+      defaultRequest:
+        memory: 256Mi
+      min:
+        memory: 128Mi
+      max:
+        memory: 1G
+      type: Container
+
+oc adm create-bootstrap-project-template -o yaml > template.yaml
+
+oc get limitranges mem-limit-range -o yaml
+
+combine both files template+limitrange
+
+oc create -f template.yaml -n openshift-config
+
+oc edit projects.config.openshift.io cluster
+
+spec:
+  projectRequestTemplate:
+    name: project-request
+
+oc get pods -n openshift-api-server -web
+
+oc new-project 9988
+
+oc get limitranges -n 9988
+
+16.
+Install operator in the web ui 
+
+18.
+oc describe storageclasses.storage.k8s.io nfs2
+
+oc create -f pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: landing-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+  - ReadOnlyMany
+  nfs:
+    path: /open001
+    server: 192.168.50.254
+  PersistentVolumeReclaimPolicy: Retain
+
+oc crete -f pvc.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: landing-pvc
+spec:
+  accessModes:
+  - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: nfs2
+
+create the deployment in the ui and attach the pvc 
+
+oc expose svc nginx --hostname content.example.ocp4.com
+
+18.
+oc adm must-gather
+
+tar cvaf <filename>.tar.gz <dir>
+
+/usr/bin/script <filename>.tar.gz
+
+20.
+oc apply -f networkpolicy.yaml -n database
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: web-allow-prod
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      networking.k8s.io/v1/network: database
+  ingress:
+  - from:
+    - namespaceSelector:
+       matchLabels:
+         team: devsecops
+      podSelector:
+        matchLabels:
+          deployment: my-web-mysql
+      ports:
+        - protocol: TCP 
+          port: 3306
+
+21.
+Create liveness in web ui

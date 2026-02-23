@@ -1,0 +1,30 @@
+---
+- name: EX280 CLI - Projects and RBAC
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Criar projetos
+      command: oc new-project {{ item }}
+      loop:
+        - dev-project
+        - stage-project
+        - prod-project
+      ignore_errors: yes
+
+    - name: Criar usuário fictício (HTPasswd style simulation)
+      command: oc create user developer1
+      ignore_errors: yes
+
+    - name: Criar serviceaccount cicd
+      command: oc create sa cicd -n stage-project
+      ignore_errors: yes
+
+    - name: Criar role limitada
+      command: >
+        oc create role pod-reader
+        --verb=get
+        --resource=pods
+        -n dev-project
+      ignore_errors: yes

@@ -1,0 +1,21 @@
+---
+- name: EX280 CLI - Application Deployment
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Deploy broken app
+      command: >
+        oc create deployment webapp
+        --image=nginx:wrongtag
+        -n dev-project
+      ignore_errors: yes
+
+    - name: Expose wrong port service
+      command: >
+        oc expose deployment webapp
+        --port=8080
+        --target-port=9999
+        -n dev-project
+      ignore_errors: yes

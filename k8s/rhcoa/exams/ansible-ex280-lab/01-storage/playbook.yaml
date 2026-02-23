@@ -1,0 +1,23 @@
+---
+- name: EX280 CLI - Storage
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Criar PVC incorreto (500Mi proposital)
+      command: oc apply -f -
+      args:
+        stdin: |
+          apiVersion: v1
+          kind: PersistentVolumeClaim
+          metadata:
+            name: app-pvc
+            namespace: stage-project
+          spec:
+            accessModes:
+              - ReadWriteOnce
+            resources:
+              requests:
+                storage: 500Mi
+      ignore_errors: yes

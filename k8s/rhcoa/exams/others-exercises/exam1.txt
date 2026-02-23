@@ -1,0 +1,154 @@
+1. 
+Manage Identity Providers:
+- configure the oauth to use htpasswd as the identity provider
+- secret name should be ex280-secure and identity provider name should be ex280-idp-secure
+- create user bob with password indionce
+- create user qwerty wih password catalog
+- create user john with password john123
+- create user armstrong with password natasha123
+- create user natasha with password arthstrong
+- create user harry with password harry123
+- create user susan with password susuan123
+
+2.
+Manage cluster project and permissions
+- create project with name apollo, test, deployment
+- bob user should have cluster administrator rights
+- john user can create projects
+- qwerty user can not create projects
+- natasha user can only view the resources of apollo and test project
+- armstrong user should have admin access to apollo project
+- kubeadmin user should not exist ( remove kubeadmin user )
+
+3.
+Managing groups
+- create groups with name site-users and guest-users
+- add qwerty user in guest-users group
+- add harry and susan users to site-users
+- give edit permission to site-users group on test project
+- give view permission to guest-users groups on demo project
+
+4.
+Create resource quota for project rocky
+- pods = 3
+- cpu = 2
+- service = 6
+- memory = 1Gi
+- secrets = 6
+- replication controllers = 6
+
+5.
+Create LimitRange for project darpa
+- set the pod memory limit between 5Mi and 300Mi
+- set the container memory limit between 5Mi and 300Mi and container defaul request limit for memory is 100Mi
+- set the pod cpu limit between 5m and 300m 
+- set the container cpu limit between 5m and 300m and container default request limit for cpu is 100m
+
+6.
+Scale application manually
+- scale the single pod replicas to 5 under the project world and make sure all pods should run successfully
+
+7.
+Autoscale of pods in scaling project
+- minimum replicas = 2, maximum replicas = 9 and cpu percentage = 60%
+- default request for container memory should 100Mi and cpu 50m 
+
+8.
+Create secret with name magic in math project
+- the key name should be dirlong
+- the value of key should be asdf234234=
+
+8.
+Create secret with name magic in monday project
+- the key name should be MYSQL_ROOT_PASSWORD
+- the value of key should be redhat
+
+9.
+Use secret in monday project
+- there is one pod already running
+- it should use magic secret previously created
+- application should produce output
+
+10.
+Create secure route in quart project
+- one application is already running named with hello based on http and route htquart
+- it should run on https with self-signed certificate
+- Subject is "/C=US/ST=North Carolina/L=Raleigh/O=Red Hat/CN=quart.apps.ocp4.example.com"
+- it should run on https with following url: https://quart.apps.domain3.example.com
+- application should produce output
+
+11.
+Create service account in qed
+- service account user should be project1-sa
+- service account should be associated with anyuid SCC 
+
+12.
+Deploy application in the project qed
+- there is one pod already running
+- modify the application as is should run with any user as provided by application
+- application should produce output
+
+13.
+Install an helm chart etherpad from repository http://helm.ocp4.example.com/charts
+
+14.
+Create a cronjob test-cronjob
+- 04:05 time
+- every 2 day and every month
+- user image registry.io/imagename
+- the service account and service account name is project1-sa
+- successful job history limit 14
+- project name should be cron-test
+
+15.
+Create an project template with limitrange with container
+- minimum memory is 5Mi max is 1Gi default request 254Mi defaultlimit is 512Mi
+- make sure this template available as default request new-project template for users
+
+16.
+Install and operator file-integrity-manager
+- plan automatic
+- using project openshift-file-integrity
+
+18.
+create a pv
+- name is landing-pv
+- size 1Gi
+- policy retain 
+- mode readonlymany
+create a pvc
+- name is landing-pvc
+- size same as pv
+- mount pvc to /usr/share/nginx/html
+- project name is page 
+- mode same as pv 
+create a deployment with
+- name landing
+- image is registry.ocp4.example.com:8443/redhattraining/hello-world-nginx:v1.0
+- application users this link to show output http://content.example.ocp4.com
+- after attaching storage it shows desired output 
+
+18.
+Collect cluster information and create a tar file with name system10<cluster.id>.tar.gz and send it to redhat support
+- use comand tar cvaf
+- one script has been provided to upload tar in redhat support
+- /usr/bin/script/script system10<cluser.id>.tar.gz 
+- this script can be performed multiple times and it will overwrite the tar file every time
+
+20.
+create an network policy to connect two pod which are resides in different projects
+- first pod is in database namespace and second is in checker project 
+- pod in project checker should communicate with database pod 
+- create an network policy with name mysql-db-conn 
+- policy uses labels to specify namespace with team=devsecops and for pods selector
+- uses label deployment=web-mysq
+- use por 3306/tcp
+- check the logs of checker pod for verification
+
+21.
+Start a probe in project Start
+- create a liveness health probe in project tuesday wich has 1 pod running
+- with port 8443
+- inital delay of 3 sec
+- time out for the probe is 10 sec
+- probe must survive at least 3 crash

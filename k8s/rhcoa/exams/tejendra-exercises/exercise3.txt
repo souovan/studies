@@ -1,0 +1,25 @@
+Configure Quotas for the Project
+
+Create ResourceQuota named my-quota in practice3 project
+
+* The amount of memory consumed across all containers may not exceed 1G
+* The ammount of CPU across all containers may not exceed 2 full cores.
+* The maxium number of replication controllers does not exceed 3.
+* The maxium number of pods does not exceed 3
+* The maxium number of services does not exceed 6
+
+Configure Limits for the Project
+
+* The amount of memory consumed by a single pod is between 100Mi and 300Mi
+* The amount of cpu consumed by a single pod is between 10m and 500m
+* The ammount of cpu consumed by a single container is between 10m and 500m with a default request value of 100Mi
+* The amount of memory consumed by a single container is between 100Mi and 300Mi with a default request value of 100Mi
+
+Configure and Deploy a secure route
+
+Deploy a secure route for an application called hello in the project called practice3
+
+* The application has self-signed certificate available at "/C=US/ST=NC/L=Raleigh/O=RedHat/OU=RHT/CN=hello.apps.ocp4.example.com"
+* The application should be reachable at the following url
+    - https://hello.apps.ocp4.example.com
+

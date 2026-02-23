@@ -1,0 +1,73 @@
+1.
+Create user mike with password blackcat
+Create user david with password openSky
+Create user john with password dec2023
+Identity provider name should be myidentity and secret name is mysecret
+
+2. 
+Create project with name, alpha, beta and gama
+mike user should have cluster administration rights
+john user should have administrative access in project gama
+david should not have access to create project
+kubeadmin user should not exist
+
+3.
+Create groups with named prod and dev
+add mike user in prod groups
+add david and john users in dev
+
+4.
+Give edit permission to dev groups on alpha project
+Give administrative permission to prod group on beta project
+
+5.
+Create resource quota by name myquota for project alpha:
+pods = 10
+cpu = 4
+services = 6
+memory = 1Gi
+secrets = 5
+
+6.
+Create resource limit by name mylimit for project gama, and defining resource limit range as mentioned below:
+i. For pods min cpu limit is "3m" and max is "400m"
+ii. For containers min cpu limit is "10m" and max is "50m" and default request of "30m"
+iii. For pods min memory is "30Mi" and max is "50Mi"
+iv. For containers min memory is "20Mi' and max is "60Mi" and default request of "40Mi"
+
+7.
+There is application in project loan, application is running. Make sure you are able to access the application on browser
+
+8.
+Create service account by name ex280-sa in project1 project, there is an application deployment in that project. The process inside the container can be executed with any user id. Make sure you assign required role to the service id and application should be running and accessible
+
+9.
+?
+
+10.
+In the insurance project you need to set up autoscaling for pods based on CPU utilization. The requirements for autoscaling are as follows:
+The minimum number of replicas should be 3
+The maxium number of replicas should be 9
+Autoscaling should be triggered based on CPU utilization reaching 70%
+Default CPU request for each container is 10m (milicores)
+Default CPU limit for each container is 100m (milicores)
+
+11.
+Create secret with name circus in cloud project. The key name should be decode_value and the value of key should be babablackship=
+
+12.
+Use the secret created earlier under cloud project. There is one pod in cloud project, it should use circus secret decode_value/scriptfile-given = openssl com
+
+13.
+Create a secure route in quart project. There is already an executable file under myCertificate.sh, execute this script to create the certificate. The certificate subject is -subj "/C=US/ST=North Carolina/L=Raleigh/O=Red Hat/CN=todo-https.apps.ocp4.example.com" you can either manually copy the values from subject or can pass the subject as an argument
+- one application is already running. It should run on https with self-signed certificate.
+- the application should produce the output
+
+14.
+Deploy application in the project rocket: There is one pod already running and application should produce output
+
+15.
+An application is deployed in the project modi. There is one pod already running and, Application should produce output
+
+16.
+An application is deployed in the project moon. There is one pod already running and, Application should produce output. Don't make any changes in resources.

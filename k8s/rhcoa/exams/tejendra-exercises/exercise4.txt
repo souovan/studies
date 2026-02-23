@@ -1,0 +1,8 @@
+1. Create a service account called gitlab-sa in the project called practice1. This service account should be able to run application with any user id.
+2. Application gitlab should use the service account gitlab-sa
+3. The application should produce a valid output at URL - http://gitlab.apps.ocp4.example.com
+4. The gitlab application should be scaled to five times
+5. Configure an autoscalling for the gitlab application with following specification
+    a. Minimum number of replicas: 3
+    b. Maximum number of replicas: 10
+    c. Threshold CPU-Percentage: 60

@@ -1,0 +1,21 @@
+---
+- name: EX280 CLI - Networking
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Deny all ingress
+      command: >
+        oc apply -f -
+      args:
+        stdin: |
+          apiVersion: networking.k8s.io/v1
+          kind: NetworkPolicy
+          metadata:
+            name: deny-all
+            namespace: prod-project
+          spec:
+            podSelector: {}
+            policyTypes:
+              - Ingress

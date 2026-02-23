@@ -1,0 +1,13 @@
+---
+- name: Reset EX280 Lab
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Delete projects
+      command: oc delete project {{ item }}
+      loop:
+        - dev-project
+        - stage-project
+        - prod-project
+      ignore_errors: yes

@@ -1,0 +1,17 @@
+1. Configure HTPasswd Identity Provider  
+2. Configure Cluster permissions 
+3. Configure Project permissions 
+4. Create Groups and configure permissions
+
+* Configure the cluster to use an HTPasswd identity provider. The name of the identity provider is cluster-users. The identity provider reads htpasswd credential stored in the compreview-users secret.
+* Ensure that four user accounts exist: admin, leader, developer and qa-engineer. All user accounts must user review as the password.
+* The admin user should be able to modify cluster. leader user should be able to create project, developer and qa-engineer should not be able to modify the cluster. No other user should be able to create project.
+* Remove the kubeadmin user from the cluster
+* Create three projects, front-end, back-end and app-db.
+* The leader user will be admin of projects.
+* The qa-engineer user will be having view access to app-db project.
+* As the admin user, create three users groups: leaders, developers, and qa.
+* Assing the leader user to the leaders group, the developer user to the developers group, and the qa-engineer user to the qa group.
+* The leaders group members are able to edit the back-end and app-db project.
+* The qa group members are able to view front-end project but not edit it.
+

@@ -1,0 +1,3 @@
+api_url: "https://api.crc.testing:6443"
+api_token: "COLE_SEU_TOKEN_AQUI"
+verify_ssl: false
