@@ -16,7 +16,7 @@ VMS_WITH_ANSIBLE := ansible node1 node2 node3 node4 node5
 VMS := node1 node2 node3 node4 node5
 INVENTORY := inventory
 PLAYBOOK := playbooks/master.yml
-VAGRANT := VAGRANT_DEFAULT_PROVIDER=vmware_desktop vagrant
+VAGRANT := VAGRANT_DEFAULT_PROVIDER=libvirt vagrant
 
 # VARIABLE="some-value"
 
