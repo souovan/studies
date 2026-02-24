@@ -5,22 +5,27 @@
 
   tasks:
 
-    - name: Deploy app running as root (SCC issue)
+    - name: Deploy app running as root (SCC test)
       command: >
-        oc run restricted-app
+        oc create deployment restricted-app
         --image=registry.access.redhat.com/ubi9/ubi
-        --overrides='
-        {
-          "apiVersion": "v1",
-          "spec": {
-            "containers": [{
-              "name": "app",
-              "image": "registry.access.redhat.com/ubi9/ubi",
-              "securityContext": {
-                "runAsUser": 0
-              }
-            }]
-          }
-        }'
         -n prod-project
+      ignore_errors: yes
+
+    - name: Patch deployment to run as root and keep container alive
+      command: >
+        oc patch deployment restricted-app -n prod-project
+        --type='json'
+        -p='[
+          {
+            "op": "add",
+            "path": "/spec/template/spec/containers/0/securityContext",
+            "value": {"runAsUser": 0}
+          },
+          {
+            "op": "add",
+            "path": "/spec/template/spec/containers/0/command",
+            "value": ["/bin/bash", "-c", "sleep infinity"]
+          }
+        ]'
       ignore_errors: yes
