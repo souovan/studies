@@ -166,7 +166,7 @@
 # How to create the lab?
 
 ```bash
-curl -o /tmp/Openssl-script.sh https://github.com/souovan/studies/tree/main/k8s/rhcoa/exams/anishrana2001/answers/Openssl-script.sh
+curl -o /tmp/Openssl-script.sh https://github.com/souovan/studies/blob/main/k8s/rhcoa/exams/anishrana2001/answers/Openssl-script.sh
 chmod +x /tmp/Openssl-script.sh
 # Login with kubeadmin or other cluster-admin user
 oc new-project alpha
