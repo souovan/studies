@@ -33,6 +33,12 @@ ansible-playbook 01-networking/playbook.yaml
 ansible-playbook 01-troubleshooting/playbook.yaml
 ```
 
+To clean the lab
+
+```bash
+ansible-playbook reset-lab.yaml
+```
+
 ## Exame 1
 
 ### EX280 Simulation - Application Deployment

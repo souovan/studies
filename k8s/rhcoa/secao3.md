@@ -42,6 +42,29 @@ oc get storageclass
 oc set volumes deployment/postgres-persistent --add --name postgres-storage --type pvc --claim-class crc-csi-hostpath-provisioner --claim-mode rwo --claim-size 2Gi --mount-path /var/lib/pgsql --claim-name postgresql-storage
 ```
 
+### Helm Charts
 
+```bash
+# list if charts is added locally
+helm repo list
+```
+
+```bash
+# add a new repo
+helm repo add <url>
+```
+
+```bash
+# check charts available locally
+helm search repo 
+
+# check charts versions available locally
+helm search repo --versions
+```
+
+```bash
+# install a chart
+helm install <chart-name> <chart-name> --version <x.y.z>
+```
 
 
