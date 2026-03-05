@@ -29,9 +29,9 @@
 ### Create secure Route  with below information
 
 - Create a secure route in `quart` project.
-- Expose application https://anishrana2001.apps-crc.testing
+- Expose application https://souovan.apps-crc.testing
 - Generate self sign certificate using given  subject	
-- "/C=US/ST=North Carolina/L=Raleigh/O=Red Hat/CN=anishrana2001.apps-crc.testing"
+- "/C=US/ST=North Carolina/L=Raleigh/O=Red Hat/CN=souovan.apps-crc.testing"
 - Note: Service already  created  in any given project you just have to expose  service  with https
 - The application should produce the output
 ---
@@ -72,16 +72,6 @@
 
 # Question 11. Create LimitRange for project `orange`:
 
-> [!TIP]
->
-> Prepare the LAB
->
-> ```bash
-> oc login -u harry -p review
-> oc new-project scalling
-> oc new-app --name hello --image registry.ocp4.example.com:8443/redhattraining/hello-world-nginx:v1.0
-> ```
-
 - Set the `pod memory limit` between `5Mi and 300Mi`
 - Set the `container memory limit` between `5Mi and 300Mi` and container `default memory request` is `100Mi`
 - Set the `pod cpu limit` between `5m and 300m`
@@ -96,11 +86,11 @@
 - Default request for containers memory should 100Mi and CPU 50m
 ---
 
-# Question 14. Install an helm chart etherpad from repository http://helm.ocp4.example.com/charts
+# Question 14. Install an helm chart etherpad from repository https://redhat-cop.github.io/helm-charts in the `mass` project
 
 ---
 
-# Question 15. Create a cronjob `test-cron` in the `tiger' project
+# Question 15. Create a cronjob `test-cron` in the `tiger` project
 - `04:05` time
 - Every 2 day and every month
 - Use image `registry.io/nginx`
@@ -136,8 +126,8 @@
 	- Mode same as pv
 - **Create an Deployment with**
 	- Name of deployment is `tiger`
-	- Image is  `registry.ocp4.example.com:8443/redhattraining/hello-world-nginx:v1.0`
-	- Application uses this link to show output http://test-anishrana2001.apps-crc.testing
+	- Image is  `quay.io/redhattraining/hello-world-nginx:v1.0`
+	- Application uses this link to show output http://nfs-souovan.apps-crc.testing
 	- After attaching storage it shows desired output
 ---
 
@@ -197,12 +187,18 @@ oc new-project different-namespace
 oc new-app --name sample-app  --image quay.io/redhattraining/hello-world-nginx:v1.0
 oc new-project tuesday
 oc new-app --name liveness-deployment  --image quay.io/redhattraining/hello-world-nginx:v1.0
+oc new-project orange
+oc new-app --name hello --image quay.io/redhattraining/hello-world-nginx:v1.0
 ```
 
 ## To clean the LAB
 
 ```bash
 oc delete project alpha
+oc delete project beta
+oc delete project app-db
+oc delete project front-end
+oc delete project back-end
 oc delete project quart
 oc delete project cloud
 oc delete project tiger
@@ -210,4 +206,10 @@ oc delete project scalling
 oc delete project network-policy
 oc delete project different-namespace
 oc delete project tuesday
+oc delete project orange
+oc delete project page
+oc delete project souovan
+oc delete project test-pvc
+oc delete project nfs-storage
+oc delete project mass
 ```
