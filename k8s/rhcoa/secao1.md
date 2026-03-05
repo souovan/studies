@@ -16,3 +16,57 @@ oc create secret docker-registry redhat-registry-secret \
   --docker-password=<secret>
 ```
 * Attach the secret to the ServiceAccount with `oc secrets link default redhat-registry-secret --for=pull`
+
+## Create the NFS storageclass
+
+On the host machine where crc vm resides, prepare to be NFS server
+
+```bash
+sudo dnf install -y nfs-utils
+sudo mkdir -p /srv/nfs/kubedata
+sudo chmod 775 /srv/nfs/kubedata
+sudo vi /srv/nfs/kubedata/index.html
+# Add
+NFS LAB!!
+sudo vi /etc/exports
+# Add 
+/srv/nfs/kubedata *(rw,sync,no_root_squash,no_subtree_check,insecure)
+sudo systemctl enable --now nfs-server
+sudo exportfs -rav
+# Enable the firewall
+sudo firewall-cmd --add-service=nfs --permanent
+sudo firewall-cmd --reload
+sudo systemctl restart nfs-server
+# check firewall
+sudo firewall-cmd --list-all
+```
+
+Validate the connection on the crc node
+
+```bash
+oc debug $(oc get nodes -o name | head -1)
+chroot /host
+showmount -e <IP of host machine>
+```
+
+Create the NFS storageclass objects
+
+```bash
+oc create ns nfs-storage
+oc apply -f nfs/
+oc adm policy add-scc-to-user privileged -z nfs-client-provisioner -n nfs-storage
+oc adm policy add-scc-to-user restricted -z nfs-client-provisioner -n nfs-storage
+oc adm policy add-scc-to-user anyuid -z nfs-client-provisioner -n nfs-storage
+oc adm policy add-scc-to-user hostmount-anyuid -z nfs-client-provisioner -n nfs-storage
+```
+
+Apply pvc and pod tests in some namespace
+
+```bash
+oc create ns test-nfs
+oc project test-nfs
+oc apply -f nfs/test-pvc/
+oc get pvc
+watch oc get all
+```
+
