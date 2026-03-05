@@ -67,4 +67,43 @@ helm search repo --versions
 helm install <chart-name> <chart-name> --version <x.y.z>
 ```
 
+> [!TIP]
+>
+> To train for the exam
+> ```bash
+> # Install the training helm repo charts
+> helm repo add redhat-cop https://redhat-cop.github.io/helm-charts
+> # Search for charts in the training repo
+> helm search repo redhat-cop
+> # Install an example chart
+> helm install etherpad --version 0.0.8 redhat-cop/etherpad
+> ```
 
+## Openshift Template
+
+```bash
+# Check the template (if) available
+oc get template -n openshift-config -o yaml
+```
+
+```bash
+# Check the project template
+oc get project.config -o yaml
+```
+
+```bash
+# Creates a bootstrap template
+oc adm create-bootstrap-project-template -o yaml
+```
+
+```bash
+# If any changes are made in the template of namespace openshift-config, check pods of namespace openshift-apiserver
+oc get pods -n openshift-apiserver
+```
+
+## Openshift support information
+
+```bash
+# Get informations about the cluster and filter the cluster ID
+oc get clusterversion version -o yaml | grep clusterID
+```
