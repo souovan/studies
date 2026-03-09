@@ -93,7 +93,7 @@
 # Question 15. Create a cronjob `test-cron` in the `tiger` project
 - `04:05` time
 - Every 2 day and every month
-- Use image `registry.io/nginx`
+- Use image `quay.io/redhattraining/hello-world-nginx:v1.0`
 - Use service account and service account name is `ex280-sa`
 - Successful job history limit `14`
 - Project name should be `tiger`
@@ -176,12 +176,17 @@ oc new-project network-policy
 oc new-app --name hello  --image quay.io/redhattraining/hello-world-nginx:v1.0
 oc expose service/hello
 cat <<EOF | kubectl apply -f -
-kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
 metadata:
   name: deny-all
 spec:
   podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress: []
+  egress: []
 EOF
 oc new-project different-namespace
 oc new-app --name sample-app  --image quay.io/redhattraining/hello-world-nginx:v1.0
