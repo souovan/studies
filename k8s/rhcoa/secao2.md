@@ -458,10 +458,16 @@ oc get endpoints
 oc describe svc <svc>
 ```
 
+```bash
+# Test MYSQL or MARIADB database connection
+mysql -h <host> -P <port> -u <user> -p
+```
+
 ## Scale & Autoscale
 
 ```bash
 # Create a autoscale for a resource
 oc autoscale deploy/<deploy> --name <name> --min=3 --max=10 --cpu-percent=60
 ```
+
 
