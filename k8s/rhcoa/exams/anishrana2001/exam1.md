@@ -212,4 +212,5 @@ oc delete project souovan
 oc delete project test-pvc
 oc delete project nfs-storage
 oc delete project mass
+helm repo remove redhat-cop
 ```
