@@ -1,5 +1,13 @@
 # Configurations to start the EXAM
 
+> [!TIP] 
+>
+> Set the Openshift as the bundle image before start CRC with:
+>
+> `crc config set preset openshift`
+>
+> When staring CRC use: `crc start -d 40` to bootstrap with a disk size of 40G to let all the necessary exam labs to be provisioned
+
 * Login on console.redhat.com
     - navigate to Containers > Clusters
     - click on create cluster then Local tab and follow the instructions
