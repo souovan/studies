@@ -9,3 +9,5 @@ k8s/rhcoa/exams/anishrana2001/*.yaml
 k8s/rhcoa/exams/anishrana2001/*.csr
 k8s/rhcoa/exams/anishrana2001/*.crt
 k8s/rhcoa/exams/anishrana2001/*.key
+k8s/rhcoa/exams/anishrana2001/must*
+k8s/rhcoa/exams/anishrana2001/student*
