@@ -144,14 +144,151 @@
 - Probe must survive atleast `3` crash
 ---
 
-# Question 20. Collect Cluster information and create a tar file with name student101-<cluster.id>.tar.gz and send it to redhat support.
+# Question 20. An application is running on the `chapter1` project. There is one pod running and your task is it must generate the output.
+
+```bash
+oc adm taint node $(oc get nodes | awk '{print $1}' | grep -v NAME) datacenter=bsb:NoSchedule
+oc new-project chapter1
+oc new-app --name webserver-app1 --image quay.io/redhattraining/hello-world-nginx:v1.0 
+```
+
+# Question 21. An application is running on the `chapter2` project. There is one pod running and your task is it must generate the output.
+
+```bash
+oc new-project chapter2
+oc new-app --name webserver-app2 --image quay.io/redhattraining/hello-world-nginx:v1.0
+oc expose service webserver-app2 
+oc patch service webserver-app2 -n chapter2 --type=json -p='[{"op": "replace", "path": "/spec/selector/deployment", "value": "souovan"}]'
+```
+
+# Question 22. An application is running on the `chapter3` project. There is one pod, which is in pending state. Your task is it must generate the output.
+
+```bash
+# Prepare the lab
+oc new-project chapter3
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    app: webserver-app3
+    app.kubernetes.io/component: webserver-app3
+    app.kubernetes.io/instance: webserver-app3
+  name: webserver-app3
+  namespace: chapter3
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      deployment: webserver-app3
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        deployment: webserver-app3
+    spec:
+      containers:
+      - image: quay.io/redhattraining/hello-world-nginx:v1.0
+        imagePullPolicy: IfNotPresent
+        name: webserver-app3
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        disktype: ssd
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+EOF
+oc expose deployment/webserver-app3
+oc expose service webserver-app3
+```
+
+# Question 23. An application is running on the `chapter4` project. There is one pod, which is in pending state. Your task is it must generate the output.
+
+```bash
+# Prepare the lab
+oc new-project chapter4
+oc adm taint node $(oc get nodes | awk '{print $1}' | grep -v NAME) datacenter=bsb:NoSchedule
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    app: webserver-app4
+    app.kubernetes.io/component: webserver-app4
+    app.kubernetes.io/instance: webserver-app4
+  name: webserver-app4
+  namespace: chapter4
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      deployment: webserver-app4
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        deployment: webserver-app4
+    spec:
+      containers:
+      - image: quay.io/redhattraining/hello-world-nginx:v1.0
+        imagePullPolicy: IfNotPresent
+        name: webserver-app4
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        disktype: ssd
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+EOF
+oc expose deployment/webserver-app4
+oc expose service webserver-app4
+oc patch service webserver-app4 -n chapter4 --type=json -p='[{"op": "replace", "path": "/spec/selector/deployment", "value": "souovan"}]'
+```
+
+# Question 24. An application is running on the `chapter5` project. There is one pod, which is in pending state. Your task is it must generate the output.
+
+```bash
+# Prepare the lab
+oc new-project chapter5
+oc new-app --name webserver-app5 --image quay.io/redhattraining/hello-world-nginx:v1.0
+oc patch deployment webserver-app5 -p '{"spec": {"template": {"spec": {"containers": [{"name": "webserver-app5", "resources": {"limits": {"cpu": "2", "memory": "18Gi"}}}]}}}}'
+oc delete replicasets.apps $(oc get replicasets.apps | awk '$4~ /1/ {print $1}')
+```
+
+# Question 25. Collect Cluster information and create a tar file with name student101-<cluster.id>.tar.gz and send it to redhat support.
 - Use command tar cvaf
 - One script has been provided to upload tar in redhat support
 - /usr/bin/script student101-<cluster.id>.tar.gz
 - This script can be performed multiple times and it will overwrite the tar file every time
 ---
-
-
 
 # How to create the lab?
 
@@ -217,5 +354,11 @@ oc delete project souovan
 oc delete project test-pvc
 oc delete project nfs-storage
 oc delete project mass
+oc delete project chapter1
+oc delete project chapter2
+oc delete project chapter3
+oc delete project chapter4
+oc delete project chapter5
+oc label nodes $(oc get nodes | awk '{print $1}' | grep -v NAME) disktype-
 helm repo remove redhat-cop
 ```
