@@ -26,6 +26,11 @@ oc edit <resource>
 oc describe secrets -n kube-system kubeadmin
 ```
 
+```bash
+# Check for user permissions
+oc auth can-i --list
+```
+
 ## Openshift Storage
 
 Container with persistent database
