@@ -147,6 +147,7 @@
 # Question 20. An application is running on the `chapter1` project. There is one pod running and your task is it must generate the output.
 
 ```bash
+# Prepare the lab
 oc adm taint node $(oc get nodes | awk '{print $1}' | grep -v NAME) datacenter=bsb:NoSchedule
 oc new-project chapter1
 oc new-app --name webserver-app1 --image quay.io/redhattraining/hello-world-nginx:v1.0 
@@ -155,6 +156,7 @@ oc new-app --name webserver-app1 --image quay.io/redhattraining/hello-world-ngin
 # Question 21. An application is running on the `chapter2` project. There is one pod running and your task is it must generate the output.
 
 ```bash
+# Prepare the lab
 oc new-project chapter2
 oc new-app --name webserver-app2 --image quay.io/redhattraining/hello-world-nginx:v1.0
 oc expose service webserver-app2 
@@ -280,7 +282,7 @@ oc patch service webserver-app4 -n chapter4 --type=json -p='[{"op": "replace", "
 oc new-project chapter5
 oc new-app --name webserver-app5 --image quay.io/redhattraining/hello-world-nginx:v1.0
 oc patch deployment webserver-app5 -p '{"spec": {"template": {"spec": {"containers": [{"name": "webserver-app5", "resources": {"limits": {"cpu": "2", "memory": "18Gi"}}}]}}}}'
-oc delete replicasets.apps $(oc get replicasets.apps | awk '$4~ /1/ {print $1}')
+oc delete replicasets.apps $(oc get replicasets.apps --no-headers | awk '{print $1}')
 ```
 
 # Question 25. Collect Cluster information and create a tar file with name student101-<cluster.id>.tar.gz and send it to redhat support.
