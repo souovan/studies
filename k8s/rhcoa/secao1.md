@@ -60,19 +60,18 @@ showmount -e <IP of host machine>
 Create the NFS storageclass objects
 
 ```bash
-oc create ns nfs-storage
-oc apply -f nfs/
+oc new-project nfs-storage
 oc adm policy add-scc-to-user privileged -z nfs-client-provisioner -n nfs-storage
 oc adm policy add-scc-to-user restricted -z nfs-client-provisioner -n nfs-storage
 oc adm policy add-scc-to-user anyuid -z nfs-client-provisioner -n nfs-storage
 oc adm policy add-scc-to-user hostmount-anyuid -z nfs-client-provisioner -n nfs-storage
+oc apply -f nfs/
 ```
 
 Apply pvc and pod tests in some namespace
 
 ```bash
-oc create ns test-nfs
-oc project test-nfs
+oc new-proejct test-nfs
 oc apply -f nfs/test-pvc/
 oc get pvc
 watch oc get all
