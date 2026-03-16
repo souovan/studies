@@ -91,6 +91,11 @@ oc describe clusterrolebinding | grep self-provisioner -A4
 oc adm policy remove-cluster-role-from-group self-profisioner system:authenticated:oauth
 ```
 
+```bash
+# Check permissions by namespace
+oc policy who-can get pods -n <namespace>
+```
+
 ### Login method htpasswd
 
 > [!TIP]
