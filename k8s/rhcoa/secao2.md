@@ -406,6 +406,83 @@ oc create secret tls <name> --cert training.crt --key training.key
 oc create route passthrough <name> --service=<svc-name> --hostname=<url>
 ```
 
+## MetalLB
+
+MetalLB is a load-balancer implementation for bare metal Kubernetes clusters, using standard routing protocols.
+
+MetalLB hooks into your Kubernetes cluster, and provides a network load-balancer implementation. In short, it allows you to create Kubernetes services of type LoadBalancer in clusters that don’t run on a cloud provider, and thus cannot simply hook into paid products to provide load balancers.
+
+It is installed by Operator and injects a deamonset speaker on each node of the cluster.
+
+Exposes some controllers to provide balancing in two modes L2 and BGP
+
+### L2
+
+In layer 2 mode, one machine in the cluster takes ownership of the service, and uses standard address discovery protocols (ARP for IPv4, NDP for IPv6) to make those IPs reachable on the local network. From the LAN’s point of view, the announcing machine simply has multiple IP addresses.
+
+### BGP
+
+In BGP mode, all machines in the cluster establish BGP peering sessions with nearby routers that you control, and tell those routers how to forward traffic to the service IPs. Using BGP allows for true load balancing across multiple nodes, and fine-grained traffic control thanks to BGP’s policy mechanisms.
+
+
+#### Controllers
+
+##### IPAddressPoll 
+
+IPAddressPool represents a pool of IP addresses that can be allocated to LoadBalancer services.
+
+```yaml
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: first-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  - 192.168.10.0/24
+```
+
+#####  L2Advertisement
+
+L2Advertisement allows to advertise the LoadBalancer IPs provided by the selected pools via L2.
+
+```yaml
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: example
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - first-pool
+  nodeSelectors:
+  - matchLabels:
+      kubernetes.io/hostname: NodeA
+  - matchLabels:
+      kubernetes.io/hostname: NodeB
+```
+
+##### BGPAdvertisement
+
+BGPAdvertisement allows to advertise the IPs coming from the selected IPAddressPools via BGP, setting the parameters of the BGP Advertisement.
+
+```yaml
+apiVersion: metallb.io/v1beta1
+kind: BGPAdvertisement
+metadata:
+  name: local
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - first-pool
+  aggregationLength: 32
+  localPref: 100
+  communities:
+  - 65535:65282
+```
+
+---
+
 ## Taints and Tolerations
 
 * Taint and Toleration are not related to security
