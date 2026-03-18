@@ -6,7 +6,66 @@
 >
 > `crc config set preset openshift`
 >
+> To enable the monitoring to let check for cluster metrics: `crc config set memory 14336` then `crc config set enable-cluster-monitoring true` before starting the cluster
+>
 > When staring CRC use: `crc start -d 40` to bootstrap with a disk size of 40G to let all the necessary exam labs to be provisioned
+
+> [!TIP]
+>
+> To be able to use some operators like metallb that requires a valid network must be necessary to configure the cluster network by creating some config files and changing the crc config with:
+>
+> Change the `crc` network config:
+>
+> `crc config set network-mode system` 
+>
+> Create user for network configuration. Reference: https://crc.dev/docs/networking/
+>
+> ```bash
+> #!/bin/sh 
+>
+>export LC_ALL=C 
+>
+>systemd-resolve --interface crc --set-dns 8.8.8.8 --set-dns 1.1.1.1 --set-domain ~testing 
+>
+>exit 0
+> ```
+> 
+> If it doesn't work must be necessary to do:
+>
+> `sudo vim /etc/systemd/resolved.conf`
+> and add to it:
+> ```ini
+> [Resolve]
+> DNS=8.8.8.8 1.1.1.1
+> FallbackDNS=8.8.4.4 
+> ```
+>
+> And then restart the systemd-resolved `sudo systemctl restart systemd-resolved`
+>
+> Then delete the `crc` instante and recreate it: `crc delete` and `crc setup` then `crc start -d 40`
+
+> [!WARNING]
+>
+> There is a open issue https://github.com/crc-org/crc/issues/5034 to solve the problem that the operators catalog are not available.
+> 
+> To bypass this is necessary to execute:
+>
+> ```bash
+> oc patch clusterversion version --type=json -p '[{"op": "add", "path": "/spec/capabilities/additionalEnabledCapabilities/-", "value": "CloudCredential"}]'
+> oc patch clusterversion version --type='json' -p='[{"op": "replace", "path": "/spec/overrides/0/unmanaged", "value": false}]'
+> oc patch clusterversion version --type='json' -p='[{"op": "replace", "path": "/spec/overrides/1/unmanaged", "value": false}]'
+> ```
+>
+> Then validate with:
+>
+> `oc get co cloud-credential`
+> 
+> Desired output:
+>
+> ```
+> NAME               VERSION   AVAILABLE   PROGRESSING   DEGRADED   SINCE   MESSAGE
+>cloud-credential   4.20.5    True        False         False      3m22s   
+> ```
 
 * Login on console.redhat.com
     - navigate to Containers > Clusters
