@@ -285,7 +285,9 @@ oc patch deployment webserver-app5 -p '{"spec": {"template": {"spec": {"containe
 oc delete replicasets.apps $(oc get replicasets.apps --no-headers | awk '{print $1}')
 ```
 
-# Question 25. Collect Cluster information and create a tar file with name student101-<cluster.id>.tar.gz and send it to redhat support.
+# Question 25. An application is running on the `lb` project. There is one pod. Configure MetalLB operator to manage load balancing for the service, it must generate output
+
+# Question 26. Collect Cluster information and create a tar file with name student101-<cluster.id>.tar.gz and send it to redhat support.
 - Use command tar cvaf
 - One script has been provided to upload tar in redhat support
 - /usr/bin/script student101-<cluster.id>.tar.gz
@@ -333,6 +335,9 @@ oc new-project tuesday
 oc new-app --name liveness-deployment  --image quay.io/redhattraining/hello-world-nginx:v1.0
 oc new-project orange
 oc new-app --name hello --image quay.io/redhattraining/hello-world-nginx:v1.0
+oc new-project lb
+oc new-app --name hello --image quay.io/redhattraining/hello-world-nginx:v1.0
+oc delete service/hello
 ```
 
 ## To clean the LAB
@@ -361,6 +366,7 @@ oc delete project chapter2
 oc delete project chapter3
 oc delete project chapter4
 oc delete project chapter5
+oc delete project lb
 oc label nodes $(oc get nodes | awk '{print $1}' | grep -v NAME) disktype-
 helm repo remove redhat-cop
 ```
