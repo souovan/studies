@@ -37,7 +37,7 @@
 ---
 
 
-# Question 5. An application is running on the `red` project. There is one pod running and your task is it must generate the output.
+~~# Question 5. An application is running on the `red` project. There is one pod running and your task is it must generate the output.~~
 
 
 # Question 6. Create a Service Account called `ex280-sa` in a `alpha` project. This project is already created for you.
