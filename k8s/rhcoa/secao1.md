@@ -16,20 +16,20 @@
 >
 > Change the `crc` network config:
 >
-> `crc config set network-mode system` 
+> `crc config set network-mode system` and `crc config set nameserver 8.8.8.8`
 >
-> Create user for network configuration. Reference: https://crc.dev/docs/networking/
+> Configure `/etc/NetworkManager/dispatcher.d/99-crc.sh` with below config for network configuration . Reference: https://crc.dev/docs/networking/
 >
 > ```bash
-> #!/bin/sh 
+>#!/bin/sh
 >
->export LC_ALL=C 
+>export LC_ALL=C
 >
->systemd-resolve --interface crc --set-dns 8.8.8.8 --set-dns 1.1.1.1 --set-domain ~testing 
+>systemd-resolve --interface crc --set-dns 192.168.130.11 --set-domain ~testing
 >
 >exit 0
 > ```
-> 
+> ---
 > If it doesn't work must be necessary to do:
 >
 > `sudo vim /etc/systemd/resolved.conf`
