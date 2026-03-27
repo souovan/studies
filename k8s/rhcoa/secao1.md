@@ -43,6 +43,16 @@
 > And then restart the systemd-resolved `sudo systemctl restart systemd-resolved`
 >
 > Then delete the `crc` instante and recreate it: `crc delete` and `crc setup` then `crc start -d 40`
+>
+> ---
+>
+> During tasks of installation from Helm charts may be necessary change the DNS for the host machine with:
+> 
+>```bash
+> sudo nmcli con mod "<connection>" ipv4.dns "8.8.8.8 1.1.1.1"
+> sudo nmcli con mod "<connection>" ipv4.ignore-auto-dns yes
+> sudo systemctl restart NetworkManager
+>```
 
 > [!WARNING]
 >
