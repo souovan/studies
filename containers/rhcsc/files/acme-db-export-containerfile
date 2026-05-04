@@ -1,0 +1,9 @@
+
+FROM mariadb 
+
+COPY scripts/export.sh  /scripts/export.sh
+
+WORKDIR /scripts
+
+CMD ["/scripts/export.sh"]
+

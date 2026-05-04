@@ -1,0 +1,15 @@
+#MariaDB is a community-developed, commercially supported fork of the MySQL relational database management system, 
+#intended to remain free and open-source software under the GNU General Public License. 
+#
+#
+#Use the source image from mariadb
+#
+#Add build argument as ACME_MARIADB_DATABASE
+#
+#Add build argument as ACME_MARIADB_PASSWORD
+#
+#Create build environment MARIADB_DATABASE
+#
+#Creare build environment MARIADB_ROOT_PASSWORD
+
+

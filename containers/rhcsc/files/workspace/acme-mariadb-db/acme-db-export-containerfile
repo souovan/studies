@@ -1,0 +1,14 @@
+#!/bin/bash
+#MariaDB is a community-developed, commercially supported fork of the MySQL relational database management system,
+#intended to remain free and open-source software under the GNU General Public License.
+#
+#
+#Use the source image from mariadb
+#
+##
+# copy the local script file in to the container
+#
+# change the workdirectory to /scripts
+#
+# Run export script in container
+
