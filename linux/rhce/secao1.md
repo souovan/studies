@@ -4,6 +4,55 @@
   - 1 controlnode (ansible)
   - 5 nodes
 
+## Pre requisitos
+
+Este lab usa Vagrant com o provider `libvirt`, conforme definido no
+`makefile` por `VAGRANT_DEFAULT_PROVIDER=libvirt vagrant`.
+
+Antes de executar `make start-vms`, confirme os pontos abaixo:
+
+- Vagrant instalado.
+- Libvirt instalado e em execucao.
+- Plugin `vagrant-libvirt` instalado.
+- Usuario com permissao para acessar o libvirt.
+- Rede libvirt `default` definida e ativa.
+
+Para validar a rede `default`:
+
+```bash
+virsh net-list --all
+```
+
+Se a rede `default` nao existir, defina, inicie e habilite o autostart:
+
+```bash
+virsh net-define /usr/share/libvirt/networks/default.xml
+virsh net-start default
+virsh net-autostart default
+```
+
+Caso os comandos acima sejam executados contra o libvirt do sistema e exijam
+privilegios administrativos, use `sudo`:
+
+```bash
+sudo virsh net-define /usr/share/libvirt/networks/default.xml
+sudo virsh net-start default
+sudo virsh net-autostart default
+```
+
+Sem a rede `default`, o `make start-vms` pode falhar durante o boot das VMs com
+erro semelhante a:
+
+```text
+Call to virDomainCreate failed: Network not found: no network with matching name 'default'
+```
+
+Com os pre requisitos atendidos, inicie o lab:
+
+```bash
+make start-vms
+```
+
 ## Pre requisites configuration for the EXAM
 
 ```bash
@@ -46,4 +95,3 @@ autocmd FileType yaml setlocal ai ts=2 sw=2 et cuc nu
 # Generates an ansible.cfg example file
 ansible-config init --disabled -t all > ansible.cfg
 ```
-
